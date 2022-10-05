@@ -18,3 +18,10 @@
 * Cause of error
 * Include the operating system name and version, compiler name and version
 * Include the commit ID from Git
+
+## Git workflow
+* Create a branch
+* Make edits in local copy
+* Commit your changes and push to branch
+* Create a pull request
+* Merge changes
