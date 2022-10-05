@@ -12,3 +12,4 @@ Decider is mainly for the users who have a hard time making choices, or the user
 # History
 
 # Contribute
+[contributing](CONTRIBUTING.md)
