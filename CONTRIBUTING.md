@@ -24,4 +24,4 @@
 * Make edits in local copy
 * Commit your changes and push to branch
 * Create a pull request
-* Merge changes
+* Merge changes to main
