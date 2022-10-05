@@ -3,11 +3,10 @@
 ## Contributing a bug fix</br>
 Change history in README.md, describe the incorrect behavior.</br>
 Give credit to all authors of the bug fix.</br>
-Write a Git commit message.</br>
 
 ## Contributing a feature</br>
 Change history in README.md, list newly added symbols</br>
 Briefly describe the feature</br>
 Add documentation with examples in the relevant guide</br>
 References in appropriate places</br>
-Credits entries for all authors of the feature</br>
+Give credit to all authors of the feature</br>
