@@ -1,7 +1,8 @@
 # Contribution guide
 
 ## Contributing a bug fix</br>
-Change history in README.md, describe the incorrect behavior.</br>
+Change history in README.md</br>
+Describe the incorrect behavior.</br>
 Give credit to all authors of the bug fix.</br>
 
 ## Contributing a feature</br>
