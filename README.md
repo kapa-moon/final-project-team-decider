@@ -10,3 +10,5 @@ Decider is mainly for the users who have a hard time making choices, or the user
 [Yuewen Yang](https://github.com/kapa-moon)</br>
 
 # A short history of how the project came to be
+
+# How to contribute
