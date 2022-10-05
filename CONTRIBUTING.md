@@ -12,3 +12,9 @@
 * Add documentation with examples in the relevant guide</br>
 * References in appropriate places</br>
 * Give credit to all authors of the feature</br>
+
+## Reporting a bug</br>
+* What is behaving unexpectedly
+* Cause of error
+* Include the operating system name and version, compiler name and version
+* Include the commit ID from Git
