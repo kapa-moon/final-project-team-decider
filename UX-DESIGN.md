@@ -23,8 +23,8 @@
 
 (From Left to Right)
 
-1. 
-2. 
+1. Log in: identification and authentication
+2. Sign up: register a new user
 
 <img src="ux-design/Agile-Team%20Decider%20Wireframe/HomeScreen.png" width="200" alt="Home/User Info Screen"> <img src="ux-design/Agile-Team%20Decider%20Wireframe/Recommend.png" width="200" alt="Recommendations Screen"> <img src="ux-design/Agile-Team%20Decider%20Wireframe/ResultList.png" width="200" alt="Selected/Result Screen">
 
