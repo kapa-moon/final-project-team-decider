@@ -4,7 +4,7 @@
 <img src="ux-design/App Map.png" width="700" alt="App Map"> 
 
 ## Prototype
-<kbd><img src="ux-design/prototype/Prototype.png" width="700" alt="App Map"> </kbd>
+<img src="ux-design/prototype/Prototype.png" width="700" alt="App Map" style="border: 2px solid black"> 
 
 
 [This link](https://www.figma.com/file/JiddLa3f4jKg5Qyvdls1fz/Team-Decider-Prototype?node-id=0%3A1) will lead to our Figma Page.
