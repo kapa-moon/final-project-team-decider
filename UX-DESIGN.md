@@ -1,7 +1,7 @@
 # User Experience Design
 
 ## App Map
-<img src="ux-design/App Map.png" width="700" alt="App Map"> 
+<img src="ux-design/App Map.png" width="1000" alt="App Map"> 
 
 ## Prototype
 <img src="ux-design/prototype/Prototype.png" width="700" alt="App Map" style="border: 2px solid black"> 
