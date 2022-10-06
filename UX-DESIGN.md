@@ -38,5 +38,5 @@
 
 (From Left to Right)
 
-1. 
-2. 
+1. list: after clicking on an item, directed to map
+2. world map: more location specific data and surroundings can be seen
