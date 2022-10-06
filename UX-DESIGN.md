@@ -23,20 +23,20 @@
 
 (From Left to Right)
 
-1. Log in: identification and authentication
-2. Sign up: register a new user
+1. Log in: identification and authentication.
+2. Sign up: register a new user.
 
 <img src="ux-design/Agile-Team%20Decider%20Wireframe/HomeScreen.png" width="200" alt="Home/User Info Screen"> <img src="ux-design/Agile-Team%20Decider%20Wireframe/Recommend.png" width="200" alt="Recommendations Screen"> <img src="ux-design/Agile-Team%20Decider%20Wireframe/ResultList.png" width="200" alt="Selected/Result Screen">
 
 (From Left to Right)
 
-1. 
-2. 
-3. 
+1. Input hangout information and purpose.
+2. Generate relevant list based on hangout information.
+3. Item selection.
 
 <img src="ux-design/Agile-Team%20Decider%20Wireframe/Add-Location-Popover.png" width="200" alt="Add Location Screen"> <img src="ux-design/Agile-Team%20Decider%20Wireframe/LocationDetail.png" width="200" alt="Location Details Screen">
 
 (From Left to Right)
 
-1. list: after clicking on an item, directed to map
-2. world map: more location specific data and surroundings can be seen
+1. Items list: after clicking on an item, directed to map.
+2. World map: more location specific data and surroundings can be seen.
