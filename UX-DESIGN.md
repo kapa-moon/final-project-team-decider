@@ -1,6 +1,13 @@
 # User Experience Design
 
 ## App Map
+<img src="ux-design/App Map.png" width="700" alt="App Map"> 
+
+## Prototype
+<kbd><img src="ux-design/prototype/Prototype.png" width="700" alt="App Map"> </kbd>
+
+
+[This link](https://www.figma.com/file/JiddLa3f4jKg5Qyvdls1fz/Team-Decider-Prototype?node-id=0%3A1) will lead to our Figma Page.
 
 ## Wireframe
 
@@ -33,6 +40,3 @@
 
 1. 
 2. 
-
----
-## Prototype
