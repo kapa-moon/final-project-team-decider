@@ -38,5 +38,5 @@
 
 (From Left to Right)
 
-1. Items list: after clicking on an item, directed to map.
+1. Items list: after clicking on an item, more processes are initiated, which including redirection to map.
 2. World map: more location specific data and surroundings can be seen.
