@@ -40,5 +40,4 @@
 * Sprint 4: Scrum Master: Yiyi Wu (Yvonne) Product Owner: Yuewen Yang
 
 ## Instructions for setting up local development environment
-
 ## Instructions for building and testing the project
