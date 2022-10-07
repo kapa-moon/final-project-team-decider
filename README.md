@@ -1,14 +1,39 @@
 # Decider
 
+### 🥘 Find the perfect place for friends hangouts. <mark>Right Now!</mark>
+
 ## Introduction
-Decider is mainly for the users who have a hard time making choices, or the users who have many equally important tasks and hard to arrange the priority. As a person with Decidophobia, I want to either let the algorithm decide for me or randomly pick the place to go to, so that I can decide. As a food hunter, I want to try new restaurants/coffee shop/boba places when meeting up with friends. As a person that regularly hangs out with friends, I want to be able to conveniently check my friends’ choices of locations, so that I can know what they like. I want to see the locations my friend choose, so that I can estimate the walking distance. So it includes an interactive world map with relevant information associated with different locations, and a data visualizer that makes prediction of various data. We believe many of us have a hard time making some decisions nowadays. Coping with the difficulties of making choices, "decider" can help users make quick decisions to save time. No hesitation, no overthought. Users can add their choices or tasks, which will be arranged. Choose and design from a variety of themes. Save the decision history to the account for repetitive uses in the future. Share their decisions outcome with friends via link or text. Import options in certain format directly from the clipboard. Multiuser interactions: Share URLs to others, and multiple users can add multiple decision items to the list.
+
+### <li> <strong>Scenario</strong></li>
+
+There are different common scenarios of hanging out with friends. It can be a planned dinner, or a casual meet during the day of work/study.<br> Following is a conversation that you may imagine yourself had with a friend/peer/coworker: <br>
+
+📚 [In Library]<br>
+🫠 : Hey, what are you working on? <br>
+🥸 : OS lab. You?<br>
+🫠 : Oh me too. Hey I've been sitting here the whole morning. Do you wanna grab a coffee? <br>
+🥸 : Ofc. Wanna try <em><strong>sth different</strong></em>? <br>
+🫠 : Definitely!! But which one... <br>
+
+### <li> <strong>How does Decider help and create a fun experience?</strong></li>
+
+<ol>
+<li><strong>Quickly generate a link/group link that can be shared across any group chat such as text, messenger, etc. </strong></li>
+<li><strong>Users can enter optional information to refine the hangout, including timeframe, location, and purposes. </strong></li>
+<li><strong>Users will have a customized list of recommendations and also be able to add potential places mannually.</strong></li>
+<li><strong>Group members can check the selected place list at any time, vote on places, and see the final decision.</strong></li>
+<li><strong>The web app is conveniently connected to Map applications (Google Maps, etc).</strong></li>
 
 ## Members
+
 [Xi Liu](https://github.com/xi-liu-cs)</br>
-[Yiyi Wu (Yvonne)](https://github.com/Yvonne511)</br>
+[Yiyi (Yvonne) Wu](https://github.com/Yvonne511)</br>
 [Yuewen Yang](https://github.com/kapa-moon)</br>
 
 ## History
 
+Sprint 0: [Wireframes & Prototype](https://github.com/agiledev-students-fall2022/final-project-team-decider/tree/master/ux-design)</br>
+
 ## Contribute
+
 See the [contribution guide](CONTRIBUTING.md) for more information.
