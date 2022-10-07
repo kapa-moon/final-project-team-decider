@@ -23,20 +23,20 @@
 
 (From Left to Right)
 
-1. Log in: identification and authentication.
-2. Sign up: register a new user.
+1. Log in: Identification and authentication.
+2. Sign up: Register a new user.
 
 <img src="ux-design/Agile-Team%20Decider%20Wireframe/HomeScreen.png" width="200" alt="Home/User Info Screen"> <img src="ux-design/Agile-Team%20Decider%20Wireframe/Recommend.png" width="200" alt="Recommendations Screen"> <img src="ux-design/Agile-Team%20Decider%20Wireframe/ResultList.png" width="200" alt="Selected/Result Screen">
 
 (From Left to Right)
 
-1. Input hangout information and purpose.
-2. Generate relevant list based on hangout information.
-3. Item selection.
+1. Home Screen: User can put in information about their team and how many people are in the team.
+2. Recommendation Screen: Generate recommended locations based on hangout(Home Screen) information.
+3. Select Result Screen: Randomly pick a location from all users' selections.
 
 <img src="ux-design/Agile-Team%20Decider%20Wireframe/Add-Location-Popover.png" width="200" alt="Add Location Screen"> <img src="ux-design/Agile-Team%20Decider%20Wireframe/LocationDetail.png" width="200" alt="Location Details Screen">
 
 (From Left to Right)
 
-1. Items list: after clicking on an item, more processes are initiated, and redirected to map.
-2. World map: more location specific data and surroundings can be seen.
+1. Add Location Pop Over: After clicking on add a location, user can search a location he/she wants to add to the team.
+2. Location Detail Screen: Detail information about a location the user want to select.
