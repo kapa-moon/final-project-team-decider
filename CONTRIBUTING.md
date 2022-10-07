@@ -27,7 +27,7 @@
 * Merge changes to main
 
 ## Team norms
-* Make granular and small commits, per feature or per bug fix.
+* Make small commits, per bug fix or feature
 * Pull request reviewed by other members before merge
 * Ask help from others when there is a problem
 * Commit frequently to avoid merge hell
