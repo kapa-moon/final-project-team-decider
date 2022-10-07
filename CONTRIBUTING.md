@@ -25,3 +25,20 @@
 * Commit your changes and push to branch
 * Create a pull request
 * Merge changes to main
+
+## Team norms
+* Make granular and small commits, per feature or per bug fix.
+* Pull request reviewed by other members before merge
+* Ask help from others when there is a problem
+* Commit frequently to avoid merge hell
+* Meet regularly for standups
+
+## Sprint cadence
+* Sprint 1: Scrum Master: Yuewen Yang, Product Owner: Xi Liu
+* Sprint 2: Scrum Master: Yiyi Wu (Yvonne), Product Owner: Yuewen Yang
+* Sprint 3: Scrum Master: Xi Liu, Product Owner: Yiyi Wu (Yvonne)
+* Sprint 4: Scrum Master: Yiyi Wu (Yvonne) Product Owner: Yuewen Yang
+
+## Instructions for setting up local development environment
+
+## Instructions for building and testing the project
