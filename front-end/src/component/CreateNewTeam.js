@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserRouter as Routes, Route} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 function CreateNewTeam()
