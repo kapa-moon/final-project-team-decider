@@ -23,6 +23,7 @@ There are different common scenarios of hanging out with friends. It can be a pl
 <li><strong>Users will have a customized list of recommendations and also be able to add potential places mannually.</strong></li>
 <li><strong>Group members can check the selected place list at any time, vote on places, and see the final decision.</strong></li>
 <li><strong>The web app is conveniently connected to Map applications (Google Maps, etc).</strong></li>
+</ol>
 
 ## Members
 

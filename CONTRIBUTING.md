@@ -40,4 +40,8 @@
 * Sprint 4: Scrum Master: Yiyi Wu (Yvonne) Product Owner: Yuewen Yang
 
 ## Instructions for setting up local development environment
+* Navigate to front-end or back-end directory
+* Run npm install for dependencies in package.json file
+
 ## Instructions for building and testing the project
+* Run npm start to launch the React.js server
