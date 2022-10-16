@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Lato', sans-serif;
 }
 
 .App_logo {
@@ -17,6 +18,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -49,26 +51,23 @@
   color: #61dafb;
 }
 
-li
-{
+li {
   list-style-type: none;
 }
 
-.font
-{
+.font {
   font-size: 40px;
   color: #aaaaaa;
 }
 
-.left_top
-{
+.left_top {
   position: relative;
   left: -400px;
   top: -300px;
 }
 
-.nav_item, .header_nav_item
-{
+.nav_item,
+.header_nav_item {
   height: 100;
   width: 350;
   font-size: 40px;
@@ -78,33 +77,25 @@ li
   border-radius: 4px;
 }
 
-.header_nav_item
-{
+.header_nav_item {
   border: 0px;
   background-color: #222222;
 }
 
-.active /* NavLink */
-{
+.active
+
+/* NavLink */
+  {
   color: #aaaaaa;
   text-decoration: none;
 }
 
-*
-{
-  font-family: normal;
-  font-weight: normal;
-  font-style: normal;
-}
-
-input
-{
+input {
   height: 100;
   width: 500;
 }
 
-input[type = text]
-{
+input[type=text] {
   font-size: 30px;
   color: #ffffff;
   background-color: #222222;
@@ -112,13 +103,11 @@ input[type = text]
   border-radius: 4px;
 }
 
-input[type = text]::placeholder
-{
+input[type=text]::placeholder {
   text-align: center;
 }
 
-input[type = submit]
-{
+input[type=submit] {
   font-size: 40px;
   color: #aaaaaa;
   background-color: #222222;
@@ -126,8 +115,7 @@ input[type = submit]
   border-radius: 4px;
 }
 
-button
-{
+button {
   height: 100;
   width: 500;
   font-size: 40px;
