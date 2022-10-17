@@ -6,7 +6,7 @@ function Home()
     return(
         <>
             <div className = 'App flex-row' style = {{width: '50vw', height: '100vh'}}>
-                <Hangout/>
+                <Hangout></Hangout>
             </div>
         </>
     );

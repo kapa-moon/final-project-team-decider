@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import CreateNewTeam from './component/CreateNewTeam';
 import Home from './component/Home';
 import Group from './component/Group';
+import TeamInfo from './component/TeamInfo';
 import { Link } from 'react-router-dom';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path='/' element={<CreateNewTeam />} />
             <Route path='/home' element={<Home />} />
+            <Route path='/team_info' element={<TeamInfo />} />
             <Route path='/group' element={<Group />} />
           </Routes>
         </div>
