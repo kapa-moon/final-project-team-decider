@@ -1,19 +1,19 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
+import Button from './Button';
+import mainback from '../image/mainback.png';
+import bowl from '../image/bowl.png';
 
 function CreateNewTeam()
 {
-  let navigate = useNavigate();
-
   return(
-    <div className = 'App'>
-        <div className = 'App_body'>
+    <div className = 'App flex-row justify-start shadow-md rounded-3xl max-h-screen' style = {{width: '50vw', height: '100vh'}}>
+        <div className = 'App_body' style = {{backgroundImage: `url(${mainback})`}}>
             <form>
-                <button type = 'button'>Create New Team</button><br></br><br></br>
-                <input type = 'text' placeholder = 'Enter Team Code'></input><br></br><br></br>
-                <button onClick = {() => navigate('./Home')}>Submit</button><br></br><br></br>
-                <button type = 'button'>Be a Long-Term User</button><br></br><br></br>
-                <button type = 'button'>Long-Term User Log In</button>
+                <img src = {bowl} alt = 'bowl' className = 'align-center' style = {{width: '10', height: '10vh', marginLeft: 'auto', marginRight: 'auto', marginTop: '3vh'}}></img><br></br>
+                <Button str_array = {['Create a Group']} type = {0}></Button><br></br>
+                <Button str_array = {['Join a Group']} type = {1}></Button>
+                <Button str_array = {['Enter']} type = {2}></Button><br></br><br></br>
+                <Button str_array = {['Be a Long-Term User', 'Long-Term User Log In']} type = {0}></Button>
             </form>
         </div>
     </div>

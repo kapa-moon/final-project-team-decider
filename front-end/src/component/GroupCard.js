@@ -1,12 +1,9 @@
 import React from 'react';
 import Bubble from './Bubble';
-import VoteBox from './VoteBox';
-
-
 
 const GroupCard = (props) => {
     return (
-        <div div className='group-card'>
+        <div className='group-card'>
             <div className='card-wrapper flex-row justify-start shadow-md rounded-3xl w-80 h-36 p-4'>
 
                 <div className='flex justify-start space-x-5 rounded-3xl w-75 h-24'>

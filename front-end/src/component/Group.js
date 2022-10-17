@@ -1,6 +1,6 @@
 import React from 'react';
 import GroupCard from './GroupCard';
-import Placeholder from './pic1.png';
+import Placeholder from '../image/pic1.png';
 
 function Group({ SelctedLocation }) {
     return (
@@ -9,7 +9,6 @@ function Group({ SelctedLocation }) {
             <GroupCard name="Mala Project" type={["Food"]} image={Placeholder}></GroupCard>
             <GroupCard name="Gong Cha" type={["Beverage"]} image={Placeholder}></GroupCard>
             <GroupCard name="Cheli" type={["Food", "Beverage"]} image={Placeholder} ></GroupCard>
-
         </div>
     );
 }
