@@ -17,7 +17,7 @@ function Bubble({ type }) {
 const Beverage = ({ type }) => {
     return (
         <div className='bubble-wrapper pl-2 pr-2'>
-            <div className='w-fit h-fit rounded-2xl ring-2 ring-border-pink bg-cream'>
+            <div className='w-fit h-fit rounded-2xl ring-2 ring-border-pink bg-bubble-pink'>
                 <span className='p-1.5 text-sm'>{type}</span>
 
             </div>
