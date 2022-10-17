@@ -1,15 +1,18 @@
 import React from 'react';
 import Button from './Button';
+import BackEnter from './BackEnter';
 
 function Hangout()
 {
     return(
-        <div className = 'App flex-row' style = {{width: '50vw', height: '100vh'}}>
-            <label className = {`base-input-class text-base text-primary`}>About the Hangout</label><br></br><br></br>
+        <div className = 'App_body'>
             <form>
-                <Button str_array = {['From']} type = {1}></Button><br></br><br></br>
-                <Button str_array = {['To']} type = {1}></Button><br></br><br></br>
-                <Button str_array = {['Number of people']} type = {1}></Button>
+                <Button str_array = {['Invite Friends']} type = {1}></Button>
+                <div style = {{marginTop: '2.5vw'}}><Button str_array = {[{str: '', placeholder: 'Copy Link'}]} type = {3}></Button></div>
+                <BackEnter></BackEnter>
+                <br></br><br></br>
+                <Button str_array = {['Enter Group Code:']} type = {1}></Button>
+                <BackEnter></BackEnter>
             </form>
         </div>
     );
