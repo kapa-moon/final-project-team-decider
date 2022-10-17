@@ -1,17 +1,17 @@
 import React from 'react';
-import Space from './Space';
+import Button from './Button';
 
 function Hangout()
 {
     return(
-        <>
-            <label className = {`base-input-class font left_top`}>About the Hangout</label>
+        <div className = 'App flex-row' style = {{width: '50vw', height: '100vh'}}>
+            <label className = {`base-input-class text-base text-primary`}>About the Hangout</label><br></br><br></br>
             <form>
-                From <Space n = {3}/><input type = 'text'></input>
-                <Space n = {3}/> To <Space n = {3}/><input type = 'text'></input><br/><br/>
-                Number of people <input type = 'text'></input>
+                <Button str_array = {['From']} type = {1}></Button><br></br><br></br>
+                <Button str_array = {['To']} type = {1}></Button><br></br><br></br>
+                <Button str_array = {['Number of people']} type = {1}></Button>
             </form>
-        </>
+        </div>
     );
 }
 

@@ -1,32 +1,25 @@
 import React from 'react';
-// import { ReactDOM } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import CreateNewTeam from './component/CreateNewTeam';
 import Home from './component/Home';
 import Group from './component/Group';
 import { Link } from 'react-router-dom';
-// import Soup from './component/soup.svg';
-// import { ReactComponent as ReactLogo } from '.component/soup.svg';
 
 function App() {
   return (
     <div className='App max-h-screen flex justify-center min-w-screen md: max-w-800'>
-      {/* <a href='final-project-team-decider/front-end/public/index.html'>Landing page</a> */}
-      {/* <Routes>
-        <Route path='/' element={<CreateNewTeam />} />
-      </Routes> */}
-      <div className='m-10'>
+      <div style = {{margin: '7vw'}}>
 
         <Link to='/'>
-          <div className='placeholder h-12 w-12 rounded-md bg-border-green'></div>
+          <div className='placeholder rounded-md bg-border-green' style = {{width: '7vw', height: '7vw'}}></div> 
         </Link>
 
         <SearchBar></SearchBar>
-        <div className='selectors flex justify-between h-20'>
-          <Link to='/group' className='text-xl '>Recommend</Link>
-          <Link to='/group' className='text-xl '>Group List</Link>
-          <Link to='/group' className='text-xl '>Go!</Link>
+        <div className='selectors flex justify-between' style = {{height: '11vh'}}>
+          <Link to='/group' style = {{fontSize: '3vh'}}>Recommend</Link>
+          <Link to='/group' style = {{fontSize: '3vh'}}>Group List</Link>
+          <Link to='/group' style = {{fontSize: '3vh'}}>Go!</Link>
         </div>
 
         <div className='routes h-2/3'>
