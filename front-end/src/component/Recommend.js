@@ -3,7 +3,9 @@ import RecommendCard from './RecommendCard';
 import Placeholder from '../image/pic1.png';
 
 function Recommend({ SelctedLocation }) {
-    return <ul>{getCard(SelectedLocation)}</ul>;
+    return (<dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
+            <ul>{getCard(SelectedLocation)}</ul>
+            </dir>);
 }
 
 var count = 0;

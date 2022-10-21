@@ -3,7 +3,7 @@ import Bubble from './Bubble';
 
 const RecommendCard = (props) => {
     return (
-        <div className='group-card grid grid-cols-10'>
+        <div className='group-card grid grid-cols-10 '>
             <div className='card-wrapper row-span-full col-start-1 col-span-10 self-center shadow-md rounded-3xl p-4'>
                 <div className='object-cover flex justify-start rounded-3xl'>
                     <div className='pic rounded-2xl bg-primary w-32 h-24 overflow-hidden'>
