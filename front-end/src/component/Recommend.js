@@ -12,9 +12,6 @@ const getCard = SelectedLocation => SelectedLocation.map(item => (
     <RecommendCard name={item.name} type = {item.type} image = {Placeholder} key = {count++}></RecommendCard>
   ));
 
-
-// Hard Coded Data Example
-
 const SelectedLocation = [
     { name: "Boba Guys",
     type: ["Beverage", "Food"],
@@ -22,6 +19,34 @@ const SelectedLocation = [
     distance: 12,
     rate: 4.5,
     total: 198, 
+    votes:0},
+    { name: "Lala Project",
+    type: ["Food"],
+    image: Placeholder,
+    distance: 12,
+    rate: 4.5,
+    total: 198,
+    votes:0},
+    { name: "Lala Project",
+    type: ["Food"],
+    image: Placeholder,
+    distance: 12,
+    rate: 4.5,
+    total: 198,
+    votes:0},
+    { name: "Lala Project",
+    type: ["Food"],
+    image: Placeholder,
+    distance: 12,
+    rate: 4.5,
+    total: 198,
+    votes:0},
+    { name: "Lala Project",
+    type: ["Food"],
+    image: Placeholder,
+    distance: 12,
+    rate: 4.5,
+    total: 198,
     votes:0},
     { name: "Lala Project",
     type: ["Food"],

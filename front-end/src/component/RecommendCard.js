@@ -38,12 +38,12 @@ const RecommendCard = (props) => {
 
             </div>
 
-            <div class="row-span-full col-start-9 self-center">
-                    <div class="w-8 h-8 right-0">
-                        <div class="h-full w-full">
-                            <div class="flex items-center justify-center flex-1 h-full p-2 border border-gray-400 rounded-full">
-                                <div class="relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="row-span-full col-start-9 self-center">
+                    <div className="w-8 h-8 right-0">
+                        <div className="h-full w-full">
+                            <div className="flex items-center justify-center flex-1 h-full p-2 border border-gray-800 rounded-full">
+                                <div className="relative">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                         </svg>
                                 </div>
