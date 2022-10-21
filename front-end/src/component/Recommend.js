@@ -1,5 +1,5 @@
 import React from 'react';
-import GroupCard from './GroupCard';
+import RecommendCard from './RecommendCard';
 import Placeholder from '../image/pic1.png';
 
 function Recommend({ SelctedLocation }) {
@@ -9,7 +9,7 @@ function Recommend({ SelctedLocation }) {
 var count = 0;
 
 const getCard = SelectedLocation => SelectedLocation.map(item => (
-    <GroupCard name={item.name} type = {item.type} image = {Placeholder} key = {count++}></GroupCard>
+    <RecommendCard name={item.name} type = {item.type} image = {Placeholder} key = {count++}></RecommendCard>
   ));
 
 
@@ -21,13 +21,15 @@ const SelectedLocation = [
     image: Placeholder,
     distance: 12,
     rate: 4.5,
-    total: 198,},
+    total: 198, 
+    votes:0},
     { name: "Lala Project",
     type: ["Food"],
     image: Placeholder,
     distance: 12,
     rate: 4.5,
-    total: 198,},
+    total: 198,
+    votes:0},
 ]
 
 export default Recommend;
