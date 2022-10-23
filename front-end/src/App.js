@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import CreateNewTeam from './component/CreateNewTeam';
 import Home from './component/Home';
 import Group from './component/Group';
+import Recommend from './component/Recommend';
 import TeamInfo from './component/TeamInfo';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ function App() {
 
         <SearchBar></SearchBar>
         <div className='selectors flex justify-between' style = {{height: '11vh'}}>
-          <Link to='/group' style = {{fontSize: '3vh'}}>Recommend</Link>
+          <Link to='/recommend' style = {{fontSize: '3vh'}}>Recommend</Link>
           <Link to='/group' style = {{fontSize: '3vh'}}>Group List</Link>
           <Link to='/group' style = {{fontSize: '3vh'}}>Go!</Link>
         </div>
@@ -29,6 +30,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/team_info' element={<TeamInfo />} />
             <Route path='/group' element={<Group />} />
+            <Route path='/recommend' element={<Recommend />} />
           </Routes>
         </div>
 
