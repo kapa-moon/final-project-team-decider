@@ -1,10 +1,11 @@
 import React from 'react';
+import './Button.css';
 import {useNavigate} from "react-router-dom";
 
 function B0({str})
 {
     return(  
-        <div className = 'bg-dark-pink' style = {{width: '35vw', height: '8vw', fontSize: '3vw', borderRadius: '2vw', paddingTop: '1vw'}}>
+        <div className = 'b0 bg-dark-pink'>
             <span className = 'inline-block align-middle'>{str}</span>
         </div>
     );
@@ -14,8 +15,8 @@ function B1({str})
 {
     return(
         <div>
-            <label className = 'block mb-2 text-primary' style = {{fontSize: '3vw'}}>{str}</label>
-            <input type = 'text' style = {{width: '35vw', height: '8vw', fontSize: '3vw', backgroundColor: '#fff', color: '#000', borderRadius: '2vw'}}></input>
+            <label className = 'b1 block mb-2 text-primary'>{str}</label>
+            <input className = 'b1' type = 'text'></input>
         </div>
     );
 }
@@ -25,7 +26,7 @@ function B2({str})
     let navigate = useNavigate();
     return(
         <div>
-            <button onClick = {() => navigate('./Home')} style = {{width: '11vw', height: '7.3vw', padding: '0.5vw', fontSize: '3vw', backgroundColor: '#773A3A', color: 'white', position: 'relative', left: '13vw', top: '2vw', borderRadius: '2vw'}}>{str}</button>
+            <button className = 'b2' onClick = {() => navigate('./Home')}>{str}</button>
         </div>
     );
 }
@@ -34,8 +35,8 @@ function B3({str})
 {
     return(
         <div>
-            <label className = 'block mb-2 text-primary' style = {{fontSize: '3vw'}}>{str.str}</label>
-            <input type = 'text' placeholder = {str.placeholder} style = {{width: '35vw', height: '8vw', fontSize: '3vw', backgroundColor: '#fff', color: '#000', borderRadius: '2vw'}}></input>
+            <label className = 'b3 block mb-2 text-primary'>{str.str}</label>
+            <input className = 'b3' type = 'text' placeholder = {str.placeholder}></input>
         </div>
     );
 }
@@ -45,7 +46,7 @@ function B4({str})
     let navigate = useNavigate();
     return(
         <div>
-            <button onClick = {() => str.left ? navigate('/') : navigate('/team_info')} style = {{display: 'inline-block', width: '15vw', height: '6vw', paddingBottom: '0.5vw', fontSize: '3vw', backgroundColor: '#773A3A', color: 'white', position: 'relative', left: str.left ? '-11vw' : '11vw', top: str.left ? '' : '-6vw', borderRadius: '2vw'}}>{str.str}</button>
+            <button className = 'b4' onClick = {() => str.left ? navigate('/') : navigate('/team_info')} style = {{left: str.left ? '-11vw' : '11vw', top: str.left ? '' : '-6vw'}}>{str.str}</button>
         </div>
     );
 }
@@ -53,7 +54,7 @@ function B4({str})
 function B5({str})
 {
     return(  
-        <div className = 'bg-dark-pink align-top' style = {{width: '50vw', height: '8vw', fontSize: '3vw', borderRadius: '2vw', paddingTop: '1vw'}}>
+        <div className = 'b5 bg-dark-pink align-top'>
             <span className = 'inline-block align-top'>{str}</span>
         </div>
     );
