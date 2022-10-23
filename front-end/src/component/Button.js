@@ -26,7 +26,7 @@ function B2({str})
     let navigate = useNavigate();
     return(
         <div>
-            <button className = 'b2' onClick = {() => navigate('./Home')}>{str}</button>
+            <button className = 'b2' onClick = {() => navigate('./Group')}>{str}</button>
         </div>
     );
 }

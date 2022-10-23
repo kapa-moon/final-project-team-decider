@@ -2,7 +2,7 @@ import React from 'react';
 import Bubble from './Bubble';
 
 const GroupCard = (props) => {
-    return (
+    return(
         <div className='group-card'>
             <div className='card-wrapper flex-row justify-start shadow-md rounded-3xl w-80 h-36 p-4'>
 
@@ -42,7 +42,6 @@ const GroupCard = (props) => {
             </div>
 
         </div>
-
     );
 }
 
