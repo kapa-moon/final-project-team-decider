@@ -11,7 +11,7 @@ function App()
 {
   return(
     <div className='App max-h-screen flex justify-center min-w-screen md: max-w-800'>
-      <div style = {{margin: '7vw'}}>
+      <div>
         <div className='routes h-2/3'>
           <Routes>
             <Route path='/' element={<CreateNewTeam />} />

@@ -5,11 +5,13 @@
     font-size: 20px;
     border-radius: 15px;
     padding-top: 7px;
+    background-color: #d07163;
 }
 
 label.b1
 {
     font-size: 20px;
+    color: #723d46;
 }
 
 input.b1
@@ -38,30 +40,33 @@ button.b2
 
 label.b3
 {
-    font-size: 3vw;
+    font-size: 30vw;
+    color: #723d46;
 }
 
 input.b3
 {
-    width: 35vw;
-    height: 8vw;
-    font-size: 3vw;
-    border-radius: 2vw;
+    width: 245px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
     background-color: #fff;
     color: #000;
 }
 
 button.b4
 {
-    display: inline-block;
-    width: 15vw;
-    height: 6vw;
-    padding-bottom: 0.5vw;
-    font-size: 3vw;
+    width: 70px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 3px;
+    left: 86px;
+    top: 30px;
     background-color: #773A3A;
     color: white;
     position: relative;
-    border-radius: 2vw;
+    display: inline-block;
 }
 
 .b5
@@ -71,4 +76,15 @@ button.b4
     font-size: 3vw;
     border-radius: 2vw;
     padding-top: 1vw;
+}
+
+button.b6
+{
+    width: 340px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    background-color: #d07163;
+    color: white;
+    position: relative;
 }

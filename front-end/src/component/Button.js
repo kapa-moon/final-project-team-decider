@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 function B0({str})
 {
     return(  
-        <div className = 'b0 bg-dark-pink'>
+        <div className = 'b0'>
             <span className = 'inline-block align-middle'>{str}</span>
         </div>
     );
@@ -15,7 +15,7 @@ function B1({str})
 {
     return(
         <div>
-            <label className = 'b1 block mb-2 text-primary'>{str}</label>
+            <label className = 'b1 block mb-2'>{str}</label>
             <input className = 'b1' type = 'text'></input>
         </div>
     );
@@ -35,7 +35,7 @@ function B3({str})
 {
     return(
         <div>
-            <label className = 'b3 block mb-2 text-primary'>{str.str}</label>
+            <label className = 'b3 block mb-2'>{str.str}</label>
             <input className = 'b3' type = 'text' placeholder = {str.placeholder}></input>
         </div>
     );
@@ -46,7 +46,7 @@ function B4({str})
     let navigate = useNavigate();
     return(
         <div>
-            <button className = 'b4' onClick = {() => str.left ? navigate('/') : navigate('/team_info')} style = {{left: str.left ? '-11vw' : '11vw', top: str.left ? '' : '-6vw'}}>{str.str}</button>
+            <button className = 'b4' onClick = {() => str.left ? navigate('/') : navigate('/team_info')} style = {{left: str.left ? '-80px' : '80px', top: str.left ? '' : '-26px'}}>{str.str}</button>
         </div>
     );
 }
@@ -60,7 +60,17 @@ function B5({str})
     );
 }
 
-let component_array = [B0, B1, B2, B3, B4, B5];
+function B6({str})
+{
+    let navigate = useNavigate();
+    return(
+    <div>
+        <button className = 'b6' onClick = {() => navigate('/Home')}>{str}</button>
+    </div>
+    );
+}
+
+let component_array = [B0, B1, B2, B3, B4, B5, B6];
 
 function Button({str_array, type})
 {
@@ -74,7 +84,7 @@ function Button({str_array, type})
         }
     }
     return(
-        <div className = 'grid grid-cols-1 justify-items-center items-center' style = {{gap: '5vh'}}>
+        <div className = 'grid grid-cols-1 justify-items-center items-center' style = {{gap: '50px'}}>
             {a}
         </div>
     );

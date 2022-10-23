@@ -1,10 +1,14 @@
 import React from 'react';
+import './Button.css';
 import GroupCard from './GroupCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
+import {useNavigate} from "react-router-dom";
+import Button from './Button';
 
-function Group({ SelctedLocation }) {
-    return (
+function Group({SelctedLocation})
+{
+    return(
         <>
             <Selector></Selector>
             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll overscroll-contain'>
@@ -13,6 +17,7 @@ function Group({ SelctedLocation }) {
                 <GroupCard name="Gong Cha" type={["Beverage"]} image={Placeholder}></GroupCard>
                 <GroupCard name="Cheli" type={["Food", "Beverage"]} image={Placeholder} ></GroupCard>
             </div>
+            <Button str_array = {['Group Information']} type = {6}></Button>
         </>
     );
 }
