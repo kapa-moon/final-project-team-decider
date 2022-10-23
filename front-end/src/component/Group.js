@@ -3,7 +3,6 @@ import './Button.css';
 import GroupCard from './GroupCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
-import {useNavigate} from "react-router-dom";
 import Button from './Button';
 
 function Group({SelctedLocation})
