@@ -40,7 +40,7 @@ button.b2
 
 label.b3
 {
-    font-size: 30vw;
+    font-size: 30px;
     color: #723d46;
 }
 
@@ -71,11 +71,11 @@ button.b4
 
 .b5
 {
-    width: 50vw;
-    height: 8vw;
-    font-size: 3vw;
-    border-radius: 2vw;
-    padding-top: 1vw;
+    width: 340px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding-top: 3px;
 }
 
 button.b6

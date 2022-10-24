@@ -6,6 +6,7 @@ import Home from './component/Home';
 import Group from './component/Group';
 import Recommend from './component/Recommend';
 import TeamInfo from './component/TeamInfo';
+import Map from './component/Map';
 
 function App()
 {
@@ -19,6 +20,7 @@ function App()
             <Route path='/team_info' element={<TeamInfo />} />
             <Route path='/group' element={<Group />} />
             <Route path='/recommend' element={<Recommend />} />
+            <Route path='/map' element={<Map />} />
           </Routes>
         </div>
       </div>

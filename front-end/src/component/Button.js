@@ -1,6 +1,8 @@
 import React from 'react';
 import './Button.css';
 import {useNavigate} from "react-router-dom";
+import Home from './Home';
+import Popup from 'reactjs-popup';
 
 function B0({str})
 {
@@ -26,7 +28,7 @@ function B2({str})
     let navigate = useNavigate();
     return(
         <div>
-            <button className = 'b2' onClick = {() => navigate('./Group')}>{str}</button>
+            <button className = 'b2' onClick = {() => navigate('/Group')}>{str}</button>
         </div>
     );
 }
@@ -62,10 +64,9 @@ function B5({str})
 
 function B6({str})
 {
-    let navigate = useNavigate();
     return(
     <div>
-        <button className = 'b6' onClick = {() => navigate('/Home')}>{str}</button>
+        <Popup trigger = {<button className = 'b6'>{str}</button>} position = "top center"><Home></Home></Popup>
     </div>
     );
 }

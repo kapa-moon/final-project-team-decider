@@ -1,14 +1,17 @@
 import React from 'react';
+import './GroupCard.css';
 import Bubble from './Bubble';
+import {useNavigate} from "react-router-dom";
 
 const GroupCard = (props) => {
+    let navigate = useNavigate();
     return(
         <div className='group-card'>
             <div className='card-wrapper flex-row justify-start shadow-md rounded-3xl w-80 h-36 p-4'>
 
                 <div className='flex justify-start space-x-5 rounded-3xl w-75 h-24'>
                     <div className='pic rounded-2xl bg-primary w-32 h-24 overflow-hidden'>
-                        <img className='rounded-2xl' src={props.image} alt='food' />
+                        <button className='group_button' onClick = {() => navigate('/Map')}><img className='rounded-2xl' src={props.image} alt='food'></img></button>
                     </div>
                     {/* <VoteBox></VoteBox> */}
                     <div className='flex-row'>

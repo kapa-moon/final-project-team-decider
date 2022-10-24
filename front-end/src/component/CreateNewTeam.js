@@ -2,12 +2,13 @@ import React from 'react';
 import Button from './Button';
 import mainback from '../image/mainback.png';
 import bowl from '../image/bowl.png';
+import '../App.css';
 import './CreateNewTeam.css';
 
 function CreateNewTeam()
 {
   return(
-    <div className = 'create_new_team'>
+    <div className = 'd0'>
         <div className = 'App_body' style = {{backgroundImage: `url(${mainback})`}}>
             <form>
                 <img src = {bowl} alt = 'bowl' className = 'img0 align-center'></img><br></br>
