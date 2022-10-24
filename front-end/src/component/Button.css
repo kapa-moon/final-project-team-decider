@@ -6,6 +6,7 @@
     border-radius: 15px;
     padding-top: 7px;
     background-color: #d07163;
+    color: white;
 }
 
 label.b1
@@ -40,7 +41,7 @@ button.b2
 
 label.b3
 {
-    font-size: 30px;
+    font-size: 20px;
     color: #723d46;
 }
 
@@ -87,4 +88,31 @@ button.b6
     background-color: #d07163;
     color: white;
     position: relative;
+}
+
+button.b7
+{
+    width: 245px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding-bottom: 3px;
+    background-color: #d07163;
+    color: white;
+}
+
+label.b8
+{
+    color: #723d46;
+}
+
+input.b9
+{
+    width: 30px;
+    height: 30px;
+}
+
+label.b9
+{
+    color: #723d46;
 }

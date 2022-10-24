@@ -7,6 +7,8 @@ import Group from './component/Group';
 import Recommend from './component/Recommend';
 import TeamInfo from './component/TeamInfo';
 import Map from './component/Map';
+import Login from './component/Login';
+import Signup from './component/Signup';
 
 function App()
 {
@@ -21,6 +23,8 @@ function App()
             <Route path='/group' element={<Group />} />
             <Route path='/recommend' element={<Recommend />} />
             <Route path='/map' element={<Map />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
           </Routes>
         </div>
       </div>

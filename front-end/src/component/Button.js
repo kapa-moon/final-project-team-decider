@@ -3,6 +3,7 @@ import './Button.css';
 import {useNavigate} from "react-router-dom";
 import Home from './Home';
 import Popup from 'reactjs-popup';
+import Space from './Space';
 
 function B0({str})
 {
@@ -37,7 +38,7 @@ function B3({str})
 {
     return(
         <div>
-            <label className = 'b3 block mb-2'>{str.str}</label>
+            <label className = 'b3 block mb-2' style = {{textAlign: str.text_align}}>{str.str}</label>
             <input className = 'b3' type = 'text' placeholder = {str.placeholder}></input>
         </div>
     );
@@ -71,7 +72,38 @@ function B6({str})
     );
 }
 
-let component_array = [B0, B1, B2, B3, B4, B5, B6];
+function B7({str})
+{
+    let navigate = useNavigate();
+    return(
+        <div>
+            <button className = 'b7'
+            onClick = {() => navigate('/' + str.link)}
+            style = {{color: str.color, backgroundColor: str.back_color}}>{str.str}</button>
+        </div>
+    );
+}
+
+function B8({str})
+{
+    return(
+        <div>
+            <label className = 'b8' style = {{textAlign: str.text_align}}>{str.str}</label>
+        </div>
+    );
+}
+
+function B9({str})
+{
+    return(
+        <div>
+            <input className = 'b9' type = {str.type} style = {{marginLeft: str.margin_left}}></input>
+            <Space n = {3}></Space><label className = 'b9'>{str.str}</label>
+        </div>
+    );
+}
+
+let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9];
 
 function Button({str_array, type})
 {
