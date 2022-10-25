@@ -33,3 +33,34 @@ const SelectedLocation = [{
 }]
 
 export default Group;
+
+// fetched data from API
+// address_line1: "Daphne Gallery"
+// address_line2: "Montague Street, New York, NY 11201, United States of America"
+// categories:
+//  0: "commercial"
+//  1: "commercial.art"
+
+const location = [{
+    address_line1: "Daphne Gallery",
+    address_line2: "Montague Street, New York, NY 11201, United States of America",
+    categories: ["commercial", "commercial.art"],
+}]
+
+function longest(arr) {
+    return arr.sort(
+        function (a, b) {
+            return b.length - a.length;
+        }
+    )[0];
+}
+
+let type = longest(location[0].categories);
+console.log(type.includes("commercial"));
+const arr = type.split(".");
+arr.push("commercial");
+console.log(arr);
+console.log(new Set(arr));
+// console.log(longest(location[0].categories));
+
+
