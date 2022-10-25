@@ -13,7 +13,7 @@ function Selector()
         <div className='selectors flex justify-between h-20'>
           <Link to='/group' className='text-xl '>Recommend</Link>
           <Link to='/group' className='text-xl '>Group List</Link>
-          <Link to='/group' className='text-xl '>Go!</Link>
+          <Link to='/go' className='text-xl '>Go!</Link>
         </div>
         </>
     );

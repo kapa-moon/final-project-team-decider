@@ -9,6 +9,7 @@ import TeamInfo from './component/TeamInfo';
 import Map from './component/Map';
 import Login from './component/Login';
 import Signup from './component/Signup';
+import Go from './component/Go';
 
 function App()
 {
@@ -25,6 +26,7 @@ function App()
             <Route path='/map' element={<Map />} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
+            <Route path='/go' element={<Go />} />
           </Routes>
         </div>
       </div>
