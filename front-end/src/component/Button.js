@@ -1,10 +1,14 @@
 import React from 'react';
+import './Button.css';
 import {useNavigate} from "react-router-dom";
+import Home from './Home';
+import Popup from 'reactjs-popup';
+import Space from './Space';
 
 function B0({str})
 {
     return(  
-        <div className = 'bg-dark-pink' style = {{width: '35vw', height: '8vw', fontSize: '3vw', borderRadius: '2vw', paddingTop: '1vw'}}>
+        <div className = 'b0'>
             <span className = 'inline-block align-middle'>{str}</span>
         </div>
     );
@@ -14,8 +18,8 @@ function B1({str})
 {
     return(
         <div>
-            <label className = 'block mb-2 text-primary' style = {{fontSize: '3vw'}}>{str}</label>
-            <input type = 'text' style = {{width: '35vw', height: '8vw', fontSize: '3vw', backgroundColor: '#fff', color: '#000', borderRadius: '2vw'}}></input>
+            <label className = 'b1 block mb-2'>{str}</label>
+            <input className = 'b1' type = 'text'></input>
         </div>
     );
 }
@@ -25,7 +29,7 @@ function B2({str})
     let navigate = useNavigate();
     return(
         <div>
-            <button onClick = {() => navigate('./Home')} style = {{width: '11vw', height: '7.3vw', padding: '0.5vw', fontSize: '3vw', backgroundColor: '#773A3A', color: 'white', position: 'relative', left: '13vw', top: '2vw', borderRadius: '2vw'}}>{str}</button>
+            <button className = 'b2' onClick = {() => navigate('/Group')}>{str}</button>
         </div>
     );
 }
@@ -34,8 +38,8 @@ function B3({str})
 {
     return(
         <div>
-            <label className = 'block mb-2 text-primary' style = {{fontSize: '3vw'}}>{str.str}</label>
-            <input type = 'text' placeholder = {str.placeholder} style = {{width: '35vw', height: '8vw', fontSize: '3vw', backgroundColor: '#fff', color: '#000', borderRadius: '2vw'}}></input>
+            <label className = 'b3 block mb-2' style = {{textAlign: str.text_align}}>{str.str}</label>
+            <input className = 'b3' type = 'text' placeholder = {str.placeholder}></input>
         </div>
     );
 }
@@ -45,7 +49,7 @@ function B4({str})
     let navigate = useNavigate();
     return(
         <div>
-            <button onClick = {() => str.left ? navigate('/') : navigate('/team_info')} style = {{display: 'inline-block', width: '15vw', height: '6vw', paddingBottom: '0.5vw', fontSize: '3vw', backgroundColor: '#773A3A', color: 'white', position: 'relative', left: str.left ? '-11vw' : '11vw', top: str.left ? '' : '-6vw', borderRadius: '2vw'}}>{str.str}</button>
+            <button className = 'b4' onClick = {() => str.left ? navigate('/') : navigate('/team_info')} style = {{left: str.left ? '-80px' : '80px', top: str.left ? '' : '-26px'}}>{str.str}</button>
         </div>
     );
 }
@@ -53,13 +57,53 @@ function B4({str})
 function B5({str})
 {
     return(  
-        <div className = 'bg-dark-pink align-top' style = {{width: '50vw', height: '8vw', fontSize: '3vw', borderRadius: '2vw', paddingTop: '1vw'}}>
+        <div className = 'b5 bg-dark-pink align-top'>
             <span className = 'inline-block align-top'>{str}</span>
         </div>
     );
 }
 
-let component_array = [B0, B1, B2, B3, B4, B5];
+function B6({str})
+{
+    return(
+    <div>
+        <Popup trigger = {<button className = 'b6'>{str}</button>} position = "top center"><Home></Home></Popup>
+    </div>
+    );
+}
+
+function B7({str})
+{
+    let navigate = useNavigate();
+    return(
+        <div>
+            <button className = 'b7'
+            onClick = {() => navigate('/' + str.link)}
+            style = {{color: str.color, backgroundColor: str.back_color}}>{str.str}</button>
+        </div>
+    );
+}
+
+function B8({str})
+{
+    return(
+        <div>
+            <label className = 'b8' style = {{textAlign: str.text_align}}>{str.str}</label>
+        </div>
+    );
+}
+
+function B9({str})
+{
+    return(
+        <div>
+            <input className = 'b9' type = {str.type} style = {{marginLeft: str.margin_left}}></input>
+            <Space n = {3}></Space><label className = 'b9'>{str.str}</label>
+        </div>
+    );
+}
+
+let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9];
 
 function Button({str_array, type})
 {
@@ -73,7 +117,7 @@ function Button({str_array, type})
         }
     }
     return(
-        <div className = 'grid grid-cols-1 justify-items-center items-center' style = {{gap: '5vh'}}>
+        <div className = 'grid grid-cols-1 justify-items-center items-center' style = {{gap: '50px'}}>
             {a}
         </div>
     );

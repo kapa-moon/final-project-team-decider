@@ -2,18 +2,20 @@ import React from 'react';
 import Button from './Button';
 import mainback from '../image/mainback.png';
 import bowl from '../image/bowl.png';
+import '../App.css';
+import './CreateNewTeam.css';
 
 function CreateNewTeam()
 {
   return(
-    <div className = 'App flex-row justify-start shadow-md rounded-3xl max-h-screen' style = {{width: '50vw', height: '100vh'}}>
+    <div className = 'd0'>
         <div className = 'App_body' style = {{backgroundImage: `url(${mainback})`}}>
             <form>
-                <img src = {bowl} alt = 'bowl' className = 'align-center' style = {{width: '10', height: '10vh', marginLeft: 'auto', marginRight: 'auto', marginTop: '3vh'}}></img><br></br>
-                <Button str_array = {['Create a Group']} type = {0}></Button><br></br>
+                <img src = {bowl} alt = 'bowl' className = 'img0 align-center'></img><br></br>
+                <Button str_array = {[{str: 'Create a Group', link: 'Home'}]} type = {7}></Button>
                 <Button str_array = {['Join a Group']} type = {1}></Button>
                 <Button str_array = {['Enter']} type = {2}></Button><br></br><br></br>
-                <Button str_array = {['Be a Long-Term User', 'Long-Term User Log In']} type = {0}></Button>
+                <Button str_array = {[{str: 'Be a Long-Term User', link: 'Signup'}, {str: 'Long-Term User Log In', link: 'Login'}]} type = {7}></Button>
             </form>
         </div>
     </div>
