@@ -1,11 +1,17 @@
 import React from 'react';
 import RecommendCard from './RecommendCard';
 import Placeholder from '../image/pic1.png';
+import Selector from './Selector';
 
 function Recommend({ SelctedLocation }) {
-    return (<dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
-            <ul>{getCard(SelectedLocation)}</ul>
-            </dir>);
+    return(
+      <>
+        <Selector></Selector>
+        <dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
+          <ul>{getCard(SelectedLocation)}</ul>
+        </dir>
+      </>
+    );
 }
 
 var count = 0;

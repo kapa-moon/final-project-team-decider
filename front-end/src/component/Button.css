@@ -1,0 +1,118 @@
+.b0
+{
+    width: 245px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding-top: 7px;
+    background-color: #d07163;
+    color: white;
+}
+
+label.b1
+{
+    font-size: 20px;
+    color: #723d46;
+}
+
+input.b1
+{
+    width: 245px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    color: #000;
+}
+
+button.b2
+{
+    width: 70px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 3px;
+    left: 86px;
+    top: 30px;
+    background-color: #773A3A;
+    color: white;
+    position: relative;
+}
+
+label.b3
+{
+    font-size: 20px;
+    color: #723d46;
+}
+
+input.b3
+{
+    width: 245px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    color: #000;
+}
+
+button.b4
+{
+    width: 70px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 3px;
+    left: 86px;
+    top: 30px;
+    background-color: #773A3A;
+    color: white;
+    position: relative;
+    display: inline-block;
+}
+
+.b5
+{
+    width: 340px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding-top: 3px;
+}
+
+button.b6
+{
+    width: 340px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    background-color: #d07163;
+    color: white;
+    position: relative;
+}
+
+button.b7
+{
+    width: 245px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding-bottom: 3px;
+    background-color: #d07163;
+    color: white;
+}
+
+label.b8
+{
+    color: #723d46;
+}
+
+input.b9
+{
+    width: 30px;
+    height: 30px;
+}
+
+label.b9
+{
+    color: #723d46;
+}
