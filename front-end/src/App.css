@@ -26,7 +26,7 @@
 
 .App_header {
   background-color: #222222;
-  min-height: 10px;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,8 +36,9 @@
 }
 
 .App_body {
-  background-color: #ffe1ab;
-  height: 800px;
+  /* background-color: #282c34; */
+  background-color: #FFE1AB;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,9 +123,4 @@ button {
   background-color: #222222;
   border: 2px solid #777777;
   border-radius: 4px;
-}
-
-div.d0 {
-    width: 345px;
-    height: 650px;
 }

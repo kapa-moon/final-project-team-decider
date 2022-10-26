@@ -15,6 +15,7 @@ module.exports = {
       'border-pink': '#E2635C',
       'bubble-green': '#C9CBA3',
       'border-green': '#898A6F',
+      'dark-pink': '#D07163',
     }
   },
   plugins: [],

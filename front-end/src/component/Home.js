@@ -1,12 +1,11 @@
 import React from 'react';
-import './Home.css';
 import Hangout from './Hangout';
 
 function Home()
 {
     return(
         <>
-            <div className = 'home_body App flex-row'>
+            <div className = 'App flex-row' style = {{width: '50vw', height: '100vh'}}>
                 <Hangout></Hangout>
             </div>
         </>
