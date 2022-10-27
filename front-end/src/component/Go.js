@@ -9,7 +9,33 @@ import Button from './Button';
 import { useState, useEffect } from "react";
 
 function Go({ SelctedLocation, SavedLocations }) {
-    // let chosenLocation = randomSelect(SavedLocations);
+
+    const [randomCard, setRandomCard] = useState({});
+
+    function randomSelect(savedLocations) {
+
+        let randomIndex = Math.floor(Math.random() * savedLocations.length);
+        let chosenLocation = savedLocations[randomIndex];
+        return chosenLocation;
+
+    }
+
+    function handleClick() {
+        console.log("clicked");
+        setRandomCard(randomSelect(savedLocations));
+    }
+
+    const GoBtn = () => {
+        return (
+            <div className='p-4 justify-center'>
+                <button onClick={handleClick} className='bg-bubble-pink border-bright text-primary rounded-lg
+                p-2 text-sm w-44 h-14'>Select!</button>
+            </div>
+        );
+    }
+
+    let chosenLocation = randomSelect(savedLocations);
+
     console.log(len);
     return (
         <>
@@ -17,11 +43,11 @@ function Go({ SelctedLocation, SavedLocations }) {
             {/* <div className='gopage'> */}
             <GoBtn></GoBtn>
             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll overscroll-contain'>
-                <GroupCard name={SelectedLocation[0].name} type={SelectedLocation[0].type} image={Placeholder} distance={SelectedLocation[0].distance}></GroupCard>
+                <GroupCard name={chosenLocation.name} type={chosenLocation.type} image={Placeholder} distance={chosenLocation.distance} category={chosenLocation.category}></GroupCard>
 
                 <p>👇 These locations are most popular among friends:</p>
                 {/* <Vote></Vote> */}
-                <GroupCard name={SelectedLocation[0].name} type={SelectedLocation[0].type} image={Placeholder} distance={SelectedLocation[0].distance}></GroupCard>
+                <GroupCard name={SelectedLocation[0].name} type={SelectedLocation[0].type} image={Placeholder} distance={SelectedLocation[0].distance} category={chosenLocation.category}></GroupCard>
 
             </div>
             <Button str_array={['Group Information']} type={6}></Button>
@@ -30,6 +56,8 @@ function Go({ SelctedLocation, SavedLocations }) {
         </>
     );
 }
+
+
 
 // Hard Coded Data Example
 
@@ -42,25 +70,12 @@ const SelectedLocation = [{
     street: "Ludlow Street",
 }]
 
-const GoBtn = () => {
-    return (
-        <div className='p-4 justify-center'>
-            <button className='bg-bubble-pink border-bright text-primary rounded-lg
-            p-2 text-sm w-44 h-14'>Select!</button>
-        </div>
-    );
-}
+
 export default Go;
 
 
 
-function randomSelect(savedLocations) {
 
-    let randomIndex = Math.floor(Math.random() * savedLocations.length);
-    let chosenLocation = savedLocations[randomIndex];
-    return chosenLocation;
-
-}
 
 // should be fetched from database
 
