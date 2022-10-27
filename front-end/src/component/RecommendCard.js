@@ -1,13 +1,15 @@
 import React from 'react';
 import Bubble from './Bubble';
+import {useNavigate} from "react-router-dom";
 
 const RecommendCard = (props) => {
+    let navigate = useNavigate();
     return (
         <div className='group-card grid grid-cols-10 '>
             <div className='card-wrapper row-span-full col-start-1 col-span-10 self-center shadow-md rounded-3xl p-4'>
                 <div className='object-cover flex justify-start rounded-3xl'>
                     <div className='pic rounded-2xl bg-primary w-32 h-24 overflow-hidden'>
-                        <img className='rounded-2xl' src={props.image} alt='food' />
+                        <button className='group_button' onClick = {() => navigate('/Map')}><img className='rounded-2xl' src={props.image} alt='food'></img></button>
                     </div>
                     {/* <VoteBox></VoteBox> */}
                     <div className='flex-row'>
