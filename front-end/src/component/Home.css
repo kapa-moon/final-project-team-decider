@@ -1,0 +1,12 @@
+.home_body
+{
+    width: 345px;
+    height: 650px;
+    background-color: #ffe1ab;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}

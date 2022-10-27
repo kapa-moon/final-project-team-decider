@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RecommendCard from './RecommendCard';
 import Placeholder from '../image/pic1.png';
+import Selector from './Selector';
 
 var count = 0;
 
@@ -48,11 +49,16 @@ function Recommend() {
 
   console.log(nearbyPlaces);
 
-  return (<dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
+  return (
+    <>
+    <Selector></Selector>
+    <dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
     <ul>{nearbyPlaces.map(item => (
           <RecommendCard name={item.placeName} type = {[item.placeName]} image = {Placeholder} key = {count++}></RecommendCard>
           ))}</ul>
-    </dir>);
+    </dir>
+    </>
+    );
 }
 
 export default Recommend;

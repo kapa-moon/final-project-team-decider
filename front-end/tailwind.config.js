@@ -13,6 +13,8 @@ module.exports = {
       'cream': '#FFE1A8',
       'bubble-pink': '#E7AFAF',
       'border-pink': '#E2635C',
+      'bubble-orange': '#F5CCA9',
+      'border-orange': '#F59431',
       'bubble-green': '#C9CBA3',
       'border-green': '#898A6F',
       'dark-pink': '#D07163',

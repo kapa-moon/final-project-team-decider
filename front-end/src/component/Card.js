@@ -1,22 +1,19 @@
 import React from 'react';
-import './GroupCard.css';
 import Bubble from './Bubble';
-import {useNavigate} from "react-router-dom";
 
-const GroupCard = (props) => {
-    let navigate = useNavigate();
-    return(
+const Card = (props) => {
+    return (
         <div className='group-card'>
             <div className='card-wrapper flex-row justify-start shadow-md rounded-3xl w-80 h-36 p-4'>
 
                 <div className='flex justify-start space-x-5 rounded-3xl w-75 h-24'>
                     <div className='pic rounded-2xl bg-primary w-32 h-24 overflow-hidden'>
-                        <button className='group_button' onClick = {() => navigate('/Map')}><img className='rounded-2xl' src={props.image} alt='food'></img></button>
+                        <img className='rounded-2xl' src={props.image} alt='food' />
                     </div>
                     <div className='flex-row'>
                         <div className='flex justify-between'>
-                            <Bubble type={props.type[0]}></Bubble>
-                            <Bubble type={props.type[1]}></Bubble>
+                            <Bubble type={props.type} content={props.content}></Bubble>
+                            {/* <Bubble type={props.type[1]}></Bubble> */}
                         </div>
 
                         <p className='font-black text-lg text-left pt-2 pl-2'>{props.distance}12 min</p>
@@ -43,7 +40,8 @@ const GroupCard = (props) => {
             </div>
 
         </div>
+
     );
 }
 
-export default GroupCard;
+export default Card;
