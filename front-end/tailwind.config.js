@@ -17,7 +17,14 @@ module.exports = {
       'border-orange': '#F59431',
       'bubble-green': '#C9CBA3',
       'border-green': '#898A6F',
+      'bubble-blue': '#A9C2D3',
+      'border-blue': '#4E7A93',
+      'sharp-pink': '#E26D5C',
       'dark-pink': '#D07163',
+      'cream-yellow': '#FFE1A8',
+      'white': '#FFFFFF',
+      'black': '#000000',
+
     }
   },
   plugins: [],
