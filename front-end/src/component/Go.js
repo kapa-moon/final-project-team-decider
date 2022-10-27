@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 function Go({ SelctedLocation, SavedLocations }) {
 
     const [randomCard, setRandomCard] = useState({});
+    const [selectIsClicked, setSelectIsClicked] = useState(false);
 
     function randomSelect(savedLocations) {
 
@@ -23,6 +24,7 @@ function Go({ SelctedLocation, SavedLocations }) {
     function handleClick() {
         console.log("clicked");
         setRandomCard(randomSelect(savedLocations));
+        setSelectIsClicked(true);
     }
 
     const GoBtn = () => {
@@ -34,20 +36,41 @@ function Go({ SelctedLocation, SavedLocations }) {
         );
     }
 
-    let chosenLocation = randomSelect(savedLocations);
+    const Result = () => {
+        if (selectIsClicked) {
+            return (
+                <GroupCard name={randomCard.name} type={randomCard.type} image={Placeholder} distance={randomCard.distance} category={randomCard.category}></GroupCard>
+            );
+        } else {
+            return (
+                <div className='p-16 justify-center'>
+                </div>
+            );
+        }
+    }
+    // fetch from database: the location with most votes
+    const selectedLocation = {
+        name: "il laboratorio del gelato",
+        distance: 2,
+        type: "catering",
+        category: "snack",
+        housenumber: "188",
+        street: "Ludlow Street",
+    }
 
-    console.log(len);
+    // let chosenLocation = randomSelect(savedLocations);
+
     return (
         <>
             <Selector></Selector>
-            {/* <div className='gopage'> */}
+            {/* <div className='gopage overflow-scroll'> */}
             <GoBtn></GoBtn>
             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll overscroll-contain'>
-                <GroupCard name={chosenLocation.name} type={chosenLocation.type} image={Placeholder} distance={chosenLocation.distance} category={chosenLocation.category}></GroupCard>
+                {/* <GroupCard name={chosenLocation.name} type={chosenLocation.type} image={Placeholder} distance={chosenLocation.distance} category={chosenLocation.category}></GroupCard> */}
+                <Result></Result>
 
                 <p>👇 These locations are most popular among friends:</p>
-                {/* <Vote></Vote> */}
-                <GroupCard name={SelectedLocation[0].name} type={SelectedLocation[0].type} image={Placeholder} distance={SelectedLocation[0].distance} category={chosenLocation.category}></GroupCard>
+                <GroupCard name={selectedLocation.name} type={selectedLocation.type} image={Placeholder} distance={selectedLocation.distance} category={selectedLocation.category}></GroupCard>
 
             </div>
             <Button str_array={['Group Information']} type={6}></Button>
@@ -61,20 +84,8 @@ function Go({ SelctedLocation, SavedLocations }) {
 
 // Hard Coded Data Example
 
-const SelectedLocation = [{
-    name: "il laboratorio del gelato",
-    distance: 2,
-    type: "catering",
-    category: "snack",
-    housenumber: "188",
-    street: "Ludlow Street",
-}]
-
 
 export default Go;
-
-
-
 
 
 // should be fetched from database
