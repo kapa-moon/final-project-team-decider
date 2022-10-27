@@ -1,9 +1,7 @@
 import React from 'react';
 import Bubble from './Bubble';
-import fetchNearbyPlaces from '../placeAPI/PlacesAPI.js';
 
 const RecommendCard = (props) => {
-    fetchNearbyPlaces();
     return (
         <div className='group-card grid grid-cols-10 '>
             <div className='card-wrapper row-span-full col-start-1 col-span-10 self-center shadow-md rounded-3xl p-4'>
