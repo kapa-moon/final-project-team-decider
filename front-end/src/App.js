@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import CreateNewTeam from './component/CreateNewTeam';
 import Home from './component/Home';
@@ -11,10 +11,9 @@ import Login from './component/Login';
 import Signup from './component/Signup';
 import Go from './component/Go';
 
-function App()
-{
-  return(
-    <div className='App max-h-screen flex justify-center min-w-screen md: max-w-800'>
+function App() {
+  return (
+    <div className='App p-6 max-h-screen flex justify-center min-w-screen max-w-screen md: max-w-800'>
       <div>
         <div className='routes h-2/3'>
           <Routes>
