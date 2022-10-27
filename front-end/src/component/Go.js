@@ -43,7 +43,7 @@ function Go({ SelctedLocation, SavedLocations }) {
             );
         } else {
             return (
-                <div className='p-20 justify-center'>
+                <div className='p-16 justify-center'>
                 </div>
             );
         }
@@ -63,7 +63,7 @@ function Go({ SelctedLocation, SavedLocations }) {
     return (
         <>
             <Selector></Selector>
-            {/* <div className='gopage'> */}
+            {/* <div className='gopage overflow-scroll'> */}
             <GoBtn></GoBtn>
             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll overscroll-contain'>
                 {/* <GroupCard name={chosenLocation.name} type={chosenLocation.type} image={Placeholder} distance={chosenLocation.distance} category={chosenLocation.category}></GroupCard> */}
@@ -86,9 +86,6 @@ function Go({ SelctedLocation, SavedLocations }) {
 
 
 export default Go;
-
-
-
 
 
 // should be fetched from database
