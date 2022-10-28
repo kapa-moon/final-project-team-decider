@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import Home from './Home';
 import Popup from 'reactjs-popup';
 import Space from './Space';
+import Memcpy from './Memcpy';
 
 function B0({str})
 {
@@ -103,7 +104,26 @@ function B9({str})
     );
 }
 
-let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9];
+function B10({str})
+{
+    let input = 'input0';
+
+    function Input_function()
+    {
+        return(
+            <input id = {input} className = 'b3' type = 'text' value = {str.placeholder} style = {{marginLeft: '-2px', marginTop: '-2px'}}></input>
+        );
+    }
+
+    return(
+        <div>
+            <label className = 'b3 block mb-2' style = {{textAlign: str.text_align}}>{str.str}</label>
+            <button className = 'b7' onClick = {() => Memcpy(input)}><Input_function></Input_function></button>
+        </div>
+    );
+}
+
+let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10];
 
 function Button({str_array, type})
 {
