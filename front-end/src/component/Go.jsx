@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import './Button.css';
-import Vote from './Vote.js';
+import Vote from './Vote';
 import GroupCard from './GroupCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
