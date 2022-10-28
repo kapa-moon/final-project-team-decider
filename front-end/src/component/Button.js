@@ -50,7 +50,7 @@ function B4({str})
     let navigate = useNavigate();
     return(
         <div>
-            <button className = 'b4' onClick = {() => str.left ? navigate('/') : navigate('/team_info')} style = {{left: str.left ? '-80px' : '80px', top: str.left ? '' : '-26px'}}>{str.str}</button>
+            <button className = 'b4' onClick = {() => str.left ? navigate('/') : navigate('/Group')} style = {{left: str.left ? '-80px' : '80px', top: str.left ? '' : '-26px'}}>{str.str}</button>
         </div>
     );
 }
