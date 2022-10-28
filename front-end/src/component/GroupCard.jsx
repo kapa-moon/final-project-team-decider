@@ -1,7 +1,7 @@
 import React from 'react';
 import './GroupCard.css';
 import Bubble from './Bubble';
-import Vote from './Vote.js';
+import Vote from './Vote';
 import { useNavigate } from "react-router-dom";
 
 const GroupCard = (props) => {
