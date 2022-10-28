@@ -19,3 +19,4 @@ Run ```npm start```
 <ul>
 <li>The [Recommend] page may take 1-2 sec to show up when you first go into it
 <li>Log-in/Sign-up pages are for future usage and development
+<li>
