@@ -9,7 +9,7 @@ function Group({ SelctedLocation }) {
     return (
         <>
             <Selector></Selector>
-            <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll overscroll-contain'>
+            <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll'>
                 <ul>{getGroupCard(savedLocations)}</ul>
             </div>
             <Button str_array={['Group Information']} type={6}></Button>
