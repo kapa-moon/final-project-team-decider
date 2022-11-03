@@ -4,7 +4,7 @@ import './Map.css';
 import './Canvas.css';
 import Selector from './Selector';
 import Button from './Button';
-import Canvas from './Canvas';
+import MapDetail from './MapDetail';
 
 function Map()
 {
@@ -14,13 +14,15 @@ function Map()
     Location Type
     Location Description`;
 
-    const APIKey = '5b82ca360a754cec8eb085096ff20a32';
+    const mapIsReadyCallback = (map) => {console.log(map);}
 
     return(
         <>
             <div className = 'd0'>
                 <Selector></Selector>
-                <Canvas className = 'canvas0'></Canvas>
+                <div className = 'h-3/6'>
+                <MapDetail mapIsReadyCallback={mapIsReadyCallback} />
+                </div>
                 
                 <textArea className = 'textarea0'>{text}</textArea>
                 <Button str_array = {['Group Information']} type = {6}></Button>
