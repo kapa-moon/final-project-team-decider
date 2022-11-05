@@ -1,7 +1,8 @@
 textarea.textarea0
 {
     width: 345px;
-    height: 250px;
+    height: 200px;
+    position: relative;
     outline-width: 0;
     border-style: none;
     background:#e6d0bd;

@@ -49,8 +49,8 @@ useEffect(() => {
 return (<>
          <div className = 'd0'>
         <Selector></Selector>
-        <div id="map" style={{ height: "50vh", width: "50vh" }}></div>
-        <textArea className = 'textarea0'>{text}</textArea>
+        <div id = 'map' style = {{width: '345px', height: '345px'}}></div>
+        <textarea className = 'textarea0'>{text}</textarea>
         <Button str_array = {['Group Information']} type = {6}></Button>
         </div>
         </>);
