@@ -24,6 +24,11 @@ app.get('/', (req, res) =>
   res.send('');
 });
 
+app.get('/api/print_list', (req, res) =>
+{
+  res.json(list);
+});
+
 app.get('/api/get_list', (req, res) =>
 {
   a = [];
