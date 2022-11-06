@@ -2,8 +2,35 @@ import React, { useEffect, useState } from "react";
 import RecommendCard from './RecommendCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
+import Button from './Button';
 
 var count = 0;
+var categories = ['catering', 'leisure', 'commercial'];
+
+function processCategories (set) {
+  const a = Array.from(set) 
+  return a[a.length-1];
+}
+
+function processType (set) {
+  for (let item of set) {
+    if (categories.includes(item)) {
+        return item;
+    }
+  }
+  return 'commercial';
+}
+
+function splitElements (array){
+    let set = new Set()
+    array.forEach(item => {
+      let temp = item.split(".");
+      for (let subItem of temp) {
+        set.add(subItem);
+      }
+    });
+    return set;
+}
 
 function Recommend() {
 
@@ -14,8 +41,7 @@ function Recommend() {
     const longitude = 40.7264075;
     let radius = 4 * 1000;
     let totalPlaces = pageNum*10;
-    var categories = 'catering';
-    const url = 'https://api.geoapify.com/v2/places?categories='+categories+'&filter=circle:' +latitude+ ','+longitude+','+radius+'&bias=proximity:-73.99120964730558,40.7362796&limit='+ totalPlaces +'&apiKey=' + APIKey;
+    const url = 'https://api.geoapify.com/v2/places?categories='+categories.join(",")+'&filter=circle:' +latitude+ ','+longitude+','+radius+'&bias=proximity:-73.99120964730558,40.7362796&limit='+ totalPlaces +'&apiKey=' + APIKey;
 
     var requestOptions = {
         method: 'GET',
@@ -25,16 +51,21 @@ function Recommend() {
     .then(response => response.json())
     .then(result => { 
         for (let geoPlace of result.features) {
-            var place = {};
-            var myLat = geoPlace.properties.lon;
-            var myLong = geoPlace.properties.lat;
-            var coordinate = {
-                latitude: myLat,
-                longitude: myLong,
-            };
-            place['coordinate'] = coordinate;
-            place['placeName'] = geoPlace.properties.name;
-            places.push(place);
+          var place = {};
+          var myLat = geoPlace.properties.lon;
+          var myLong = geoPlace.properties.lat;
+          var coordinate = {
+              latitude: myLat,
+              longitude: myLong,
+          };
+          var in_miles = geoPlace.properties.distance * 0.000621371
+          place['distance'] = Math.round(in_miles * 10) / 10;
+          place['coordinate'] = coordinate;
+          place['placeName'] = geoPlace.properties.name;
+          place['type'] = processType(splitElements(geoPlace.properties.categories));
+          console.log(processCategories(splitElements(geoPlace.properties.categories)));
+          place['category'] = processCategories(splitElements(geoPlace.properties.categories));
+          places.push(place);
         }
         setPlaces(places);
     }).catch(error => { 
@@ -46,17 +77,15 @@ function Recommend() {
     useEffect(() => {
       fetchPlaces(2);
     }, []);
-
-  //console.log(nearbyPlaces);
-
   return (
     <>
     <Selector></Selector>
     <dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
     <ul>{nearbyPlaces.map(item => (
-          <RecommendCard name={item.placeName} type = {[item.placeName]} image = {Placeholder} key = {count++}></RecommendCard>
+          <RecommendCard name={item.placeName} type = {item.type} category = {item.category} image = {Placeholder} distance = {item.distance} key = {count++}></RecommendCard>
           ))}</ul>
     </dir>
+    <Button str_array={['Group Information']} type={6}></Button>
     </>
     );
 }

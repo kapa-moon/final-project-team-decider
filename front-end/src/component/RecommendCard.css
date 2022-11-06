@@ -1,0 +1,20 @@
+button.group_button {
+    width: 140px;
+    height: 110px;
+    margin-top: -3px;
+    margin-left: -10px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: [first] 42% [line2] auto [col3-start] 23% [end];
+    grid-template-rows: [row1-start] 20% [row1-end] 20% [row2-start] 20% [row2-end] 15% [row3-start] 25% [row3-end];
+    grid-gap: 10px;
+}
+
+.picture {
+    grid-column-start: first;
+    grid-column-end: line2;
+    grid-row: row1-start / row3-end;
+
+}
