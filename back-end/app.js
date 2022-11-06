@@ -17,6 +17,16 @@ app.use(body_parser.urlencoded({extended: false}));
 app.use(body_parser.json());
 app.use(express.json());
 
+const DBconfig = require("./DBconfig");
+DBconfig();
+
+const locationRouter = require('./routes/locations');
+const groupRouter = require('./routes/groups');
+
+app.use('/locations', locationRouter);
+app.use('/groups', groupRouter);
+
+
 app.use("/static", express.static("public"));
 
 app.get('/', (req, res) =>
@@ -59,5 +69,7 @@ app.post('/search', (req, res) =>
   search_keyword = req.body; 
   res.json(req.body);
 });
+
+
 
 module.exports = app;

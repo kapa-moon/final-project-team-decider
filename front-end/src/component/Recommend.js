@@ -47,7 +47,7 @@ function Recommend() {
       fetchPlaces(2);
     }, []);
 
-  console.log(nearbyPlaces);
+  //console.log(nearbyPlaces);
 
   return (
     <>
