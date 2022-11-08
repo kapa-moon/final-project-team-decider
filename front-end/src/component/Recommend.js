@@ -82,7 +82,7 @@ function Recommend() {
     <Selector></Selector>
     <dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
     <ul>{nearbyPlaces.map(item => (
-          <RecommendCard name={item.placeName} type = {item.type} category = {item.category} image = {Placeholder} distance = {item.distance} key = {count++}></RecommendCard>
+          <RecommendCard location = {item} name={item.placeName} type = {item.type} category = {item.category} image = {Placeholder} distance = {item.distance} key = {count++}></RecommendCard>
           ))}</ul>
     </dir>
     <Button str_array={['Group Information']} type={6}></Button>
