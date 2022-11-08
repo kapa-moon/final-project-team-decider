@@ -63,7 +63,6 @@ function Recommend() {
           place['coordinate'] = coordinate;
           place['placeName'] = geoPlace.properties.name;
           place['type'] = processType(splitElements(geoPlace.properties.categories));
-          console.log(processCategories(splitElements(geoPlace.properties.categories)));
           place['category'] = processCategories(splitElements(geoPlace.properties.categories));
           places.push(place);
         }
@@ -82,7 +81,7 @@ function Recommend() {
     <Selector></Selector>
     <dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
     <ul>{nearbyPlaces.map(item => (
-          <RecommendCard location = {item} name={item.placeName} type = {item.type} category = {item.category} image = {Placeholder} distance = {item.distance} key = {count++}></RecommendCard>
+          <RecommendCard  image = {Placeholder} location = {item} key = {count++}></RecommendCard>
           ))}</ul>
     </dir>
     <Button str_array={['Group Information']} type={6}></Button>

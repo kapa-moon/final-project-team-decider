@@ -17,11 +17,11 @@ const RecommendCard = (props) => {
                 </div>
                 <div className='flex-row pt-2 grow-0'>
 
-                    <Bubble type={props.type} category={props.category}></Bubble>
+                    <Bubble type={props.location.type} category={props.location.category}></Bubble>
                     {/* <Bubble type={props.type[1]}></Bubble> */}
 
 
-                    <p className='font-black text-lg text-left pt-2 pl-2'>{props.distance} <span> miles</span></p>
+                    <p className='font-black text-lg text-left pt-2 pl-2'>{props.location.distance} <span> miles</span></p>
                     <p className='text-sm font-light text-left pl-2'>from here</p>
                     {/* <p className='font-black text-sm text-left pl-2'> hiu</p> */}
 
@@ -31,7 +31,7 @@ const RecommendCard = (props) => {
                 </div>
 
             </div>
-            <div className='text-lg indent-5 text-left justify-start italic capitalize '><h1>{props.name}</h1></div>
+            <div className='text-lg indent-5 text-left justify-start italic capitalize '><h1>{props.location.placeName}</h1></div>
 
 
         </div>
