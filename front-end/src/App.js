@@ -11,6 +11,7 @@ import Map from './component/Map';
 import Login from './component/Login';
 import Signup from './component/Signup';
 import Go from './component/Go';
+import View from './component/View';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/go' element={<Go />} />
+            <Route path='/view' element={<View />} />
           </Routes>
         </div>
       </div>

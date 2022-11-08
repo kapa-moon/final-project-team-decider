@@ -2,14 +2,17 @@ import React from 'react';
 import '../App.css'
 import './Hangout.css';
 import Button from './Button';
-import BackEnter from './BackEnter';
+import Back_enter from './Back_enter';
 
-function Hangout() {
+function Hangout()
+{
+    let cur_id = Math.random().toString().slice(2);
+
     return (
         <div className='body'>
             <form>
-                <Button str_array={[{ str: 'Your Group Code', placeholder: 'externcharenviron' }]} type={10}></Button>
-                <BackEnter></BackEnter>
+                <Button str_array={[{ str: 'Your Group Code', placeholder: cur_id }]} type={10}></Button>
+                <Back_enter cur_id = {cur_id}></Back_enter>
             </form>
         </div>
     );
