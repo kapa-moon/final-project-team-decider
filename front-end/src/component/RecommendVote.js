@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from 'axios';
 
 
-function RecommendVote(location) {
+const RecommendVote = (props) => {
 
     let entry = {
         group_id: "",
@@ -14,19 +14,27 @@ function RecommendVote(location) {
         location_address: "",
         longitude: 0,
         latitude: 0,
+        distance: 0,
+        type: "",
+        category: "",
+        vote: 0,
     }
 
     const [voted, setVoted] = useState(false);
     // voteCount neet to integrate with backend
     const [voteCount, setVoteCount] = useState(1);
     const handleClick = () => {
-        console.log(location);
+        console.log(props);
         entry = {
             group_id: "test",
-            location_name: location.location.placeName,
+            name: props.location.placeName,
             location_address: "test_location_address",
-            longitude: 0,
-            latitude: 0,
+            longitude: props.location.coordinate.longitude,
+            latitude: props.location.coordinate.latitude,
+            distance: props.location.distance,
+            type: props.location.type,
+            category: props.location.category,
+            vote: 1,
         }
         setVoted(!voted);
         if (voted) {
