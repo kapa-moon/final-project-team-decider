@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-require('dotenv').config()
-const url = process.env.ATLAS_URI;
+require('dotenv').config();
+let db_config = require('./db_config');
+let url = db_config.ATLAS_URI; /* const url = process.env.ATLAS_URI; */
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true
