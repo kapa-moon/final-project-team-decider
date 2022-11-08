@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Button.css';
 import { useNavigate } from "react-router-dom";
 import Home from './Home';
@@ -111,7 +111,40 @@ function B10({ str }) {
     );
 }
 
-let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10];
+function B11({ str })
+{
+    let [data, set_data] = useState({}),
+    navigate = useNavigate();
+
+    function Handle_click_B11()
+    {
+        navigate('/Group');
+        alert(`Group ${str.cur_id} created.`);
+        fetch(`http://localhost:4000/groups/add`,
+        {
+            method: 'post',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body: 
+            JSON.stringify
+            ({
+                id: str.cur_id,
+            })
+        })
+        .then(res => res.json())
+        .then(data => set_data(data));
+    }
+
+    return(
+        <div>
+            <button className='b4' onClick={() => str.left ? navigate('/') : Handle_click_B11()} style={{ left: str.left ? '-80px' : '80px', top: str.left ? '' : '-26px' }}>{str.str}</button>
+        </div>
+    );
+}
+
+let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11];
 
 function Button({ str_array, type }) {
     let a = [];

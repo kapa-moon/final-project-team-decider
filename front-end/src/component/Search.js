@@ -3,7 +3,6 @@ import './Button.css';
 import GroupCard from './GroupCard';
 import Placeholder from '../image/pic1.png';
 import Select from './Select';
-import Selector from './Selector';
 import Button from './Button';
 
 function Group({ SelctedLocation })
@@ -11,7 +10,7 @@ function Group({ SelctedLocation })
     let [data, set_data] = useState({});
     useEffect(() =>
     {
-        fetch('http://localhost:4000/api/get_list')
+        fetch('http://localhost:4000/search/api/get_list')
         .then(res => res.json())
         .then(data => set_data(data));
     }, []);
@@ -19,7 +18,7 @@ function Group({ SelctedLocation })
     let [search_result, set_search_result] = useState({});
     useEffect(() =>
     {
-        fetch('http://localhost:4000/search')
+        fetch('http://localhost:4000/search/search')
         .then(res => res.json())
         .then(search_result => set_search_result(search_result));
     }, []);
