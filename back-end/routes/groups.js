@@ -3,8 +3,7 @@ let Group = require('../model/group.model');
 
 router.route('/').get((req, res) =>
 {
-    Group.find()
-        .then(groups => res.json(groups))
+    Group.find().then(groups => res.json(groups))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
