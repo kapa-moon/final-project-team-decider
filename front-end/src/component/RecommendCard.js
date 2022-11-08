@@ -27,7 +27,7 @@ const RecommendCard = (props) => {
 
                 </div>
                 <div className='flex-col palce-content-center pt-10 grow-0 items-end'>
-                    <RecommendVote className=''></RecommendVote>
+                    <RecommendVote location = {props.location} className=''></RecommendVote>
                 </div>
 
             </div>

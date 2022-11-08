@@ -3,19 +3,41 @@ import { Component } from 'react';
 import './Button.css';
 import './Vote.css';
 import { useState } from "react";
+import axios from 'axios';
 
 
-function RecommendVote() {
+function RecommendVote(location) {
+
+    let entry = {
+        group_id: "",
+        location_name: "",
+        location_address: "",
+        longitude: 0,
+        latitude: 0,
+    }
 
     const [voted, setVoted] = useState(false);
     // voteCount neet to integrate with backend
     const [voteCount, setVoteCount] = useState(1);
     const handleClick = () => {
+        console.log(location);
+        entry = {
+            group_id: "test",
+            location_name: location.location.placeName,
+            location_address: "test_location_address",
+            longitude: 0,
+            latitude: 0,
+        }
         setVoted(!voted);
         if (voted) {
             setVoteCount(voteCount - 1);
         } else {
             setVoteCount(voteCount + 1);
+            console.log(entry);
+            axios.post('http://localhost:4000/locations/add', entry)
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err));
+            //window.location = '/group';
         }
     };
     return (
