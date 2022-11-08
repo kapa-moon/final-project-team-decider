@@ -5,7 +5,7 @@ import Placeholder from '../image/pic1.png';
 import Select from './Select';
 import Button from './Button';
 
-function Group({ SelctedLocation })
+function Search({ SelctedLocation })
 {
     let [data, set_data] = useState({});
     useEffect(() =>
@@ -41,4 +41,4 @@ const getGroupCard = savedLocations => savedLocations.map(item => (
 ));
 
 
-export default Group;
+export default Search;
