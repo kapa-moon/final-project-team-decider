@@ -11,17 +11,27 @@ router.route('/').get((req, res) =>
 router.route('/add').post((req, res) =>
 {
     const group_id = req.body.group_id;
-    const location_name = req.body.location_name;
+    const name = req.body.name;
     const location_address = req.body.location_address;
     const longitude = Number(req.body.longitude);
     const latitude = Number(req.body.latitude);
+    const type = req.body.type;
+    const category = req.body.category;
+    const distance = Number(req.body.distance);
+    const image = req.body.image;
+    const vote = Number(req.body.vote);
 
     const newLocation = new Location({
         group_id,
-        location_name,
+        name,
         location_address,
         longitude,
         latitude,
+        type,
+        category,
+        distance,
+        image,
+        vote,
     });
 
     newLocation.save()
@@ -48,10 +58,15 @@ router.route('/update/:id').post((req, res) =>
     Location.findById(req.params.id)
         .then(location => {
             location.group_id = req.body.group_id;
-            location.location_name = req.body.location_name;
+            location.name = req.body.name;
             location.location_address = req.body.location_address;
             location.longitude = Number(req.body.longitude);
             location.latitude = Number(req.body.latitude);
+            location.type = req.body.type;
+            location.category = req.body.category;
+            location.distance = Number(req.body.distance);
+            location.image = req.body.image;
+            location.vote = Number(req.body.vote);
 
             location.save()
                 .then(() => res.json('Location updated!'))
