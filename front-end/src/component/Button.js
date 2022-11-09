@@ -131,6 +131,7 @@ function B11({ str })
             JSON.stringify
             ({
                 id: str.cur_id,
+                idx: str.cur_id,
             })
         })
         .then(res => res.json())

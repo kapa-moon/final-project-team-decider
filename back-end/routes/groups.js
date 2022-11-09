@@ -9,9 +9,10 @@ router.route('/').get((req, res) =>
 
 router.route('/add').post((req, res) =>
 {
-    const id = req.body.id;
+    const id = req.body.id,
+    idx = req.body.idx;
 
-    const newGroup = new Group({id});
+    const newGroup = new Group({id, idx});
 
     newGroup.save()
         .then(() => res.json('Group added!'))
@@ -28,6 +29,13 @@ router.delete('/remove', (req, res) =>
 router.route('/:id').get((req, res) =>
 {
     Group.findById(req.params.id)
+        .then(group => res.json(group))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/idx/:idx').get((req, res) =>
+{
+    Group.find({idx: req.params.idx})
         .then(group => res.json(group))
         .catch(err => res.status(400).json('Error: ' + err));
 });
