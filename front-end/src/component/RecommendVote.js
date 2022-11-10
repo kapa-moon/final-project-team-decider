@@ -27,6 +27,7 @@ const RecommendVote = (props) => {
         console.log(props);
         entry = {
             group_id: "test1",
+            location_id: props.location.location_id,
             name: props.location.placeName,
             location_address: "test_location_address",
             longitude: props.location.coordinate.longitude,
@@ -36,7 +37,6 @@ const RecommendVote = (props) => {
             category: props.location.category,
             vote: 1,
         }
-        console.log(entry);
         setVoted(!voted);
         if (voted) {
             setVoteCount(voteCount - 1);

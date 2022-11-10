@@ -60,6 +60,7 @@ function Recommend() {
               longitude: myLong,
           };
           var in_miles = geoPlace.properties.distance * 0.000621371
+          place['location_id'] = geoPlace.properties.place_id;
           place['distance'] = Math.round(in_miles * 10) / 10;
           place['coordinate'] = coordinate;
           place['placeName'] = geoPlace.properties.name;
