@@ -3,7 +3,7 @@
 Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-project-team-decider.git) by ```git clone https://github.com/agiledev-students-fall2022/final-project-team-decider.git```
 <br>
 * Make sure you have Node installed.<br>
-Both the back-end and front-end should be running<br>
+Both the back-end and front-end should be running.<br>
 * Go to the back-end folder by ```cd back-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```nodemon server```<br>
