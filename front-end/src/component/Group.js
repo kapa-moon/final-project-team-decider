@@ -13,9 +13,9 @@ function Group({ SelctedLocation }) {
         // .then(res => {console.log(res.data);
         //     setSelectedLocations(res.data);}
         // )
-        axios.get('http://localhost:4000/locations/group_id/:group_id', {group_id: "test1"})
-        .then(res => {console.log(res.data);
-            setSelectedLocations(res.data);}
+        var group_id = "test1";
+        axios.get(`http://localhost:4000/locations/group_id/${group_id}`)
+        .then(res => {setSelectedLocations(res.data);}
         )
     }
 
