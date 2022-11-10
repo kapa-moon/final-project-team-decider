@@ -51,9 +51,14 @@ const RecommendVote = (props) => {
             setVoteCount(voteCount - 1);
             entry.vote = voteCount-1;
             entry._id = object_id;
-            axios.post(`http://localhost:4000/locations/update/${entry._id}`, entry)
+            if (voteCount-1 == 0) {
+                axios.delete(`http://localhost:4000/locations/location_id/${entry.location_id}`, entry)
+                .then(res => console.log(res.data));
+            } else {
+                axios.post(`http://localhost:4000/locations/update/${object_id}`, entry)
                 .then(res => console.log(res.data))
                 .catch(err => console.log(err));
+            }
         } else {
             setVoteCount(voteCount + 1);
             entry.vote = voteCount+1;
