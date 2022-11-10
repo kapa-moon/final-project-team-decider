@@ -27,7 +27,7 @@ const GroupCard = (props) => {
 
                     </div>
                     <div className='flex-col palce-content-center pt-10 grow-0 items-end'>
-                        <Vote className=''></Vote>
+                        <Vote className='' vote = {props.vote}></Vote>
                     </div>
 
 
