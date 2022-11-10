@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './Button.css';
 import { useNavigate } from "react-router-dom";
-import Home from './Home';
+import View from './View';
 import Popup from 'reactjs-popup';
 import Space from './Space';
 import Memcpy from './Memcpy';
@@ -61,7 +61,7 @@ function B5({ str }) {
 function B6({ str }) {
     return (
         <div>
-            <Popup trigger={<button className='b6'>{str}</button>} position="top center"><Home></Home></Popup>
+            <Popup trigger={<button className='b6'>{str}</button>} position="top center"><View></View></Popup>
         </div>
     );
 }
@@ -118,7 +118,7 @@ function B11({ str })
 
     function Handle_click_B11()
     {
-        navigate('/Group');
+        navigate('/Home');
         alert(`Group ${str.cur_id} created.`);
         fetch(`http://localhost:4000/groups/add`,
         {
@@ -139,7 +139,7 @@ function B11({ str })
 
     return(
         <div>
-            <button className='b4' onClick={() => str.left ? navigate('/') : Handle_click_B11()} style={{ left: str.left ? '-80px' : '80px', top: str.left ? '' : '-26px' }}>{str.str}</button>
+            <button className='b4_2' onClick={() => str.left ? navigate('/') : Handle_click_B11()} style={{ left: str.left ? '-80px' : '80px', top: str.left ? '' : '-26px' }}>{str.str}</button>
         </div>
     );
 }

@@ -70,6 +70,21 @@ button.b4
     display: inline-block;
 }
 
+button.b4_2
+{
+    width: 100px;
+    height: 55px;
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 3px;
+    left: 86px;
+    top: 30px;
+    background-color: #773A3A;
+    color: white;
+    position: relative;
+    display: inline-block;
+}
+
 .b5
 {
     width: 340px;

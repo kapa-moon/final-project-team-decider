@@ -11,7 +11,7 @@ function Hangout()
     return (
         <div className='body'>
             <form>
-                <Button str_array={[{ str: 'Your Group Code', placeholder: cur_id }]} type={10}></Button>
+                <Button str_array={[{ str: 'New Group Code', placeholder: cur_id }]} type={10}></Button>
                 <Back_enter cur_id = {cur_id}></Back_enter>
             </form>
         </div>
