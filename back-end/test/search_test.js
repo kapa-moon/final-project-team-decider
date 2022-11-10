@@ -10,21 +10,94 @@ chai.use(chai_http),
 
 describe('search', function()
 {
-    describe('localhost:4000/search/', function()
+    describe('get /search', function()
     {
-        it('should have 200 success status response', function(done)
+        it('should have 200 success status response, res.body should be a string', function(done)
         {
             chai.
             request(app)
-            .get('localhost:4000/search/')
-            // .set('Accept', 'application/json')
+            .get('/search')
             .end(function(e, res)
             {
-                expect(res).to.have.status(200);
                 if(e)
                     throw e;
+                expect(res).to.have.status(200);
+                expect(res.body).to.be.an('string');
+                done();
             });
-            // assert(1 == 1);
         })
-    })
+    });
+
+    describe('get /search/api/print_list', function()
+    {
+        it('should have 200 success status response, res.body should be an array', function(done)
+        {
+            chai.
+            request(app)
+            .get('/search/api/print_list')
+            .end(function(e, res)
+            {
+                if(e)
+                    throw e;
+                expect(res).to.have.status(200);
+                expect(res.body).to.be.an('array');
+                done();
+            });
+        })
+    });
+
+    describe('get /search/api/get_list', function()
+    {
+        it('should have 200 success status response, res.body should be an array', function(done)
+        {
+            chai.
+            request(app)
+            .get('/search/api/get_list')
+            .end(function(e, res)
+            {
+                if(e)
+                    throw e;
+                expect(res).to.have.status(200);
+                expect(res.body).to.be.an('array');
+                done();
+            });
+        })
+    });
+
+    describe('get /search/search', function()
+    {
+        it('should have 200 success status response, res.body should be an array', function(done)
+        {
+            chai.
+            request(app)
+            .get('/search/search')
+            .end(function(e, res)
+            {
+                if(e)
+                    throw e;
+                expect(res).to.have.status(200);
+                expect(res.body).to.be.an('array');
+                done();
+            });
+        })
+    });
+
+    describe('post /search/search', function()
+    {
+        it('should have 200 success status response, res.body should be an object', function(done)
+        {
+            chai.
+            request(app)
+            .post('/search/search')
+            .send(JSON.stringify('search_keyword'))
+            .end(function(e, res)
+            {
+                if(e)
+                    throw e;
+                expect(res).to.have.status(200);
+                expect(res.body).to.be.an('object');
+                done();
+            });
+        })
+    });
 })
