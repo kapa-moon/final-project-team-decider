@@ -28,12 +28,12 @@ describe('groups test', function()
         })
     });
 
-    describe('post /groups/add', function()
+    describe('', function()
     {
         let idx = Math.random().toString().slice(2);
-        describe('', function()
+        describe('post /groups/add', function()
         {
-            it('should have 200 success status response, res.body should be an array', function(done)
+            it('should have 200 success status response, res.body should be a string', function(done)
             {
                 chai.
                 request(app)
@@ -50,9 +50,9 @@ describe('groups test', function()
             })
         });
 
-        describe('', function()
+        describe('delete /groups/idx', function()
         {
-            it('should have 200 success status response, res.body should be an array', function(done)
+            it('should have 200 success status response, res.body should be a string', function(done)
             {
                 chai
                 .request(app)
