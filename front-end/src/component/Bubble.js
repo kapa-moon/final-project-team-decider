@@ -5,7 +5,7 @@ function Bubble({ category, type }) {
     if (type === 'commercial') {
 
         return (
-            <Commercial content={category} />
+            <Commercial type={category} />
         );
     }
     else if (type === 'catering') {
