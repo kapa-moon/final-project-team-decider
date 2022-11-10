@@ -47,6 +47,13 @@ router.route('/:id').delete((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/idx/:idx').delete((req, res) =>
+{
+    Group.deleteMany({idx: req.params.idx})
+        .then(() => res.json(`Group ${req.params.idx} deleted.`))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 router.route('/update/:id').post((req, res) =>
 {
     Group.findById(req.params.id)

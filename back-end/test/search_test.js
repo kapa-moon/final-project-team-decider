@@ -3,12 +3,12 @@ express = require('express'),
 assert = require('assert'),
 request = require('supertest'),
 chai = require('chai'),
+{expect} = require('chai'),
 chai_http = require('chai-http'),
 should = chai.should();
-chai.use(chai_http),
-{expect} = require('chai');
+chai.use(chai_http);
 
-describe('search', function()
+describe('search test', function()
 {
     describe('get /search', function()
     {
