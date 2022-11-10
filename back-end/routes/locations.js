@@ -11,6 +11,7 @@ router.route('/').get((req, res) =>
 router.route('/add').post((req, res) =>
 {
     const group_id = req.body.group_id;
+    const location_id = req.body.location_id;
     const name = req.body.name;
     const location_address = req.body.location_address;
     const longitude = Number(req.body.longitude);
@@ -23,6 +24,7 @@ router.route('/add').post((req, res) =>
 
     const newLocation = new Location({
         group_id,
+        location_id,
         name,
         location_address,
         longitude,
@@ -58,6 +60,7 @@ router.route('/update/:id').post((req, res) =>
     Location.findById(req.params.id)
         .then(location => {
             location.group_id = req.body.group_id;
+            location.location_id = req.body.location_id;
             location.name = req.body.name;
             location.location_address = req.body.location_address;
             location.longitude = Number(req.body.longitude);
@@ -78,6 +81,13 @@ router.route('/update/:id').post((req, res) =>
 router.route('/group_id/:group_id').get((req, res) =>
 {
     Location.find({group_id: req.params.group_id})
+        .then(locations => res.json(locations))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/location_id/:location_id').get((req, res) =>
+{
+    Location.find({location_id: req.params.location_id})
         .then(locations => res.json(locations))
         .catch(err => res.status(400).json('Error: ' + err));
 });

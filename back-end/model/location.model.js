@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const locationSchema = new Schema({
     group_id: { type: String, required: true },
+    location_id: { type: String, required: true },
     name: { type: String, required: true },
     location_address: { type: String, required: true },
     longitude: { type: Number, required: true },
