@@ -9,7 +9,11 @@ import React, { useState, useEffect } from 'react';
 function Group({ SelctedLocation }) {
 
     function fetchFromDB(){
-        axios.get('http://localhost:4000/locations')
+        // axios.get('http://localhost:4000/locations')
+        // .then(res => {console.log(res.data);
+        //     setSelectedLocations(res.data);}
+        // )
+        axios.get('http://localhost:4000/locations/group_id/:group_id', {group_id: "test1"})
         .then(res => {console.log(res.data);
             setSelectedLocations(res.data);}
         )

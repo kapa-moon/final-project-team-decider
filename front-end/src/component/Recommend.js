@@ -51,6 +51,7 @@ function Recommend() {
     .then(response => response.json())
     .then(result => { 
         for (let geoPlace of result.features) {
+          console.log(geoPlace);
           var place = {};
           var myLat = geoPlace.properties.lon;
           var myLong = geoPlace.properties.lat;

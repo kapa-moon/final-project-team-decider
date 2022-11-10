@@ -75,4 +75,11 @@ router.route('/update/:id').post((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/group_id/:group_id').get((req, res) =>
+{
+    Location.find({group_id: req.params.group_id })
+        .then(locations => res.json(locations))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 module.exports = router;
