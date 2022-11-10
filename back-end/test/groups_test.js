@@ -50,13 +50,32 @@ describe('groups test', function()
             })
         });
 
-        describe('delete /groups/idx', function()
+        describe('get /groups/idx/:idx', function()
+        {
+            it('should have 200 success status response, res.body should be an array', function(done)
+            {
+                chai.
+                request(app)
+                .get('/groups/idx/:idx')
+                .send({idx: idx})
+                .end(function(e, res)
+                {
+                    if(e)
+                        throw e;
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.an('array');
+                    done();
+                });
+            })
+        });
+
+        describe('delete /groups/idx/:idx', function()
         {
             it('should have 200 success status response, res.body should be a string', function(done)
             {
                 chai
                 .request(app)
-                .delete('/groups/idx')
+                .delete('/groups/idx/:idx')
                 .send({idx: idx})
                 .end(function(e, res)
                 {
@@ -68,5 +87,23 @@ describe('groups test', function()
                 });
             })
         });
+    });   
+
+    describe('delete /groups/remove', function()
+    {
+        it('should have 200 success status response, res.body should be a string', function(done)
+        {
+            chai.
+            request(app)
+            .delete('/groups/remove')
+            .end(function(e, res)
+            {
+                if(e)
+                    throw e;
+                expect(res).to.have.status(200);
+                expect(res.body).to.be.an('string');
+                done();
+            });
+        })
     });
 });
