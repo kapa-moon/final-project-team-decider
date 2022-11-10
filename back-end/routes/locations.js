@@ -55,6 +55,13 @@ router.route('/:id').delete((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/location_id/:location_id').delete((req, res) =>
+{
+    Location.deleteMany({location_id: req.params.location_id})
+        .then(() => res.json('Location deleted.'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 router.route('/update/:id').post((req, res) =>
 {
     Location.findById(req.params.id)
