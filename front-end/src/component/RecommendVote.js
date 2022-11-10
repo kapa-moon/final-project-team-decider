@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Component } from 'react';
 import './Button.css';
 import './Vote.css';
@@ -8,45 +8,62 @@ import axios from 'axios';
 
 const RecommendVote = (props) => {
 
-    let entry = {
-        group_id: "",
-        location_name: "",
-        location_address: "",
-        longitude: 0,
-        latitude: 0,
-        distance: 0,
-        type: "",
-        category: "",
-        vote: 0,
+    var entry = {
+        _id : "",
+        group_id: "test1",
+        location_id: props.location.location_id,
+        name: props.location.placeName,
+        location_address: "test_location_address",
+        longitude: props.location.coordinate.longitude,
+        latitude: props.location.coordinate.latitude,
+        distance: props.location.distance,
+        type: props.location.type,
+        category: props.location.category,
+        vote: props.location.vote,
     }
 
     const [voted, setVoted] = useState(false);
+
     // voteCount neet to integrate with backend
-    const [voteCount, setVoteCount] = useState(1);
+    const [voteCount, setVoteCount] = useState(props.location.vote);
+    const [object_id, setObject_id] = useState("");
+    useEffect(() => {
+        fetchLocationFromDB(props.location.location_id);
+    }, []);
+
+    function fetchLocationFromDB(location_id){
+        axios.get(`http://localhost:4000/locations/location_id/${location_id}`)
+        .then(res => {
+          if (res.data.length == 0) {
+                setVoteCount(0);
+            } else {
+                setVoteCount(res.data[0].vote);
+                setObject_id(res.data[0]._id);
+            }
+        })
+        .catch(function (error){ console.log(error);})
+    }
+
     const handleClick = () => {
-        console.log(props);
-        entry = {
-            group_id: "test1",
-            location_id: props.location.location_id,
-            name: props.location.placeName,
-            location_address: "test_location_address",
-            longitude: props.location.coordinate.longitude,
-            latitude: props.location.coordinate.latitude,
-            distance: props.location.distance,
-            type: props.location.type,
-            category: props.location.category,
-            vote: 1,
-        }
+        console.log(entry);
         setVoted(!voted);
         if (voted) {
             setVoteCount(voteCount - 1);
         } else {
             setVoteCount(voteCount + 1);
+            entry.vote = voteCount+1;
+            entry._id = object_id;
             console.log(entry);
-            axios.post('http://localhost:4000/locations/add', entry)
+            if (voteCount == 0) {
+                axios.post('http://localhost:4000/locations/add', entry)
                 .then(res => console.log(res.data))
                 .catch(err => console.log(err));
             //window.location = '/group';
+            } else {
+                axios.post(`http://localhost:4000/locations/update/${entry._id}`, entry)
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err));
+            }
         }
     };
     return (

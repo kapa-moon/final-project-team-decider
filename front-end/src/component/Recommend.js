@@ -61,6 +61,7 @@ function Recommend() {
           };
           var in_miles = geoPlace.properties.distance * 0.000621371
           place['location_id'] = geoPlace.properties.place_id;
+          place['vote'] = 0;
           place['distance'] = Math.round(in_miles * 10) / 10;
           place['coordinate'] = coordinate;
           place['placeName'] = geoPlace.properties.name;

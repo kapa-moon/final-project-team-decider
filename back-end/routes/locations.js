@@ -87,7 +87,7 @@ router.route('/group_id/:group_id').get((req, res) =>
 
 router.route('/location_id/:location_id').get((req, res) =>
 {
-    Location.find({group_id: req.params.location_id})
+    Location.find({location_id: req.params.location_id})
         .then(locations => res.json(locations))
         .catch(err => res.status(400).json('Error: ' + err));
 });
