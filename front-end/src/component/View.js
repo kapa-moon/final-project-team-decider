@@ -36,7 +36,7 @@ function View()
     return(
         <div className = 'home_body App flex-row view0'>
             Group List
-            <div style = {{height: '200px', overflowY: 'auto'}}>
+            <div style = {{width: '250px', height: '200px', overflowX: 'scroll', overflowY: 'scroll'}}>
             {data.length ? 
             data.map(d =>
                 <div>
