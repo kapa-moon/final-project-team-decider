@@ -6,11 +6,11 @@ import './Vote.css';
 import { useState } from "react";
 
 
-function Vote() {
+function Vote(props) {
 
     const [voted, setVoted] = useState(false);
     // voteCount neet to integrate with backend
-    const [voteCount, setVoteCount] = useState(1);
+    const [voteCount, setVoteCount] = useState(props.vote);
     const handleClick = () => {
         setVoted(!voted);
         if (voted) {

@@ -12,6 +12,7 @@ const locationSchema = new Schema({
     category: { type: String, required: false },
     distance : { type: Number, required: false },
     image: { type: String, required: false },
+    vote: { type: Number, required: false },
 });
 
 const Location = mongoose.model("Location", locationSchema);

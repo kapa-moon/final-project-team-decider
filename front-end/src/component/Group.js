@@ -24,7 +24,6 @@ function Group({ SelctedLocation }) {
         fetchFromDB();
     }, []);
 
-
     return (
         <>
             <Selector></Selector>
@@ -39,7 +38,7 @@ function Group({ SelctedLocation }) {
 var countGroupCard = 0;
 
 const getGroupCard = savedLocations => savedLocations.map(item => (
-    <GroupCard name={item.name} type={item.type} distance={item.distance} category={item.category} housenumber={item.housenumber} street={item.street} image={Placeholder} key={countGroupCard++}></GroupCard>
+    <GroupCard name={item.name} type={item.type} distance={item.distance} category={item.category} housenumber={item.housenumber} street={item.street} image={Placeholder} vote = {item.vote} key={countGroupCard++}></GroupCard>
 ));
 
 

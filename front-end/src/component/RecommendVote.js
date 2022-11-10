@@ -36,6 +36,7 @@ const RecommendVote = (props) => {
             category: props.location.category,
             vote: 1,
         }
+        console.log(entry);
         setVoted(!voted);
         if (voted) {
             setVoteCount(voteCount - 1);
