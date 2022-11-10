@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Schema } = require('mongoose');
 let Group = require('../model/group.model');
 
 router.route('/').get((req, res) =>
@@ -9,9 +10,9 @@ router.route('/').get((req, res) =>
 
 router.route('/add').post((req, res) =>
 {
-    const id = req.body.id;
+    const idx = req.body.idx;
 
-    const newGroup = new Group({id});
+    const newGroup = new Group({idx: idx});
 
     newGroup.save()
         .then(() => res.json('Group added!'))
@@ -32,10 +33,24 @@ router.route('/:id').get((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/idx/:idx').get((req, res) =>
+{
+    Group.find({idx: req.params.idx})
+        .then(group => res.json(group))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 router.route('/:id').delete((req, res) =>
 {
     Group.findByIdAndDelete(req.params.id)
         .then(() => res.json('Group deleted.'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/idx/:idx').delete((req, res) =>
+{
+    Group.deleteMany({idx: req.params.idx})
+        .then(() => res.json(`Group ${req.params.idx} deleted.`))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
