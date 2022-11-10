@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Schema } = require('mongoose');
 let Group = require('../model/group.model');
 
 router.route('/').get((req, res) =>
@@ -9,10 +10,9 @@ router.route('/').get((req, res) =>
 
 router.route('/add').post((req, res) =>
 {
-    const id = req.body.id,
-    idx = req.body.idx;
+    const idx = req.body.idx;
 
-    const newGroup = new Group({id, idx});
+    const newGroup = new Group({idx: idx});
 
     newGroup.save()
         .then(() => res.json('Group added!'))

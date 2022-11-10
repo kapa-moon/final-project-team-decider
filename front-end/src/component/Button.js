@@ -130,7 +130,6 @@ function B11({ str })
             body: 
             JSON.stringify
             ({
-                id: str.cur_id,
                 idx: str.cur_id,
             })
         })
