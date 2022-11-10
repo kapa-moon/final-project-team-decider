@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function View()
 {
-    let [data, set_data] = useState({}),
+    let [data, set_data] = useState([]),
     navigate = useNavigate(),
     input_ref = useRef(null);
 

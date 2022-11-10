@@ -6,7 +6,7 @@ import Back_enter from './Back_enter';
 
 function Hangout()
 {
-    let cur_id = Math.random().toString().slice(2);
+    let cur_id = Math.random().toString().slice(12);
 
     return (
         <div className='body'>
