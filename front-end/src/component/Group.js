@@ -47,9 +47,11 @@ function Group() {
     // const [selectedLocations, setSelectedLocations] = useState([]);
     useEffect(() => {
         var group_id = cur_group_id;
-        axios.get(`http://localhost:4000/locations/group_id/${group_id}`)
-            .then(res => { setSelectedLocations(res.data); }
-            )
+        if (group_id) {
+            axios.get(`http://localhost:4000/locations/group_id/${group_id}`)
+                .then(res => { setSelectedLocations(res.data); }
+                )
+        }
     }, [cur_group_id]);
 
     return (
