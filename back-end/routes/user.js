@@ -60,6 +60,15 @@ router.route('/vote').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/addgroup').post((req, res) => {
+    let filter = { user_id: req.body.user_id };
+    let update = { $push: { my_groups: req.body.group_idx } };
+    User.findOneAndUpdate(filter, update)
+        .then(() => res.json('User updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
 
 router.route(`/unvote`).post((req, res) => {
     let filter = { user_id: req.body.user_id };

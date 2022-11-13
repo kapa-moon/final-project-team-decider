@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Button.css';
 import { useNavigate } from "react-router-dom";
 import View from './View';
 import Popup from 'reactjs-popup';
 import Space from './Space';
 import Memcpy from './Memcpy';
+import axios from 'axios';
 
 function B0({ str }) {
     return (
@@ -111,37 +112,55 @@ function B10({ str }) {
     );
 }
 
-function B11({ str })
-{
+function B11({ str }) {
     let [data, set_data] = useState({}),
-    navigate = useNavigate();
+        navigate = useNavigate();
 
-    function Handle_click_B11()
-    {
+    function Handle_click_B11() {
         navigate('/Home');
         alert(`Group ${str.cur_id} created.`);
         fetch(`http://localhost:4000/groups/add`,
-        {
-            method: 'post',
-            headers:
             {
-                'Content-Type': 'application/json',
-            },
-            body: 
-            JSON.stringify
-            ({
-                idx: str.cur_id,
+                method: 'post',
+                headers:
+                {
+                    'Content-Type': 'application/json',
+                },
+                body:
+                    JSON.stringify
+                        ({
+                            idx: str.cur_id,
+                        })
             })
-        })
-        .then(res => res.json())
-        .then(data => set_data(data));
+            .then(res => res.json())
+            .then(data => set_data(data));
     }
 
-    return(
+    return (
         <div>
             <button className='b4_2' onClick={() => str.left ? navigate('/') : Handle_click_B11()} style={{ left: str.left ? '-80px' : '80px', top: str.left ? '' : '-26px' }}>{str.str}</button>
         </div>
     );
+}
+
+function B12({ str }) {
+    const [user_id, setUser_id] = useState("");
+    const [cur_group_id, setGroup_id] = useState("");
+
+    function getUserID() {
+        axios.get(`http://localhost:4000/user/`)
+            .then(res => {
+                setUser_id(res.data[2].user_id);
+                setGroup_id(res.data[2].current_group);
+            }
+            )
+            .catch(function (error) { console.log(error); })
+    }
+    useEffect(() => {
+        getUserID();
+    }, []);
+    console.log(user_id);
+
 }
 
 let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11];
