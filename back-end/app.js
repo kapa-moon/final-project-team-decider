@@ -18,13 +18,15 @@ DBconfig();
 
 const locationRouter = require('./routes/locations');
 const groupRouter = require('./routes/groups');
-let search_router = require('./routes/search');
+const searchRouter = require('./routes/search');
 const userRouter = require('./routes/user');
+const loginRouter = require('./routes/login');
 
 app.use('/locations', locationRouter);
 app.use('/user', userRouter);
 app.use('/groups', groupRouter);
-app.use('/search', search_router);
+app.use('/search', searchRouter);
+app.use('/login', loginRouter);
 app.use('/static', express.static('public'));
 app.get('/', (req, res) => {
   res.json('');

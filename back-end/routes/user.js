@@ -38,9 +38,24 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:user_id').get((req, res) => {
-    User.find({ user_id: req.params.user_id })
-        .then(user => res.json(user))
+router.route('/').delete((req, res) =>
+{
+    User.deleteMany({ user_id: req.body.user_id })
+        .then(() => res.json(`User ${req.body.user_id} deleted.`))        
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/id').delete((req, res) =>
+{
+    User.findByIdAndDelete(req.body.id)
+        .then(() => res.json(`User ${req.body.id} deleted.`))        
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/remove').delete((req, res) =>
+{
+    User.remove()
+        .then(() => res.json(`Users removed.`))        
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -50,7 +65,6 @@ router.route('/print/:user_id').get((req, res) => {
         .then(user => res.json(user))
         .catch(err => res.status(400).json('Error: ' + err));
 });
-
 
 router.route('/vote').post((req, res) => {
     let filter = { user_id: req.body.user_id };
@@ -68,8 +82,6 @@ router.route('/addgroup').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-
-
 router.route(`/unvote`).post((req, res) => {
     let filter = { user_id: req.body.user_id };
     let update = { $pull: { voted_locations: req.body.location_id } };
@@ -78,7 +90,6 @@ router.route(`/unvote`).post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 
 });
-
 
 router.route('/switchgroup/:user_id').post((req, res) => {
     let filter = { user_id: req.params.user_id };

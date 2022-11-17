@@ -2,8 +2,9 @@ import React from 'react';
 import '../App.css';
 import Button from './Button';
 
-function Login() {
-    return (
+function Login()
+{
+    return(
         <>
             <div className='d0'>
                 <div className=' App_body'>

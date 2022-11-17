@@ -160,10 +160,18 @@ function B12({ str }) {
         getUserID();
     }, []);
     console.log(user_id);
-
 }
 
-let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11];
+function B13({ str }) {
+    return (
+        <div>
+            <label className='b3 block mb-2' style={{ textAlign: str.text_align }}>{str.str}</label>
+            <input className='b3' type='text' placeholder={str.placeholder} ref = {str.ref}></input>
+        </div>
+    );
+}
+
+let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13];
 
 function Button({ str_array, type }) {
     let a = [];
