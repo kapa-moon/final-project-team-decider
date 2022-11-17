@@ -6,7 +6,7 @@ let user_schema = new schema
         user_id: { type: String, required: true },
         name: { type: String, required: false },
         email: { type: String },
-        password: { type: String },
+        hash: { type: String },
         my_location: { type: String, required: false },
         my_groups: { type: Array, required: true },
         current_group: { type: Object, required: true },

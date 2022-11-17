@@ -27,7 +27,7 @@ describe('user test', function () {
     describe('', function () {
         let user_id = Math.random().toString().slice(2);
         let email = `${Math.random().toString().slice(2)}@gmail.com`;
-        let password = Math.random().toString().slice(2);
+        let hash = Math.random().toString().slice(2);
         let name = `${Math.random().toString().slice(2)}name`;
         let my_location = `${Math.random().toString().slice(2)}location`;
         let my_groups = [Math.random().toString().slice(2), Math.random().toString().slice(2)];
@@ -42,7 +42,7 @@ describe('user test', function () {
                         user_id: user_id,
                         email: email,
                         name: name,
-                        password: password,
+                        hash: hash,
                         my_location: my_location,
                         my_groups: my_groups,
                         current_group: current_group,

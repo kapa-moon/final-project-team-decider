@@ -11,7 +11,7 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const user_id = req.body.user_id;
     const username = req.body.username;
-    const password = req.body.password;
+    const hash = req.body.hash;
     const email = req.body.email;
     const phone = req.body.phone;
 
@@ -24,7 +24,7 @@ router.route('/add').post((req, res) => {
     const newUser = new User({
         user_id,
         username,
-        password,
+        hash,
         email,
         phone,
         my_location,

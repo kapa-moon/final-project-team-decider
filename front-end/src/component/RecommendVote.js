@@ -99,8 +99,7 @@ const RecommendVote = (props) => {
             axios.post(`http://localhost:4000/user/unvote`, locationAndUser)
                 .then(res => console.log(res.data))
                 .catch(err => console.log(err));
-
-
+            }
         } else {
             setVoteCount(voteCount + 1);
             entry.vote = voteCount + 1;
