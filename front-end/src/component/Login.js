@@ -29,10 +29,10 @@ function Login()
         .then((res) =>
         {
             if(!res.ok)
-                alert('Username is already taken.');
+                alert(`Username or password may be incorrect.`);
             else
             {
-                alert('New account created.');
+                alert(`Logged into username ${input_ref.current.value}.`);
                 navigate('/');
             }
             return res.blob();
