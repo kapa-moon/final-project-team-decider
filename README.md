@@ -23,28 +23,37 @@ There are different common scenarios of hanging out with friends. It can be a pl
 <li><strong>Users will have a customized list of recommendations and also be able to add potential places mannually.</strong></li>
 <li><strong>Group members can check the selected place list at any time, vote on places, and see the final decision.</strong></li>
 <li><strong>The web app is conveniently connected to Map applications (Google Maps, etc).</strong></li>
-</ol><br>
+</ol>
 
+<br><br>
 Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-project-team-decider.git) by ```git clone https://github.com/agiledev-students-fall2022/final-project-team-decider.git```
-<br>
-1. Make sure you have Node installed.<br>
-Both the back-end and front-end should be running.<br>
-2. Go to the back-end folder by ```cd back-end```<br>
-Install necessary packages by ```npm install```<br>
-Run ```nodemon server```<br>
-3. Go to the front-end folder by ```cd front-end```<br>
-Install necessary packages by ```npm install```<br>
-Run ```npm start```<br>
-4. Unit tests: ```cd back-end```<br>
-```npm test```<br>
-<!-- </ol> -->
+<br><br>
+
+1. Make sure you have Node installed. Both the back-end and front-end should be running
+
+2. Go to the back-end folder by `cd back-end`
+
+Install necessary packages by `npm install`
+
+Run `nodemon server`
+
+3. Go to the front-end folder by `cd front-end`
+
+Install necessary packages by `npm install`
+
+Run `npm start`
+
+4. Unit tests: `cd back-end`
+
+`npm test`
+
 
 ### Note
 
 <ul>
-<li>The [Recommend] page may take 1-2 sec to show up when you first go into it.
+<li>The [Recommend] page may take 1-2 sec to show up when you first go into it
+<li>Log-in/Sign-up pages are for future usage and development
 <li>This web app is in mobile-first design. It's preferable to be tested in mobile sizes.
-</ul>
 
 ## Members
 

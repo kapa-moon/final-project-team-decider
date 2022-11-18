@@ -47,7 +47,7 @@ function Signup()
             <div className='d0'>
                 <div className='App_body'>
                     <Button str_array={[{ str: 'Sign Up' }]} type={8}></Button>
-                    <Button str_array={[{ str: 'Name', text_align: 'left', ref: input_ref }]} type={13}></Button>
+                    <Button str_array={[{ str: 'Username', text_align: 'left', ref: input_ref }]} type={13}></Button>
                     <Button str_array={[{ str: 'Email', text_align: 'left', ref: input_ref2 }]} type={13}></Button>
                     <div>
                         <label className='b3 block mb-2' style={{ textAlign: 'left' }}>Password</label>
