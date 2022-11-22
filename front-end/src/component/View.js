@@ -4,7 +4,7 @@ import './Home.css';
 import './View.css';
 import './Button.css';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function View() {
     const [user_id, setUser_id] = useState("");
@@ -93,7 +93,7 @@ function View() {
     }
 
     const Switcher = ({ user_id, str }) => {
-        console.log(user_id + "switched to group" + str);
+        console.log(user_id + " switched to group " + str);
         return (
             <div className='p-3'>
                 <p className='text-primary rounded-lg bg-bubble-green text-lg p-3' onClick={() => swtichGroup({ user_id, str })}>{str}</p>
@@ -115,13 +115,21 @@ function View() {
         }
     }, []);
 
+    function handle_logout()
+    {
+        alert('Logged out.');
+        fetch(`http://localhost:4000/login/logout`)
+        .then(res => res.json());
+        window.location.reload(false);
+    }
+
     return (
         <div className='home_body App flex-row view0'>
             <div>{cur_user_data ? 'User ' + cur_user_data.username : ''}</div>
             <br></br>
             Group List
             <div style={{ width: '250px', height: '200px', overflowX: 'scroll', overflowY: 'scroll' }} className="overflow-scroll h-9">
-                {cur_user_data.my_groups ?
+                {cur_user_data ?
                     cur_user_data.my_groups.map(d =>
                         <div key={++count}>
                             <Switcher str={d} user_id={user_id} ></Switcher>
@@ -143,6 +151,7 @@ function View() {
                 <button className='b4_2' onClick={() => handle_click()} style={{ left: '80px', top: '-26px' }}>Remove</button>
             </div>
             <br></br>
+            <a href onClick={handle_logout} style={{ textDecoration: 'none', color: '#723d46', fontSize: '20px' }}>Log Out</a>
             <div style={{ fontSize: '17px' }} className="text-primary-gray">👇 Click group information to hide popup.</div>
         </div>
     );

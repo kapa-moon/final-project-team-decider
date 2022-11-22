@@ -54,4 +54,12 @@ router.route('/').post(async(req, res) =>
     });
 });
 
+router.route('/logout').get((req, res) =>
+{
+    cur_user = null;
+    cur_username = null;
+    cur_hash = null;
+    res.json(cur_user);
+});
+
 module.exports = router;
