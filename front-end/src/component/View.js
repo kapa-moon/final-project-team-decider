@@ -10,6 +10,15 @@ function View() {
     const [user_id, setUser_id] = useState("");
     const [cur_group_id, setGroup_id] = useState("");
 
+    let user_update = 0;
+    let [cur_user_data, set_cur_user_data] = useState("");
+    useEffect(() =>
+    {
+        fetch(`http://localhost:4000/login/cur_user`)
+        .then(res => res.json())
+        .then(data => set_cur_user_data(data));
+    }, [user_update]);
+
     function getUserID() {
         axios.get(`http://localhost:4000/user/`)
             .then(res => {
@@ -24,28 +33,44 @@ function View() {
     }, []);
     console.log(user_id);
 
-    let [data, set_data] = useState({}),
-        navigate = useNavigate(),
+    let navigate = useNavigate(),
         input_ref = useRef(null);
 
     function handle_click() {
         alert(`Group ${input_ref.current.value} removed.`);
         fetch(`http://localhost:4000/groups/idx/${input_ref.current.value}`,
+        {
+            method: 'delete',
+            headers:
             {
-                method: 'delete',
-                headers:
-                {
-                    'Content-Type': 'application/json',
-                },
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(res => res.json());
+        fetch(`http://localhost:4000/user/removegroup`,
+        {
+            method: 'delete',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                user_id: cur_user_data.user_id,
+                group_idx: input_ref.current.value
             })
-            .then(res => res.json());
+        })
+        .then(res => res.json());
+        ++user_update; 
         window.location.reload(false);
     }
 
+    let [data, set_group_data] = useState({});
     useEffect(() => {
         fetch('http://localhost:4000/groups')
             .then(res => res.json())
-            .then(data => set_data(data));
+            .then(data => set_group_data(data));
     }, []);
 
     async function swtichGroup({ user_id, str }) {
@@ -77,18 +102,36 @@ function View() {
     }
     var count = 0;
 
+    let my_groups_array = [],
+    [group_i, set_group_i] = useState({});
+    useEffect(() =>
+    {
+        for(let i = 0; i < cur_user_data.my_groups; ++i)
+        {
+            fetch(`http://localhost:4000/groups/idx/${cur_user_data.my_groups[i]}`)
+            .then(res => res.json())
+            .then(data => set_group_i(data));
+            my_groups_array.push(group_i);
+        }
+    }, []);
+
     return (
         <div className='home_body App flex-row view0'>
+            <div>{cur_user_data ? 'User ' + cur_user_data.username : ''}</div>
+            <br></br>
             Group List
             <div style={{ width: '250px', height: '200px', overflowX: 'scroll', overflowY: 'scroll' }} className="overflow-scroll h-9">
-                {data.length ?
-                    data.map(d =>
-                        <div key={count++}>
-                            {/* {d.idx} */}
+                {cur_user_data.my_groups ?
+                    cur_user_data.my_groups.map(d =>
+                        <div key={++count}>
+                            <Switcher str={d} user_id={user_id} ></Switcher>
+                        </div>) :
+                    data.length ? data.map(d =>
+                        <div key={++count}>
                             <Switcher str={d.idx} user_id={user_id} ></Switcher>
                         </div>) : ''}
             </div>
-            <br></br><br></br>
+            <br></br>
             <div>
                 <label className='b1 block mb-2'>Remove a Group</label>
                 <input className='b1' type='text' placeholder='Group Number' ref={input_ref}></input>
