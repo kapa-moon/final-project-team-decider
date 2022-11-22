@@ -116,24 +116,50 @@ function B11({ str }) {
     let [data, set_data] = useState({}),
         navigate = useNavigate();
 
-    function Handle_click_B11() {
+    let [cur_user_data, set_cur_user_data] = useState({});
+    useEffect(() =>
+    {
+        fetch(`http://localhost:4000/login/cur_user`)
+        .then(res => res.json())
+        .then(data => set_cur_user_data(data));
+    });
+
+    function Handle_click_B11()
+    {
         navigate('/Home');
         alert(`Group ${str.cur_id} created.`);
         fetch(`http://localhost:4000/groups/add`,
+        {
+            method: 'post',
+            headers:
             {
-                method: 'post',
-                headers:
-                {
-                    'Content-Type': 'application/json',
-                },
-                body:
-                    JSON.stringify
-                        ({
-                            idx: str.cur_id,
-                        })
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                idx: str.cur_id,
             })
-            .then(res => res.json())
-            .then(data => set_data(data));
+        })
+        .then(res => res.json())
+        .then(data => set_data(data));
+
+        fetch(`http://localhost:4000/user/addgroup`,
+        {
+            method: 'post',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                user_id: cur_user_data.user_id,
+                group_idx: str.cur_id
+            })
+        })
+        .then(res => res.json())
+        .then(data => set_data(data));
     }
 
     return (
