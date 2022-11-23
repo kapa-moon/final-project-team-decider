@@ -66,4 +66,10 @@ router.route('/update/:id').post((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/cur_group').get(async(req, res) =>
+{
+    cur_group = await user.findOne({username: this.body.idx}).exec();
+    res.json(cur_group);
+});
+
 module.exports = router;
