@@ -116,24 +116,50 @@ function B11({ str }) {
     let [data, set_data] = useState({}),
         navigate = useNavigate();
 
-    function Handle_click_B11() {
+    let [cur_user_data, set_cur_user_data] = useState({});
+    useEffect(() =>
+    {
+        fetch(`http://localhost:4000/login/cur_user`)
+        .then(res => res.json())
+        .then(data => set_cur_user_data(data));
+    });
+
+    function Handle_click_B11()
+    {
         navigate('/Home');
         alert(`Group ${str.cur_id} created.`);
         fetch(`http://localhost:4000/groups/add`,
+        {
+            method: 'post',
+            headers:
             {
-                method: 'post',
-                headers:
-                {
-                    'Content-Type': 'application/json',
-                },
-                body:
-                    JSON.stringify
-                        ({
-                            idx: str.cur_id,
-                        })
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                idx: str.cur_id,
             })
-            .then(res => res.json())
-            .then(data => set_data(data));
+        })
+        .then(res => res.json())
+        .then(data => set_data(data));
+
+        fetch(`http://localhost:4000/user/addgroup`,
+        {
+            method: 'post',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                user_id: cur_user_data.user_id,
+                group_idx: str.cur_id
+            })
+        })
+        .then(res => res.json())
+        .then(data => set_data(data));
     }
 
     return (
@@ -160,10 +186,18 @@ function B12({ str }) {
         getUserID();
     }, []);
     console.log(user_id);
-
 }
 
-let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11];
+function B13({ str }) {
+    return (
+        <div>
+            <label className='b3 block mb-2' style={{ textAlign: str.text_align }}>{str.str}</label>
+            <input className='b3' type='text' placeholder={str.placeholder} ref = {str.ref}></input>
+        </div>
+    );
+}
+
+let component_array = [B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13];
 
 function Button({ str_array, type }) {
     let a = [];

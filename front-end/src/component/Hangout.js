@@ -5,7 +5,7 @@ import Button from './Button';
 import Back_enter from './Back_enter';
 
 function Hangout() {
-    let cur_id = Math.random().toString().slice(2);
+    let cur_id = Math.random().toString().slice(11);
     function fetchUser() {
         fetch('/user/' + cur_id)
             .then(res => res.json())

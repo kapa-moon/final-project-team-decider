@@ -3,14 +3,14 @@ let mongoose = require("mongoose"),
 
 let user_schema = new schema
     ({
-        user_id: { type: String, required: true },
-        name: { type: String, required: false },
+        user_id: { type: String, unique: true },
+        username: { type: String, unique: true },
         email: { type: String },
-        password: { type: String },
-        my_location: { type: String, required: false },
-        my_groups: { type: Array, required: true },
-        current_group: { type: Object, required: true },
-        voted_locations: { type: Array, required: true },
+        hash: { type: String },
+        my_location: { type: String },
+        my_groups: { type: Array },
+        current_group: { type: Object },
+        voted_locations: { type: Array },
     });
 
 let user = mongoose.model('user', user_schema);
