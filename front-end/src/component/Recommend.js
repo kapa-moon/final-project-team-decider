@@ -3,7 +3,6 @@ import RecommendCard from './RecommendCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
 import Button from './Button';
-import axios from 'axios';
 
 var count = 0;
 var categories = ['catering', 'leisure', 'commercial'];
@@ -34,7 +33,7 @@ function splitElements (array){
 }
 
 function Recommend() {
-
+  
   function fetchPlaces (pageNum) {
     var places = [];
     const APIKey = '5b82ca360a754cec8eb085096ff20a32';
