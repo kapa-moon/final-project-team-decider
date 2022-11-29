@@ -40,35 +40,37 @@ function JoinButton({str}) {
   );
 }
 
-const EnterButton= ({ str }) =>{
-  const navigate = useNavigate();
-  function onClickHandler() {
-    if (document.getElementById('joinGroup').value.length == 0) {
-      alert('Please enter a group ID.');
-    } else {
-      const groupID = document.getElementById('joinGroup').value;
-      axios.post('http://localhost:5000/groups/cur_group', {
-        idx: groupID
-      })
-      .then((response) => { console.log(response);})
-      .then((data) => {
-        if (data.length === 0) {
-          alert('Group does not exist');
-        } else {
-          navigate('/Group');
-        }
-        console.log(data);
-      }), (error) => {
-        console.log(error);
-      };
-    }
-  }
+const EnterButton= () => {
+   return (
+       <div>
+           <button className='b2' type = 'button' onClick={OnClickHandler}>Enter</button>
+       </div>
+   );
+ }
 
-  return (
-      <div>
-          <button className='b2' onClick={onClickHandler}>{str}</button>
-      </div>
-  );
-}
+function OnClickHandler()
+ {
+  console.log("Clicked")
+  const groupID = document.getElementById('joinGroup').value;
+  console.log(groupID);
+   if (groupID.length == 0) {
+     alert('Please enter a group ID.');
+   } else {
+    try {
+      axios.get(`http://localhost:4000/groups/idx/${groupID}`).then((response) => console.log(response)).then((data) => {
+       if (data.length === 0) {
+         alert('Group does not exist');
+       } else {
+          alert('Group joined');
+         //navigate('/Group');
+       }
+       console.log(data);
+      }).catch(err => console.log(err));
+      } catch (err) {
+        alert('Group does not exist');
+        console.log(err);
+      }
+  }
+ }
 
 export default CreateNewTeam;
