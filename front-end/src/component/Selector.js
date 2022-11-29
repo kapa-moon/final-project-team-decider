@@ -6,12 +6,12 @@ import bowl from '../image/bowl.png';
 function Selector() {
     return (
         <div>
-            <Link to='/'>
+            {/* <Link to='/'>
                 <div className='w-14'>
                     <img src={bowl} alt='logo' className='logo object-fill'></img>
                 </div>
-            </Link>
-            <SearchBar></SearchBar>
+            </Link> */}
+            {/* <SearchBar></SearchBar> */}
             <div className='selectors flex justify-between h-10'>
                 <Link to='/search' className='text-xl'>Search</Link>
                 <Link to='/recommend' className='text-xl '>Recommend</Link>

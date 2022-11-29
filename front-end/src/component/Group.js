@@ -5,6 +5,8 @@ import Selector from './Selector';
 import Button from './Button';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import Logo from './Logo';
+import SearchBar from './SearchBar';
 
 function Group() {
 
@@ -56,6 +58,8 @@ function Group() {
 
     return (
         <>
+            <Logo />
+            <SearchBar />
             <Selector></Selector>
             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll'>
                 <ul>{getGroupCard(selectedLocations)}</ul>
