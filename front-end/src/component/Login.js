@@ -6,6 +6,14 @@ import sha256 from 'crypto-js/sha256';
 
 function Login()
 {
+    function set_cookie(name, value, day)
+    {
+        let d = new Date();
+        d.setTime(d.getTime() + (1000 * 60 * 60 * 24 * day));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
     let input_ref = useRef(null),
     input_ref2 = useRef(null),
     navigate = useNavigate();
@@ -32,6 +40,7 @@ function Login()
                 alert(`Username or password may be incorrect.`);
             else
             {
+                set_cookie('username', input_ref.current.value, 365);
                 alert(`Logged into username ${input_ref.current.value}.`);
                 navigate('/');
             }

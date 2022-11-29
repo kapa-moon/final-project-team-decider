@@ -116,10 +116,37 @@ function B11({ str }) {
     let [data, set_data] = useState({}),
         navigate = useNavigate();
 
+    function get_cookie(cookie)
+    {
+        let name = cookie + "=",
+        cookie_array = document.cookie.split(';');
+        for(let i = 0; i < cookie_array.length; ++i)
+        {
+          let c = cookie_array[i];
+          while(c.charAt(0) == ' ')
+            c = c.substring(1);
+          if(c.indexOf(name) == 0)
+            return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+
     let [cur_user_data, set_cur_user_data] = useState({});
     useEffect(() =>
     {
-        fetch(`http://localhost:4000/login/cur_user`)
+        fetch(`http://localhost:4000/login/cur_user`,
+        {
+            method: 'post',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                cur_username: get_cookie('username'),
+            })
+        })
         .then(res => res.json())
         .then(data => set_cur_user_data(data));
     });
