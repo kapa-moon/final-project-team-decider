@@ -60,7 +60,24 @@ function Go({ SelctedLocation, SavedLocations }) {
         street: "Ludlow Street",
     }
 
-    // let chosenLocation = randomSelect(savedLocations);
+
+
+    const [myCurLocation, setMyCurLocation] = useState(() => {
+        localStorage.getItem('myCurLocation')
+    });
+
+    useEffect(() => {
+        localStorage.setItem("myCurLocation", JSON.stringify(myCurLocation));
+    }, [myCurLocation]);
+
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            console.log(e.target.value);
+            setMyCurLocation(e.target.value);
+            e.target.value = "";
+        }
+    }
 
     return (
         <>
