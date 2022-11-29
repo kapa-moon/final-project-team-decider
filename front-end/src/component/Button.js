@@ -123,9 +123,9 @@ function B11({ str }) {
         for(let i = 0; i < cookie_array.length; ++i)
         {
           let c = cookie_array[i];
-          while (c.charAt(0) == ' ')
+          while(c.charAt(0) == ' ')
             c = c.substring(1);
-          if (c.indexOf(name) == 0)
+          if(c.indexOf(name) == 0)
             return c.substring(name.length, c.length);
         }
         return "";
