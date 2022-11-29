@@ -3,7 +3,9 @@ import RecommendCard from './RecommendCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
 import Button from './Button';
-import axios from 'axios';
+import Logo from "./Logo";
+import Search from "./Search";
+import SearchLocation from "./SearchLocation";
 
 var count = 0;
 var categories = ['catering', 'leisure', 'commercial'];
@@ -34,7 +36,7 @@ function splitElements (array){
 }
 
 function Recommend() {
-
+  
   function fetchPlaces (pageNum) {
     var places = [];
     const APIKey = '5b82ca360a754cec8eb085096ff20a32';
@@ -81,7 +83,10 @@ function Recommend() {
     }, []);
   return (
     <>
+    <Logo></Logo>
+    <SearchLocation></SearchLocation>
     <Selector></Selector>
+
     <dir className='px-0 h-full w-full overflow-scroll overscroll-contain bg-blue-200'>
     <ul>{nearbyPlaces.map(item => (
           <RecommendCard  image = {Placeholder} location = {item} key = {count++}></RecommendCard>

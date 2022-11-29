@@ -4,6 +4,13 @@ import GroupCard from './GroupCard';
 import Placeholder from '../image/pic1.png';
 import Select from './Select';
 import Button from './Button';
+import SearchBar from './SearchBar';
+import Selector from './Selector';
+import { Link } from 'react-router-dom';
+import Search_bar from './Search_bar';
+
+
+import Logo from './Logo';
 
 function Search({ SelctedLocation })
 {
@@ -25,7 +32,9 @@ function Search({ SelctedLocation })
 
     return (
         <>
-            <Select></Select>
+            <Logo></Logo>
+            <Search_bar></Search_bar>
+            <Selector></Selector>
             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll'>
                 <ul>{search_result.length ? getGroupCard(search_result) : 'no matching result'}</ul> {/* <ul>{data.length ? getGroupCard(data) : ''}</ul> */}
             </div>
