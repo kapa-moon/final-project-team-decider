@@ -6,6 +6,7 @@ import Popup from 'reactjs-popup';
 import Space from './Space';
 import Memcpy from './Memcpy';
 import axios from 'axios';
+import {cur_username} from './Login';
 
 function B0({ str }) {
     return (
@@ -119,7 +120,19 @@ function B11({ str }) {
     let [cur_user_data, set_cur_user_data] = useState({});
     useEffect(() =>
     {
-        fetch(`http://localhost:4000/login/cur_user`)
+        fetch(`http://localhost:4000/login/cur_user`,
+        {
+            method: 'post',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                cur_username: cur_username,
+            })
+        })
         .then(res => res.json())
         .then(data => set_cur_user_data(data));
     });

@@ -7,6 +7,21 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 
 function View() {
+    function get_cookie(cname)
+    {
+        let name = cname + "=",
+        ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++)
+        {
+          let c = ca[i];
+          while (c.charAt(0) == ' ')
+            c = c.substring(1);
+          if (c.indexOf(name) == 0)
+            return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+
     const [user_id, setUser_id] = useState("");
     const [cur_group_id, setGroup_id] = useState("");
 
@@ -14,7 +29,19 @@ function View() {
     let [cur_user_data, set_cur_user_data] = useState("");
     useEffect(() =>
     {
-        fetch(`http://localhost:4000/login/cur_user`)
+        fetch(`http://localhost:4000/login/cur_user`,
+        {
+            method: 'post',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                cur_username: get_cookie('username'),
+            })
+        })
         .then(res => res.json())
         .then(data => set_cur_user_data(data));
     }, [user_update]);
@@ -115,17 +142,24 @@ function View() {
         }
     }, []);
 
+    function set_cookie(name, value, day)
+    {
+        let d = new Date();
+        d.setTime(d.getTime() + (day * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
     function handle_logout()
     {
         alert('Logged out.');
-        fetch(`http://localhost:4000/login/logout`)
-        .then(res => res.json());
+        set_cookie('username', '', 0);
         window.location.reload(false);
     }
 
     return (
         <div className='home_body App flex-row view0'>
-            <div>{cur_user_data ? 'User ' + cur_user_data.username : ''}</div>
+            <div>{cur_user_data && cur_user_data.username ? 'User ' + cur_user_data.username : 'Login to access more features.'}</div>
             <br></br>
             Group List
             <div style={{ width: '250px', height: '200px', overflowX: 'scroll', overflowY: 'scroll' }} className="overflow-scroll h-9">
