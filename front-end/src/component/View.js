@@ -154,7 +154,7 @@ function View() {
     {
         alert('Logged out.');
         set_cookie('username', '', 0);
-        window.location.reload(false);
+        navigate('/');
     }
 
     return (
