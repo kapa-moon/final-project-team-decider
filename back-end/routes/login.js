@@ -13,8 +13,8 @@ router.route('/').get((req, res) =>
 
 function authenticate_token(req, res, next)
 {
-    let auth_header = req.headers['authorization'], /* console.log('0:', auth_header.split(' ')[0]); console.log('1:', auth_header.split(' ')[1]); */
-    token = auth_header && auth_header.split(' ')[1]; /* bearer token */
+    let auth_header = req.headers['authorization'],
+    token = auth_header && auth_header.split(' ')[1]; 
     if(!token) return res.sendStatus(401);
     jwt.verify(token, config.access_token, (err, user) =>
     {

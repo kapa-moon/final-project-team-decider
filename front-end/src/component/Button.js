@@ -6,7 +6,6 @@ import Popup from 'reactjs-popup';
 import Space from './Space';
 import Memcpy from './Memcpy';
 import axios from 'axios';
-import {cur_username} from './Login';
 
 function B0({ str }) {
     return (
@@ -117,6 +116,21 @@ function B11({ str }) {
     let [data, set_data] = useState({}),
         navigate = useNavigate();
 
+    function get_cookie(cookie)
+    {
+        let name = cookie + "=",
+        cookie_array = document.cookie.split(';');
+        for(let i = 0; i < cookie_array.length; ++i)
+        {
+          let c = cookie_array[i];
+          while (c.charAt(0) == ' ')
+            c = c.substring(1);
+          if (c.indexOf(name) == 0)
+            return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+
     let [cur_user_data, set_cur_user_data] = useState({});
     useEffect(() =>
     {
@@ -130,7 +144,7 @@ function B11({ str }) {
             body:
             JSON.stringify
             ({
-                cur_username: cur_username,
+                cur_username: get_cookie('username'),
             })
         })
         .then(res => res.json())

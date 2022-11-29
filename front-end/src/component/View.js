@@ -7,13 +7,13 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 
 function View() {
-    function get_cookie(cname)
+    function get_cookie(cookie)
     {
-        let name = cname + "=",
-        ca = document.cookie.split(';');
-        for(let i = 0; i < ca.length; i++)
+        let name = cookie + "=",
+        cookie_array = document.cookie.split(';');
+        for(let i = 0; i < cookie_array.length; ++i)
         {
-          let c = ca[i];
+          let c = cookie_array[i];
           while (c.charAt(0) == ' ')
             c = c.substring(1);
           if (c.indexOf(name) == 0)

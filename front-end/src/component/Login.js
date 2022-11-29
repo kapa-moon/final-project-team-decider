@@ -4,14 +4,12 @@ import Button from './Button';
 import {useNavigate} from "react-router-dom";
 import sha256 from 'crypto-js/sha256';
 
-export let cur_username = null;
-
 function Login()
 {
     function set_cookie(name, value, day)
     {
         let d = new Date();
-        d.setTime(d.getTime() + (day * 24 * 60 * 60 * 1000));
+        d.setTime(d.getTime() + (1000 * 60 * 60 * 24 * day));
         let expires = "expires=" + d.toUTCString();
         document.cookie = name + "=" + value + ";" + expires + ";path=/";
     }
