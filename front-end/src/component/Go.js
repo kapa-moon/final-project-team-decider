@@ -5,6 +5,8 @@ import Vote from './Vote.js';
 import GroupCard from './GroupCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
+import Logo from './Logo';
+import SearchBar from './SearchBar';
 import Button from './Button';
 import { useState, useEffect } from "react";
 
@@ -62,7 +64,10 @@ function Go({ SelctedLocation, SavedLocations }) {
 
     return (
         <>
+            <Logo></Logo>
+            <SearchBar></SearchBar>
             <Selector></Selector>
+            
             {/* <div className='gopage overflow-scroll'> */}
             <GoBtn></GoBtn>
             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll overscroll-contain'>
