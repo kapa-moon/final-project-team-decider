@@ -92,6 +92,22 @@ router.route('/removegroup').delete((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/remove_a_group_from_all_user').delete((req, res) => {
+    let filter = { user_id: req.body.user_id, my_groups: {$exists: true} };
+    let update = {$pull: { my_groups: req.body.group_idx } };
+    User.findOneAndUpdate(filter, update)
+        .then(() => res.json('User updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/remove_all_group').delete((req, res) => {
+    let filter = { my_groups: {$exists: true}};
+    let update = { $set: { my_groups: [] } };
+    User.findOneAndUpdate(filter, update)
+        .then(() => res.json('User updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 router.route(`/unvote`).post((req, res) => {
     let filter = { user_id: req.body.user_id };
     let update = { $pull: { voted_locations: req.body.location_id } };

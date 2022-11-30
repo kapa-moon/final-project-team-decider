@@ -156,6 +156,37 @@ function View() {
         set_cookie('username', '', 0);
         navigate('/');
     }
+
+    function handle_remove_all()
+    {
+        alert(`All groups removed.`);
+        /* fetch(`http://localhost:4000/groups/idx/${input_ref.current.value}`,
+        {
+            method: 'delete',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(res => res.json()); */
+        fetch(`http://localhost:4000/user/remove_all_group`,
+        {
+            method: 'delete',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                user_id: cur_user_data.user_id,
+            })
+        })
+        .then(res => res.json());
+        ++user_update; 
+        window.location.reload(false);
+    }
+
     if(cur_user_data && cur_user_data.username)
     {
         return (
@@ -185,8 +216,8 @@ function View() {
                 <div>
                     <button className='b4_2' onClick={() => handle_click()} style={{ left: '80px', top: '-26px' }}>Remove</button>
                 </div>
-                <br></br>
-                <a href onClick={handle_logout} style={{ textDecoration: 'none', color: '#723d46', fontSize: '20px' }}>Log Out</a>
+                <a href onClick={handle_remove_all} style={{textDecoration: 'underline', color: '#723d46', fontSize: '20px' }}>Remove all group from group list</a>
+                <a href onClick={handle_logout} style={{textDecoration: 'underline', color: '#723d46', fontSize: '20px' }}>Log out</a>
                 <div style={{ fontSize: '17px' }} className="text-primary-gray">👇 Click group information to hide popup.</div>
             </div>
         );

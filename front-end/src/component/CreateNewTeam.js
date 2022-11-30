@@ -80,9 +80,9 @@ function CreateNewTeam() {
     useEffect(() => {
           window.localStorage.setItem('myCurGroup', JSON.stringify(myCurGroup));
   }, [myCurGroup]);
+  
   async function getGroup()
   {
-  console.log("Clicked")
   const groupID = document.getElementById('joinGroup').value;
   axios.get(`http://localhost:4000/groups/idx/${groupID}`).then(res => {
     console.log(res.data);
@@ -100,6 +100,7 @@ function CreateNewTeam() {
     alert("Group ID is not valid");
   })
  }
+
   return (
     <div className='d0'>
       <div className='App_body' style={{ backgroundImage: `url(${mainback})` }}>
