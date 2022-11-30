@@ -15,7 +15,7 @@ function CreateNewTeam() {
     // set the user's current group to the group code just created
   const [myCurGroup, setMyCurGroup] = useState(() => {
     const curGroup = window.localStorage.getItem('myCurGroup');
-    return curGroup===undefined ? '000': JSON.parse(curGroup);
+    return !curGroup ? '000': JSON.parse(curGroup);
   });
   
     useEffect(() => {
