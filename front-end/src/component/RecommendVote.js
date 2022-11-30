@@ -24,8 +24,8 @@ const RecommendVote = (props) => {
     useEffect(() => {
         getUserID();
     }, []);
-    console.log(user_id);
-    console.log(cur_group_id);
+    // console.log(user_id);
+    // console.log(cur_group_id);
 
     function addToUsersVoteLocations() {
         var vote = {

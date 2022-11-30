@@ -2,6 +2,7 @@ import React from 'react';
 import './RecommendCard.css';
 import Bubble from './Bubble';
 import RecommendVote from './RecommendVote.js';
+import RecommendAdd from './RecommendAdd';
 import { useNavigate } from "react-router-dom";
 
 const RecommendCard = (props) => {
@@ -27,7 +28,8 @@ const RecommendCard = (props) => {
 
                 </div>
                 <div className='flex-col palce-content-center pt-10 grow-0 items-end'>
-                    <RecommendVote location = {props.location} className=''></RecommendVote>
+                    {/* <RecommendVote location = {props.location} className=''></RecommendVote> */}
+                    <RecommendAdd location = {props.location} className=''></RecommendAdd>
                 </div>
 
             </div>
