@@ -6,7 +6,8 @@ function SearchLocation()
 
     const [myCurLocation, setMyCurLocation] = useState(() => {
        const curLocation = window.localStorage.getItem('myCurLocation');
-       return curLocation ? JSON.parse(curLocation) : {lat: -73.996925, lng: 40.729675};
+       console.log('cur loc', curLocation);
+       return !curLocation ?  {lat: -73.996925, lng: 40.729675} : JSON.parse(curLocation);
     });
 
     // const [myCurLocation, setMyCurLocation] = useState(
