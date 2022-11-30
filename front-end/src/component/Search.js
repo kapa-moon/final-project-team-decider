@@ -8,6 +8,7 @@ import SearchBar from './SearchBar';
 import Selector from './Selector';
 import { Link } from 'react-router-dom';
 import Search_bar from './Search_bar';
+import RecommendCard from './RecommendCard';
 
 
 import Logo from './Logo';
