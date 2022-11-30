@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from './Button';
 import mainback from '../image/mainback.png';
 import bowl from '../image/bowl.png';
@@ -12,6 +12,15 @@ import { useNavigate } from "react-router-dom";
 function CreateNewTeam() {
   const navigate = useNavigate();
   const [groupID, setgroupID] = useState();
+    // set the user's current group to the group code just created
+  const [myCurGroup, setMyCurGroup] = useState(() => {
+    const curGroup = window.localStorage.getItem('myCurGroup');
+    return curGroup===undefined ? '000': JSON.parse(curGroup);
+  });
+  
+    useEffect(() => {
+          window.localStorage.setItem('myCurGroup', JSON.stringify(myCurGroup));
+  }, [myCurGroup]);
   async function getGroup()
   {
   console.log("Clicked")
@@ -22,6 +31,7 @@ function CreateNewTeam() {
     {
       alert("Group does not exist.");
     } else {
+      localStorage.setItem('myCurGroup', JSON.stringify(groupID));
       alert("Group joined.");
       navigate('Recommend');
     }
