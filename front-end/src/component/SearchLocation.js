@@ -5,14 +5,18 @@ function SearchLocation()
 {
 
     const [myCurLocation, setMyCurLocation] = useState(() => {
-        
        const curLocation = window.localStorage.getItem('myCurLocation');
-       return curLocation===undefined ? JSON.parse(curLocation) : {lat: -73.996925, lng: 40.729675};
+       return curLocation===undefined ? {lat: -73.996925, lng: 40.729675}: JSON.parse(curLocation);
     });
 
+    // const [myCurLocation, setMyCurLocation] = useState(
+    //     {lat: -73.996925, lng: 40.729675}
+    // );
 
     useEffect(() => {
-        window.localStorage.setItem("myCurLocation", JSON.stringify(myCurLocation));
+        // if(localStorage.getItem('myCurLocation') == JSON.stringify({lat: -73.996925, lng: 40.729675})) {
+            window.localStorage.setItem('myCurLocation', JSON.stringify(myCurLocation));
+        // }
     }, [myCurLocation]);
 
 
