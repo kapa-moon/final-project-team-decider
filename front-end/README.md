@@ -13,6 +13,8 @@ Make sure you have Node installed.
 Go to the front-end folder by ```cd front-end```
 <br>
 Run ```npm start```
+<br>
+Join the trial group ```46546382``` to simulate a multi-user experience
 
 ### Note
 
