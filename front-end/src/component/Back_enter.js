@@ -9,8 +9,6 @@ function Back_enter(s)
         <div>
             <Button str_array = {[{str: 'Back', left: 1, cur_id: s.cur_id}]} type = {11}></Button>
             <Button str_array = {[{str: 'Create', left: 0, cur_id: s.cur_id}]} type = {14}></Button><br></br>
-            <br></br>
-            <Link to = '/view' style = {{textDecoration: 'underline', color: '#723d46', fontSize: '25px'}}>View</Link>
         </div>
     );
 }

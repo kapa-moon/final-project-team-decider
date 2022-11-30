@@ -306,23 +306,8 @@ function B14({ str }) {
         })
         .then(res => res.json())
         .then(data => set_data(data));
-    
-        const groupID = str.cur_id;
-        if(groupID)
-            axios.get(`http://localhost:4000/groups/idx/${groupID}`).then(res => {
-            console.log(res.data);
-            if(res.data.length === 0)
-            {
-                alert("Group does not exist.");
-            } else {
-                localStorage.setItem('myCurGroup', JSON.stringify(groupID));
-                alert("Group joined.");
-                navigate('/Recommend');
-            }
-            }).catch(err => {
-            console.log(err);
-            alert("Group ID is not valid");
-            });
+        localStorage.setItem('myCurGroup', JSON.stringify(str.cur_id));
+        navigate('/Recommend');
     }
 
     return (
