@@ -1,12 +1,30 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import './RecommendCard.css';
 import Bubble from './Bubble';
 import RecommendVote from './RecommendVote.js';
 import RecommendAdd from './RecommendAdd';
 import { useNavigate } from "react-router-dom";
+import Food from '../image/food.png';
+import Shop from '../image/shop.png';
+import Park from '../image/park.png';  
+import Museum from '../image/museum.png';
 
 const RecommendCard = (props) => {
     let navigate = useNavigate();
+    const [image, setImage] = useState(Food);
+    useEffect(() => {
+        if (props.location.type === 'commercial') {
+            setImage(Shop);
+        } else if (props.location.type === 'catering') {
+            setImage(Food);
+        }else if (props.location.type === 'leisure') {
+            setImage(Park);
+        }else {
+            setImage(Food);
+        }
+    }, [props.type]);
+
     return (
         <div className='group-card'>
 
@@ -14,7 +32,7 @@ const RecommendCard = (props) => {
 
             <div className='flex justify-start space-x-5 rounded-3xl w-full h-24'>
                 <div className='pic rounded-2xl bg-primary w-32 h-24 overflow-hidden grow-0'>
-                    <button className='group_button' onClick={() => navigate('/Map')}><img className='rounded-2xl' src={props.image} alt='food'></img></button>
+                    <button className='group_button' onClick={() => navigate('/Map')}><img className='rounded-2xl' src={image} alt='food'></img></button>
                 </div>
                 <div className='flex-row pt-2 grow-0'>
 
