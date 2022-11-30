@@ -22,4 +22,4 @@ can also create a group, and join that group
 * The [Recommend] page may take 1-2 sec to show up when you first go into it
 * Log-in/Sign-up pages are for future usage and development
 * This web app is in mobile-first design. It's preferable to be tested in mobile sizes.
-* If the "Recommend Page" doesn't show, try ```inspect``` and enter ```localStorage.setItem('myCurLocation','196');``` in the console, then refresh
+* If the "Recommend Page" doesn't show, try ```inspect``` and enter ```localStorage.setItem('myCurLocation','196')``` in the console, then refresh
