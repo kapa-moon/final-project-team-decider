@@ -212,7 +212,7 @@ function B12({ str }) {
     useEffect(() => {
         getUserID();
     }, []);
-    console.log(user_id);
+    // console.log(user_id);
 }
 
 function B13({ str }) {
