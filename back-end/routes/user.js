@@ -75,9 +75,11 @@ router.route('/vote').post((req, res) => {
 });
 
 router.route('/addgroup').post((req, res) => {
+    // let filter = { user_id: req.body.user_id, "my_groups.idx": {$ne: req.body.group_idx} };
     let filter = { user_id: req.body.user_id };
-    let update = { $push: { my_groups: req.body.group_idx } };
-    User.findOneAndUpdate(filter, update)
+    let update = { $addToSet: { my_groups: req.body.group_idx }};
+    let option = {upsert: true};
+    User.findOneAndUpdate(filter, update, option)
         .then(() => res.json('User updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });

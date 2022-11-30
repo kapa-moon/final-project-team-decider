@@ -65,7 +65,7 @@ function View() {
 
     function handle_click() {
         alert(`Group ${input_ref.current.value} removed.`);
-        fetch(`http://localhost:4000/groups/idx/${input_ref.current.value}`,
+        /* fetch(`http://localhost:4000/groups/idx/${input_ref.current.value}`,
         {
             method: 'delete',
             headers:
@@ -73,7 +73,7 @@ function View() {
                 'Content-Type': 'application/json',
             },
         })
-        .then(res => res.json());
+        .then(res => res.json()); */
         fetch(`http://localhost:4000/user/removegroup`,
         {
             method: 'delete',
@@ -176,7 +176,7 @@ function View() {
                 </div>
                 <br></br>
                 <div>
-                    <label className='b1 block mb-2'>Remove a Group</label>
+                    <label className='b1 block mb-2'>Remove a Group from group list</label>
                     <input className='b1' type='text' placeholder='Group Number' ref={input_ref}></input>
                 </div>
                 <div>

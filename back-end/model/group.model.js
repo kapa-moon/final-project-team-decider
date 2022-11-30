@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const groupSchema = new Schema({
-    idx: { type: String, required: false },
+    idx: { type: String, required: false, unique: true},
     // array of location objects
     locations: { type: Array, required: false },
     selectedLocation: { type: Object, required: false },
