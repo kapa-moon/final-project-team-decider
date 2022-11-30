@@ -156,39 +156,51 @@ function View() {
         set_cookie('username', '', 0);
         navigate('/');
     }
+    if(cur_user_data && cur_user_data.username)
+    {
+        return (
+            <div className='home_body App flex-row view0'>
+                <div>{'User ' + cur_user_data.username}</div>
+                <br></br>
+                Group List
+                <div style={{ width: '250px', height: '200px', overflowX: 'scroll', overflowY: 'scroll' }} className="overflow-scroll h-9">
+                    {cur_user_data ?
+                        cur_user_data.my_groups.map(d =>
+                            <div key={++count}>
+                                <Switcher str={d} user_id={user_id} ></Switcher>
+                            </div>) :
+                        data.length ? data.map(d =>
+                            <div key={++count}>
+                                <Switcher str={d.idx} user_id={user_id} ></Switcher>
+                            </div>) : ''}
+                </div>
+                <br></br>
+                <div>
+                    <label className='b1 block mb-2'>Remove a Group</label>
+                    <input className='b1' type='text' placeholder='Group Number' ref={input_ref}></input>
+                </div>
+                <div>
+                    <button className='b4_2' onClick={() => navigate('/Home')} style={{ left: '-80px' }}>Back</button>
+                </div>
+                <div>
+                    <button className='b4_2' onClick={() => handle_click()} style={{ left: '80px', top: '-26px' }}>Remove</button>
+                </div>
+                <br></br>
+                <a href onClick={handle_logout} style={{ textDecoration: 'none', color: '#723d46', fontSize: '20px' }}>Log Out</a>
+                <div style={{ fontSize: '17px' }} className="text-primary-gray">👇 Click group information to hide popup.</div>
+            </div>
+        );
+    }
 
-    return (
-        <div className='home_body App flex-row view0'>
-            <div>{cur_user_data && cur_user_data.username ? 'User ' + cur_user_data.username : 'Login to access more features.'}</div>
-            <br></br>
-            Group List
-            <div style={{ width: '250px', height: '200px', overflowX: 'scroll', overflowY: 'scroll' }} className="overflow-scroll h-9">
-                {cur_user_data ?
-                    cur_user_data.my_groups.map(d =>
-                        <div key={++count}>
-                            <Switcher str={d} user_id={user_id} ></Switcher>
-                        </div>) :
-                    data.length ? data.map(d =>
-                        <div key={++count}>
-                            <Switcher str={d.idx} user_id={user_id} ></Switcher>
-                        </div>) : ''}
+    else
+    {
+        return (
+            <div className='home_body App flex-row view0'>
+                <div>Login to access more features.</div>
+                <div style={{ fontSize: '17px' }} className="text-primary-gray">👇 Click group information to hide popup.</div>
             </div>
-            <br></br>
-            <div>
-                <label className='b1 block mb-2'>Remove a Group</label>
-                <input className='b1' type='text' placeholder='Group Number' ref={input_ref}></input>
-            </div>
-            <div>
-                <button className='b4_2' onClick={() => navigate('/Home')} style={{ left: '-80px' }}>Back</button>
-            </div>
-            <div>
-                <button className='b4_2' onClick={() => handle_click()} style={{ left: '80px', top: '-26px' }}>Remove</button>
-            </div>
-            <br></br>
-            <a href onClick={handle_logout} style={{ textDecoration: 'none', color: '#723d46', fontSize: '20px' }}>Log Out</a>
-            <div style={{ fontSize: '17px' }} className="text-primary-gray">👇 Click group information to hide popup.</div>
-        </div>
-    );
+        );
+    }
 }
 
 export default View;
