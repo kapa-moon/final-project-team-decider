@@ -9,24 +9,92 @@ import Logo from './Logo';
 import SearchBar from './SearchBar';
 import Button from './Button';
 import { useState, useEffect } from "react";
+import axios from 'axios';
 
 function Go({ SelctedLocation, SavedLocations }) {
+
+    const [user_id, setUser_id] = useState("");
+    const [cur_group_id, setGroup_id] = useState("");
+
+    const [curGroupID, setCurGroupID] = useState(() => {
+        const curGroupID = window.localStorage.getItem('myCurGroup');
+       //  return null;
+        return !curGroupID ? '000': JSON.parse(curGroupID);
+     });
+
+    const [groupLocations, setGroupLocations] = useState([]);
+    const [mostVotedLocation, setMostVotedLocation] = useState("");
+
+    function getGroupLocations() {
+        axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
+            .then(res => {
+                setGroupLocations(res.data[0].locations);
+            }
+            )
+            .catch(function (error) { console.log(error); })
+    }
+    useEffect(() => {
+        getGroupLocations();
+        console.log(Array.from(groupLocations));
+        
+    }, []);
+
+    function getMostVotedLocation() {
+        setMostVotedLocation(groupLocations[0]);
+        // let curVote = groupLocations[0].vote;
+        // for (var i = 1; i < groupLocations.length; i++) {
+        //     if (groupLocations[i].vote > mostVotedLocation.vote) {
+        //         setMostVotedLocation(groupLocations[i]);
+        //     }
+        // }
+        console.log(groupLocations[0]);
+    }
+    useEffect(() => {
+        getMostVotedLocation();
+    }, [groupLocations]);
 
     const [randomCard, setRandomCard] = useState({});
     const [selectIsClicked, setSelectIsClicked] = useState(false);
 
-    function randomSelect(savedLocations) {
+    function randomSelect(groupLocations) {
 
-        let randomIndex = Math.floor(Math.random() * savedLocations.length);
-        let chosenLocation = savedLocations[randomIndex];
+        let randomIndex = Math.floor(Math.random() * groupLocations.length);
+        let chosenLocation = groupLocations[randomIndex];
+        setRandomCard(chosenLocation);
+        const locationSelected = {
+            group_idx: curGroupID,
+            location: chosenLocation
+        }
+        axios.post(`http://localhost:4000/groups/setSelectedLocation`, locationSelected)
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(function (error) { console.log(error); });
         return chosenLocation;
 
     }
 
+    // get random selected location if there are locations in the group
+    const [currentResult, setCurrentResult] = useState({});
+
+    async function getCurrentResult() {
+        axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
+            .then(res => {
+                setCurrentResult(res.data[0].selectedLocation);
+            }
+            )
+            .catch(function (error) { console.log(error); })
+    }
+    useEffect(() => {
+        getCurrentResult();
+    }, []);
+    console.log('currentResult'+currentResult);
+
     function handleClick() {
         console.log("clicked");
-        setRandomCard(randomSelect(savedLocations));
+        setRandomCard(randomSelect(groupLocations));
         setSelectIsClicked(true);
+        window.location.reload();
     }
 
     const GoBtn = () => {
@@ -39,9 +107,9 @@ function Go({ SelctedLocation, SavedLocations }) {
     }
 
     const Result = () => {
-        if (selectIsClicked) {
+        if (currentResult) {
             return (
-                <GroupCard name={randomCard.name} type={randomCard.type} image={Placeholder} distance={randomCard.distance} category={randomCard.category}></GroupCard>
+                <GroupCard vote={currentResult.vote} name={currentResult.name} type={currentResult.type} image={Placeholder} distance={currentResult.distance} category={currentResult.category}></GroupCard>
             );
         } else {
             return (
@@ -50,17 +118,19 @@ function Go({ SelctedLocation, SavedLocations }) {
             );
         }
     }
-    // fetch from database: the location with most votes
-    const selectedLocation = {
-        name: "il laboratorio del gelato",
-        distance: 2,
-        type: "catering",
-        category: "snack",
-        housenumber: "188",
-        street: "Ludlow Street",
+
+    const MostVoted = () => {
+        if (mostVotedLocation) {
+            return (
+                <GroupCard vote={mostVotedLocation.vote} name={mostVotedLocation.name} type={mostVotedLocation.type} image={Placeholder} distance={mostVotedLocation.distance} category={mostVotedLocation.category}></GroupCard>
+            );
+        } else {
+            return (
+                <div className='p-16 justify-center'>
+                </div>
+            );
+        }
     }
-
-
 
     const [myCurLocation, setMyCurLocation] = useState(() => {
         localStorage.getItem('myCurLocation')
@@ -84,15 +154,15 @@ function Go({ SelctedLocation, SavedLocations }) {
             <Logo></Logo>
             <SearchBar></SearchBar>
             <Selector></Selector>
-            
-            {/* <div className='gopage overflow-scroll'> */}
             <GoBtn></GoBtn>
             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll overscroll-contain'>
                 {/* <GroupCard name={chosenLocation.name} type={chosenLocation.type} image={Placeholder} distance={chosenLocation.distance} category={chosenLocation.category}></GroupCard> */}
                 <Result></Result>
 
+
                 <p>👇 These locations are most popular among friends:</p>
-                <GroupCard name={selectedLocation.name} type={selectedLocation.type} image={Placeholder} distance={selectedLocation.distance} category={selectedLocation.category}></GroupCard>
+                <MostVoted></MostVoted>
+                {/* <GroupCard name={mostVotedLocation.name} type={mostVotedLocation.type} image={Placeholder} distance={mostVotedLocation.distance} category={mostVotedLocation.category} vote={mostVotedLocation.vote}></GroupCard> */}
 
             </div>
             <Button str_array={['Group Information']} type={6}></Button>
@@ -109,67 +179,4 @@ function Go({ SelctedLocation, SavedLocations }) {
 
 export default Go;
 
-
-// should be fetched from database
-
-const savedLocations = [
-    {
-        name: "Kris Graphics",
-        distance: 12,
-        type: "commercial",
-        category: "art",
-        housenumber: "129",
-        street: "Allen Street",
-    },
-    {
-        name: "il laboratorio del gelato",
-        distance: 2,
-        type: "catering",
-        category: "snack",
-        housenumber: "188",
-        street: "Ludlow Street",
-    },
-    {
-        name: "Morgenstern's Finest Ice Cream",
-        distance: 3,
-        type: "catering",
-        category: "cafe",
-        housenumber: "1",
-        street: "Rivington Street",
-    },
-    {
-        name: "Van Leeuwen Ice Cream",
-        distance: 4,
-        type: "leisure",
-        category: "picnic",
-        housenumber: "172",
-        street: "Ludlow Street",
-    },
-    {
-        name: "Van Leeuwen Ice Cream",
-        distance: 4,
-        type: "entertainment",
-        category: "museum",
-        housenumber: "172",
-        street: "Ludlow Street",
-    },
-    {
-        name: "Book Culture",
-        distance: 4,
-        type: "commercial",
-        category: "books",
-        housenumber: "172",
-        street: "Ludlow Street",
-    },
-    {
-        name: "Van Leeuwen Ice Cream",
-        distance: 4,
-        type: "catering",
-        category: "snack",
-        housenumber: "172",
-        street: "Ludlow Street",
-    },
-
-]
-const len = savedLocations.length;
 
