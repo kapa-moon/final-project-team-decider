@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from './Button';
 import mainback from '../image/mainback.png';
 import bowl from '../image/bowl.png';
@@ -10,14 +10,40 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 function CreateNewTeam() {
+  const navigate = useNavigate();
+  const [groupID, setgroupID] = useState();
+  async function getGroup()
+  {
+  console.log("Clicked")
+  const groupID = document.getElementById('joinGroup').value;
+  axios.get(`http://localhost:4000/groups/idx/${groupID}`).then(res => {
+    console.log(res.data);
+    if(res.data.length === 0)
+    {
+      alert("Group does not exist.");
+    } else {
+      alert("Group joined.");
+      navigate('Recommend');
+    }
+  }).catch(err => {
+    console.log(err);
+    alert("Group ID is not valid");
+  })
+ }
   return (
     <div className='d0'>
       <div className='App_body' style={{ backgroundImage: `url(${mainback})` }}>
         <form>
           <img src={bowl} alt='bowl' className='img0 align-center'></img><br></br>
           <Button str_array={[{ str: 'Create a Group', link: 'Home' }]} type={7}></Button><br></br>
-          <JoinButton str_array={['Join a Group']} type={1}></JoinButton>
-          <EnterButton str_array={['Enter']} type={2}></EnterButton><br></br><br></br><br></br>
+          <div>
+          <label className='b1 block mb-2'>{}</label>
+          <input id='joinGroup' className='b1' type='text' placeholder="Enter Group ID" onChange={e => setgroupID(e.target.value)}></input>
+          </div>
+          <div>
+           <button className='b2' type = 'button' onClick={getGroup}>Enter</button>
+          </div>
+          <br></br><br></br><br></br>
           <Link to='Signup' style={{ textDecoration: 'none', color: '#723d46', fontSize: '20px' }}>Sign Up</Link>
           <Space n={20}></Space>
           <Link to='Login' style={{ textDecoration: 'none', color: '#723d46', fontSize: '20px' }}>Log In</Link>
@@ -26,50 +52,5 @@ function CreateNewTeam() {
     </div>
   );
 }
-
-function JoinButton({str}) {
-  const [groupID, setGroupID] = React.useState('');
-  const handleChange = event => {
-    setGroupID(event.target.value);
-  };
-  return (
-      <div>
-          <label className='b1 block mb-2'>{str}</label>
-          <input id='joinGroup' className='b1' type='text' onChange={handleChange} value={groupID}></input>
-      </div>
-  );
-}
-
-const EnterButton= () => {
-  const navigate = useNavigate();
-   return (
-       <div>
-           <button className='b2' type = 'button' onClick={() => navigate('/Recommend')}>Enter</button>
-       </div>
-   );
- }
-
-function OnClickHandler()
- {
-  console.log("Clicked")
-  const groupID = document.getElementById('joinGroup').value;
-  console.log(groupID);
-   if (groupID.length == 0) {
-     alert('Please enter a group ID.');
-     return false;
-   } else {
-      axios.get(`http://localhost:4000/groups/idx/${groupID}`).then(res => {
-        console.log(res.data);
-        if (res.data.length == 0) {
-          alert('Group does not exist.');
-          return false;
-        } else {
-          alert('Group joined.');
-          return true;
-        }
-      });
-  }
-  return false;
- }
 
 export default CreateNewTeam;
