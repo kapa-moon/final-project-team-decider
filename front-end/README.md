@@ -6,15 +6,17 @@ Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-pro
 
 Make sure you have Node installed.
 
-Install necessary packages by ```npm install```
+Install necessary packages by ```npm install```.
 
-Go to the front-end folder by ```cd front-end```
+Go to the front-end folder by ```cd front-end```.
 
-Run ```npm start```
+Run ```npm start```.
 
-use ```http://localhost:4000/groups``` to see available groups, then join a trial group to simulate a multi-user experience
+Use ```http://localhost:4000/groups``` to see available groups, then join a trial group to simulate a multi-user experience.
 
-can also create a group, and join that group
+Can also create a group, and join that group.
+
+There may be some time delay when rendering ```http://localhost:3000/view``` (group information) page.
 
 
 ### Note
