@@ -7,7 +7,7 @@ import './CreateNewTeam.css';
 import { Link } from 'react-router-dom';
 import Space from './Space';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function CreateNewTeam() {
   return (
@@ -41,9 +41,10 @@ function JoinButton({str}) {
 }
 
 const EnterButton= () => {
+  const navigate = useNavigate();
    return (
        <div>
-           <button className='b2' type = 'button' onClick={OnClickHandler}>Enter</button>
+           <button className='b2' type = 'button' onClick={() => navigate('/Recommend')}>Enter</button>
        </div>
    );
  }
@@ -55,22 +56,20 @@ function OnClickHandler()
   console.log(groupID);
    if (groupID.length == 0) {
      alert('Please enter a group ID.');
+     return false;
    } else {
-    try {
-      axios.get(`http://localhost:4000/groups/idx/${groupID}`).then((response) => console.log(response)).then((data) => {
-       if (data.length === 0) {
-         alert('Group does not exist');
-       } else {
-          alert('Group joined');
-         //navigate('/Group');
-       }
-       console.log(data);
-      }).catch(err => console.log(err));
-      } catch (err) {
-        alert('Group does not exist');
-        console.log(err);
-      }
+      axios.get(`http://localhost:4000/groups/idx/${groupID}`).then(res => {
+        console.log(res.data);
+        if (res.data.length == 0) {
+          alert('Group does not exist.');
+          return false;
+        } else {
+          alert('Group joined.');
+          return true;
+        }
+      });
   }
+  return false;
  }
 
 export default CreateNewTeam;
