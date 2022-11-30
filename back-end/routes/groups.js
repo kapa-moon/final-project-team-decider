@@ -19,6 +19,34 @@ router.route('/add').post((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/addLocation').post((req, res) =>
+{
+    let filter = { idx: req.body.group_idx };
+    let update = { $push: { locations: req.body.location } };
+    Group.findOneAndUpdate(filter, update)
+        .then(() => res.json('Location added to group!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/deleteLocation').post((req, res) =>
+{
+    let filter = { idx: req.body.group_idx };
+    let update = { $pull: { locations: req.body.location } };
+    Group.findOneAndUpdate(filter, update)
+        .then(() => res.json('Location deleted from group!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/setSelectedLocation').post((req, res) =>
+{
+    let filter = { idx: req.body.group_idx };
+    let update = { selectedLocation: req.body.location};
+    Group.findOneAndUpdate(filter, update)
+        .then(() => res.json('Selected location set!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
 router.delete('/remove', (req, res) =>
 {
     Group.remove()
