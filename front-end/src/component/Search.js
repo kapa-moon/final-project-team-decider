@@ -72,6 +72,7 @@ function Search() {
           places.push(place);
         }
         setPlaces(places);
+        places = [];
     }).catch(error => { 
         console.log(error);
     });
@@ -79,7 +80,9 @@ function Search() {
 
   const [nearbyPlaces, setPlaces] = useState([]);
     useEffect(() => {
-      fetchPlaces(2);
+        if (nearbyPlaces.length === 0) {
+            fetchPlaces(2);
+        }
     }, []);
 
     let input_ref = useRef(null);
@@ -92,7 +95,7 @@ function Search() {
     {
         let search_keyword = input_ref.current.value;
         set_found(false);
-        for(let i = 0; i < nearbyPlaces.length && !found; ++i)
+        for(let i = 0; i < nearbyPlaces.length; ++i)
         {
           for(let j = 0; j < field_array.length; ++j)
           {
