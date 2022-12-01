@@ -1,6 +1,9 @@
 import './Button.css';
 import GroupCard from './GroupCard';
 import Placeholder from '../image/pic1.png';
+import Food from '../image/food.png';
+import Park from '../image/park.png';
+import Museum from '../image/museum.png';
 import Selector from './Selector';
 import Button from './Button';
 import axios from 'axios';
@@ -78,7 +81,7 @@ var countGroupCard = 0;
 
 
 const getGroupCard = savedLocations => savedLocations.map(item => (
-    <GroupCard name={item.name} type={item.type} distance={item.distance} category={item.category} housenumber={item.housenumber} street={item.street} image={Placeholder} vote={item.vote} key={countGroupCard++}></GroupCard>
+    <GroupCard name={item.name} type={item.type} distance={item.distance} category={item.category} housenumber={item.housenumber} street={item.street} vote={item.vote} key={countGroupCard++}></GroupCard>
 ));
 
 export default Group;
