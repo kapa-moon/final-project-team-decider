@@ -1,5 +1,5 @@
 let router = require('express').Router(),
-list = require('../data/list');
+list = [];
 
 let search_keyword = '',
 a = []; /* matching results */
