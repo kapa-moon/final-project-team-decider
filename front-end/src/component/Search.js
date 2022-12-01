@@ -1,58 +1,3 @@
-// import React, {useState, useEffect} from 'react';
-// import './Button.css';
-// import GroupCard from './GroupCard';
-// import Placeholder from '../image/pic1.png';
-// import Select from './Select';
-// import Button from './Button';
-// import SearchBar from './SearchBar';
-// import Selector from './Selector';
-// import { Link } from 'react-router-dom';
-// import Search_bar from './Search_bar';
-// import RecommendCard from './RecommendCard';
-
-
-// import Logo from './Logo';
-
-// function Search({ SelctedLocation })
-// {
-//     let [data, set_data] = useState({});
-//     useEffect(() =>
-//     {
-//         fetch('http://localhost:4000/search/api/get_list')
-//         .then(res => res.json())
-//         .then(data => set_data(data));
-//     }, []);
-
-//     let [search_result, set_search_result] = useState({});
-//     useEffect(() =>
-//     {
-//         fetch('http://localhost:4000/search/search')
-//         .then(res => res.json())
-//         .then(search_result => set_search_result(search_result));
-//     }, []);
-
-//     return (
-//         <>
-//             <Logo></Logo>
-//             <Search_bar></Search_bar>
-//             <Selector></Selector>
-//             <div className='bg-blue-200 flex-col justify-center space-y-3 max-w-sm h-full overflow-scroll'>
-//                 <ul>{search_result.length ? getGroupCard(search_result) : 'no matching result'}</ul> {/* <ul>{data.length ? getGroupCard(data) : ''}</ul> */}
-//             </div>
-//             <Button str_array={['Group Information']} type={6}></Button>
-//         </>
-//     );
-// }
-
-// var countGroupCard = 0;
-
-// const getGroupCard = savedLocations => savedLocations.map(item => (
-//     <GroupCard name={item.name} type={item.type} distance={item.distance} category={item.category} housenumber={item.housenumber} street={item.street} image={Placeholder} key={countGroupCard++}></GroupCard>
-// ));
-
-
-// export default Search;
-
 import React, { useEffect, useState, useRef } from "react";
 import RecommendCard from './RecommendCard';
 import Placeholder from '../image/pic1.png';
@@ -89,7 +34,7 @@ function splitElements (array){
     return set;
 }
 
-function Recommend() {
+function Search() {
   
   let places = [];
   function fetchPlaces (pageNum) {
@@ -172,13 +117,11 @@ function Recommend() {
   return (
     <>
     <Logo></Logo>
-    {/* <Search_bar></Search_bar> */}
     <div className='flex justify-center pt-5 pb-4'>
         <div className='flex justify-center items-center w-full h-12 bg-white rounded-xl ring-2 ring-primary'>
           <input className='w-4/5 h-10 bg-white rounded-xl border-primary text-md focus:outline-none'
           type='search' placeholder='Find location...' ref = {input_ref}/>
           <div className='p-2'>
-            {/* <button className = 'search_bar0' onClick = {input_ref.current ? set_search_keyword(input_ref.current.value): ''}><svg className='w-6 h-6 text-gray-500 text-primary' fill='none' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' viewBox='0 0 24 24' stroke='currentColor'> */}
             <button className = 'search_bar0' onClick = {handle_search}><svg className='w-6 h-6 text-gray-500 text-primary' fill='none' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' viewBox='0 0 24 24' stroke='currentColor'>
               <path d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'></path>
             </svg></button>
@@ -196,7 +139,4 @@ function Recommend() {
     );
 }
 
-/*search_result.length ? search_result.map(item => (<RecommendCard image = {Placeholder} location = {item} key = {count++}></RecommendCard>))
-        : nearbyPlaces.map(item => (<RecommendCard image = {Placeholder} location = {item} key = {count++}></RecommendCard>))
-        }</ul> */
-export default Recommend;
+export default Search;
