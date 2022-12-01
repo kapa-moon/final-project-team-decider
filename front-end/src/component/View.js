@@ -25,7 +25,6 @@ function View() {
     const [user_id, setUser_id] = useState("");
     const [cur_group_id, setGroup_id] = useState("");
 
-    let user_update = 0;
     let [cur_user_data, set_cur_user_data] = useState("");
     useEffect(() =>
     {
@@ -44,7 +43,7 @@ function View() {
         })
         .then(res => res.json())
         .then(data => set_cur_user_data(data));
-    }, [user_update]);
+    }, []);
 
     function getUserID() {
         axios.get(`http://localhost:4000/user/`)
@@ -65,15 +64,6 @@ function View() {
 
     function handle_click() {
         alert(`Group ${input_ref.current.value} removed.`);
-        fetch(`http://localhost:4000/groups/idx/${input_ref.current.value}`,
-        {
-            method: 'delete',
-            headers:
-            {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(res => res.json());
         fetch(`http://localhost:4000/user/removegroup`,
         {
             method: 'delete',
@@ -89,7 +79,6 @@ function View() {
             })
         })
         .then(res => res.json());
-        ++user_update; 
         window.location.reload(false);
     }
 
@@ -156,6 +145,27 @@ function View() {
         set_cookie('username', '', 0);
         navigate('/');
     }
+
+    function handle_remove_all()
+    {
+        alert(`All groups removed.`);
+        fetch(`http://localhost:4000/user/remove_all_group`,
+        {
+            method: 'delete',
+            headers:
+            {
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                user_id: cur_user_data.user_id,
+            })
+        })
+        .then(res => res.json());
+        window.location.reload(false);
+    }
+
     if(cur_user_data && cur_user_data.username)
     {
         return (
@@ -176,7 +186,7 @@ function View() {
                 </div>
                 <br></br>
                 <div>
-                    <label className='b1 block mb-2'>Remove a Group</label>
+                    <label className='b1 block mb-2'>Remove a group from group list</label>
                     <input className='b1' type='text' placeholder='Group Number' ref={input_ref}></input>
                 </div>
                 <div>
@@ -185,8 +195,8 @@ function View() {
                 <div>
                     <button className='b4_2' onClick={() => handle_click()} style={{ left: '80px', top: '-26px' }}>Remove</button>
                 </div>
-                <br></br>
-                <a href onClick={handle_logout} style={{ textDecoration: 'none', color: '#723d46', fontSize: '20px' }}>Log Out</a>
+                <a href onClick={handle_remove_all} style={{textDecoration: 'underline', color: '#723d46', fontSize: '20px' }}>Remove all group from group list</a>
+                <a href onClick={handle_logout} style={{textDecoration: 'underline', color: '#723d46', fontSize: '20px' }}>Log out</a>
                 <div style={{ fontSize: '17px' }} className="text-primary-gray">👇 Click group information to hide popup.</div>
             </div>
         );

@@ -68,8 +68,9 @@ const RecommendAdd = (props) => {
     const [addedByMe, setAddedByMe] = useState(false);
     
     useEffect(() => {
-        if(localStorage.getItem('myLocations')){
-            const locations = JSON.parse(localStorage.getItem('myLocations'));
+        let a = localStorage.getItem('myLocations');
+        if(a){
+            const locations = JSON.parse(a);
             if(locations.includes(props.location.location_id)){
                 setAddedByMe(true);
             }
@@ -95,7 +96,8 @@ const RecommendAdd = (props) => {
     const handleClickAdd = () => {
         console.log(entry);
         console.log("clicked");
-        const locations = JSON.parse(localStorage.getItem('myLocations'));
+        let a = localStorage.getItem('myLocations');
+        const locations = a ? JSON.parse(a) : '';
         console.log(locations);
         if (locations.includes(entry.location_id)) {
             console.log("already added");
@@ -135,7 +137,8 @@ const RecommendAdd = (props) => {
         console.log("clicked");
 
         // delete from local storage
-        const locations = JSON.parse(localStorage.getItem('myLocations'));
+        let a = localStorage.getItem('myLocations');
+        const locations = a ? JSON.parse(a): '';
         console.log(locations);
         if (locations.includes(entry.location_id)) {
             localStorage.setItem('myLocations', JSON.stringify(locations.filter(item => item !== entry.location_id)));

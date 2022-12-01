@@ -75,9 +75,11 @@ router.route('/vote').post((req, res) => {
 });
 
 router.route('/addgroup').post((req, res) => {
+    // let filter = { user_id: req.body.user_id, "my_groups.idx": {$ne: req.body.group_idx} };
     let filter = { user_id: req.body.user_id };
-    let update = { $push: { my_groups: req.body.group_idx } };
-    User.findOneAndUpdate(filter, update)
+    let update = { $addToSet: { my_groups: req.body.group_idx }};
+    let option = {upsert: true};
+    User.findOneAndUpdate(filter, update, option)
         .then(() => res.json('User updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -85,6 +87,22 @@ router.route('/addgroup').post((req, res) => {
 router.route('/removegroup').delete((req, res) => {
     let filter = { user_id: req.body.user_id };
     let update = { $pull: { my_groups: req.body.group_idx } };
+    User.findOneAndUpdate(filter, update)
+        .then(() => res.json('User updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/remove_a_group_from_all_user').delete((req, res) => {
+    let filter = { user_id: req.body.user_id, my_groups: {$exists: true} };
+    let update = {$pull: { my_groups: req.body.group_idx } };
+    User.findOneAndUpdate(filter, update)
+        .then(() => res.json('User updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/remove_all_group').delete((req, res) => {
+    let filter = { my_groups: {$exists: true}};
+    let update = { $set: { my_groups: [] } };
     User.findOneAndUpdate(filter, update)
         .then(() => res.json('User updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
