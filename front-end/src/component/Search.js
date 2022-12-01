@@ -86,26 +86,31 @@ function Search() {
     let search_result = [];
     let field_array = ['location_id', 'vote', 'distance', 'coordinate', 'placeName', 'type', 'category'];
     let [search_res, set_search_res] = useState([]);
+    let [found, set_found] = useState(false);
 
     function handle_search()
     {
         let search_keyword = input_ref.current.value;
-        for(let i = 0; i < nearbyPlaces.length; ++i)
+        set_found(false);
+        for(let i = 0; i < nearbyPlaces.length && !found; ++i)
         {
           for(let j = 0; j < field_array.length; ++j)
           {
             if(nearbyPlaces[i][field_array[j]] && nearbyPlaces[i][field_array[j]].toString().toLowerCase().includes(search_keyword.toString().toLowerCase()))
             {
               search_result.push(nearbyPlaces[i]);
+              set_found(true);
               break;
             }
           }
         }
         set_search_res(search_result);
+        search_keyword = '';
     }
 
     useEffect(() =>
     {
+        console.log(search_res);
         console.log('res change');
     }, [search_res]);
 
