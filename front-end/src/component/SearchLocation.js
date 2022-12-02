@@ -5,10 +5,10 @@ import './SearchLocation.css';
 function SearchLocation()
 {
 
-    const [myCurLocation, setMyCurLocation] = useState(() => {
-       const curLocation = window.localStorage.getItem('myCurLocation');
-       return curLocation === undefined ? {lat: -73.996925, lng: 40.729675}: JSON.parse(curLocation);
-    });
+    // const [myCurLocation, setMyCurLocation] = useState(() => {
+    //    const curLocation = window.localStorage.getItem('myCurLocation');
+    //    return curLocation === undefined ? {lat: -73.996925, lng: 40.729675}: JSON.parse(curLocation);
+    // });
 
     const [dropdown, setDropdown] = useState([]);
     useEffect(()=>{},[dropdown])
@@ -17,21 +17,21 @@ function SearchLocation()
     //     {lat: -73.996925, lng: 40.729675}
     // );
 
-    useEffect(() => {
-        // if(localStorage.getItem('myCurLocation') == JSON.stringify({lat: -73.996925, lng: 40.729675})) {
-            window.localStorage.setItem('myCurLocation', JSON.stringify(myCurLocation));
-        // }
-    }, [myCurLocation]);
+    // useEffect(() => {
+    //     // if(localStorage.getItem('myCurLocation') == JSON.stringify({lat: -73.996925, lng: 40.729675})) {
+    //         window.localStorage.setItem('myCurLocation', JSON.stringify(myCurLocation));
+    //     // }
+    // }, [myCurLocation]);
 
 
-    function handleKeyPress(e) {
-        if (e.key === 'Enter') {
-            localStorage.removeItem("location");
-            console.log(e.target.value);
-            setMyCurLocation(e.target.value);
-            e.target.value = "";
-        }
-    }
+    // function handleKeyPress(e) {
+    //     if (e.key === 'Enter') {
+    //         localStorage.removeItem("location");
+    //         console.log(e.target.value);
+    //         setMyCurLocation(e.target.value);
+    //         e.target.value = "";
+    //     }
+    // }
 
     function handleTyped(e){
       
@@ -87,7 +87,7 @@ function SearchLocation()
           placeholder='Enter location to find places nearby...' 
           onChange={handleTyped}
           onClickCapture={(e) => {e.target.value = "";}}
-          onKeyDown={handleKeyPress}/>
+          />
           
           <div className='p-2'>
             <svg className='w-6 h-6 text-gray-500 text-primary' fill='none' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' viewBox='0 0 24 24' stroke='currentColor'>
