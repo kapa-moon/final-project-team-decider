@@ -18,7 +18,7 @@ router.route('/add').post((req, res) =>
     const latitude = Number(req.body.latitude);
     const type = req.body.type;
     const category = req.body.category;
-    const distance = Number(req.body.distance);
+    const distance = req.body.distance ? Number(req.body.distance): 0;
     const image = req.body.image;
     const vote = Number(req.body.vote);
 
@@ -97,6 +97,15 @@ router.route('/location_id/:location_id').get((req, res) =>
     Location.find({location_id: req.params.location_id})
         .then(locations => res.json(locations))
         .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/vote').post((req, res) =>
+{
+    let filter = {group_id: req.body.group_id, location_id: req.body.location_id},
+    update = {$set: {vote: req.body.vote}};
+    Location.findOneAndUpdate(filter, update)
+    .then(() => res.json('Location updated!'))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 module.exports = router;
