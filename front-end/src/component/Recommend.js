@@ -15,6 +15,7 @@ function processCategories (set) {
   return a[a.length-1];
 }
 
+
 function processType (set) {
   for (let item of set) {
     if (categories.includes(item)) {

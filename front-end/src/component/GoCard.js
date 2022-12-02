@@ -9,7 +9,7 @@ import Shop from '../image/shop.png';
 import Park from '../image/park.png';  
 import Museum from '../image/museum.png';
 
-const GroupCard = (props) => {
+const GoCard = (props) => {
     let navigate = useNavigate();
     const [image, setImage] = useState(Food);
     useEffect(() => {
@@ -43,9 +43,6 @@ const GroupCard = (props) => {
                         {/* <p className='font-black text-sm text-left pl-2'> hiu</p> */}
 
                     </div>
-                    <div className='flex-col palce-content-center pt-10 grow-0 items-end'>
-                        <GroupVote className='' vote = {props.vote} location={props.location}></GroupVote>
-                    </div>
 
 
 
@@ -61,4 +58,4 @@ const GroupCard = (props) => {
 
 
 
-export default GroupCard;
+export default GoCard;
