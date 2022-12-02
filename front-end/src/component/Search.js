@@ -72,6 +72,7 @@ function Search() {
           places.push(place);
         }
         setPlaces(places);
+        places = [];
     }).catch(error => { 
         console.log(error);
     });
@@ -79,7 +80,9 @@ function Search() {
 
   const [nearbyPlaces, setPlaces] = useState([]);
     useEffect(() => {
-      fetchPlaces(2);
+        if (nearbyPlaces.length === 0) {
+            fetchPlaces(2);
+        }
     }, []);
 
     let input_ref = useRef(null);
