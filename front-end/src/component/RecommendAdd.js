@@ -31,6 +31,16 @@ const RecommendAdd = (props) => {
             )
             .catch(function (error) { console.log(error); })
     }
+
+    function addmap() {
+        var map1 = new Map();
+        map1.set(curGroupID, ['1', '2', '3']);
+        map1.set(curGroupID, map1.get(curGroupID).push(props.location_id));
+        console.log(map1);
+        console.log(map1.get(curGroupID));
+        localStorage.setItem('myLocations2', JSON.stringify(map1));
+      }
+
     useEffect(() => {
         getUserID();
     }, []);
@@ -73,6 +83,9 @@ const RecommendAdd = (props) => {
             const locations = JSON.parse(a);
             if(locations.includes(props.location.location_id)){
                 setAddedByMe(true);
+                console.log(curGroupID);
+                console.log("idx")
+                console.log(props);
             }
         }
     }, []);
@@ -101,7 +114,6 @@ const RecommendAdd = (props) => {
         const locations = a ? JSON.parse(a) : [];
         let b = localStorage.getItem('myVotedLocations');
         const votedLocations = b ? JSON.parse(b) : [];
-        // console.log(locations);
         if (locations.includes(entry.location_id)) {
             console.log("already added");
         }else{
@@ -110,8 +122,6 @@ const RecommendAdd = (props) => {
         }
         localStorage.setItem('myLocations', JSON.stringify(locations));
         localStorage.setItem('myVotedLocations', JSON.stringify(votedLocations));
-
-        
 
         
         // add to group database
@@ -131,12 +141,8 @@ const RecommendAdd = (props) => {
         }else{
             alert("Already added by another group member!");
             console.log("already added by other group members");
+            setAddedByMe(true);
         }
-        var locationAndUser = {
-            location_id: props.location.location_id,
-            user_id: user_id,
-        }
-
     };
 
     const handleClickDel = () => {
@@ -213,6 +219,7 @@ const RecommendAdd = (props) => {
                 </button>
                 {/* <button onClick={deletion}>Clear
                 </button> */}
+                {/* <button onClick={addmap}>addmap</button> */}
             </>
             
         );

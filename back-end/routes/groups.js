@@ -94,4 +94,14 @@ router.route('/update/:id').post((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/updateVote').post((req, res) =>
+{
+    let filter = {idx: req.body.group_idx, "locations.location_id": req.body.location.location_id},
+    update = {$set: {"locations.$.vote": req.body.location.vote}};
+    Group.updateOne(filter, update)
+    .then(() => res.json('Location voted/unvoted!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+    
+});
+
 module.exports = router;

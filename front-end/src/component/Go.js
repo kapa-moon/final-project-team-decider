@@ -1,7 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
 import './Button.css';
-import Vote from './Vote.js';
 import GoCard from './GoCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
@@ -38,7 +37,7 @@ function Go({ SelctedLocation, SavedLocations }) {
 
     function getMostVotedLocation() {
         setMostVotedLocation(groupLocations[0]);
-        console.log(groupLocations[0]);
+        // console.log(JSON.parse(groupLocations[0]));
     }
     useEffect(() => {
         getMostVotedLocation();

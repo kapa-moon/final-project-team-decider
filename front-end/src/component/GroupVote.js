@@ -7,30 +7,33 @@ import axios from 'axios';
 
 function GroupVote(props) {
 
+    const [voteCount, setVoteCount] = useState(props.location.vote);
     const [curGroupID, setCurGroupID] = useState(() => {
         const curGroupID = window.localStorage.getItem('myCurGroup');
        //  return null;
         return !curGroupID ? '000': JSON.parse(curGroupID);
      });
 
-    var entry = {
-        _id: "",
-        group_id: curGroupID,
-        location_id: props.location.location_id,
-        name: props.location.name,
-        location_address: "test_location_address",
-        longitude: props.location.longitude,
-        latitude: props.location.latitude,
-        distance: props.location.distance,
-        type: props.location.type,
-        category: props.location.category,
-        vote: props.location.vote + 1,
+    var entryToVote = {
+        group_idx: curGroupID,
+        
+        location: {   
+            group_id: curGroupID,
+            location_id: props.location.location_id,
+            vote: props.location.vote + 1
+        }
+    }
+
+    var entryToUnvote = {
+        group_idx: curGroupID,
+        location:{
+            group_id: curGroupID,
+            location_id: props.location.location_id,
+            vote: props.location.vote - 1
+        }
     }
 
     
-
-
-
     const [voted, setVoted] = useState(false);
 
     useEffect(() => {
@@ -42,49 +45,49 @@ function GroupVote(props) {
         }
     }, []);
 
+    useEffect(() => {
+        if(entryToUnvote.location.vote < 1){
+        
+        axios.post(`http://localhost:4000/groups/deleteLocation`, {group_idx: curGroupID, location: props.location})
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(function (error) { console.log(error); })}
+    }, [entryToUnvote.location.vote]);
+
     function unvote() {
         let b = localStorage.getItem('myVotedLocations');
         const votedLocations = b ? JSON.parse(b) : [];
         if(localStorage.getItem('myVotedLocations')){
-            localStorage.setItem('myVotedLocations', JSON.stringify(votedLocations.filter(item => item !== entry.location_id)));
+            localStorage.setItem('myVotedLocations', JSON.stringify(votedLocations.filter(item => item !== entryToUnvote.location.location_id)));
             setVoted(false);
         }
 
-        const locationToDel = {
-            group_idx: curGroupID,
-            location: entry,
-        }
-
-        axios.post(`http://localhost:4000/groups/deleteLocation`, locationToDel)
+        setVoteCount(voteCount - 1);
+        console.log(entryToUnvote.location.vote);
+        if(entryToUnvote.location.vote < 1){
+            console.log("vote cannot be less than 0");
+            
+            axios.post(`http://localhost:4000/groups/deleteLocation`, {group_idx: curGroupID, location: props.location})
             .then(res => {
                 console.log(res.data);
             })
             .catch(function (error) { console.log(error); })
-            
-        
-        var updatedEntry = {
-            _id: entry._id,
-            group_id: entry.group_id,
-            location_id: entry.location_id,
-            name: entry.name,
-            location_address: entry.location_address,
-            longitude: entry.longitude,
-            latitude: entry.latitude,
-            distance: entry.distance,
-            type: entry.type,
-            category: entry.category,
-            vote: entry.vote - 1,
+
+            //  delete from the location that I added to the group
+            let c = localStorage.getItem('myLocations');
+            const votedLocations = b ? JSON.parse(c) : [];
+            if(localStorage.getItem('myLocations')){
+                localStorage.setItem('myLocations', JSON.stringify(votedLocations.filter(item => item !== entryToUnvote.location.location_id)));
+            }
+            window.location.reload();
         }
 
-        const locationToUpdate = {
-            group_idx: curGroupID,
-            location: updatedEntry,
-        }
-
-        axios.post(`http://localhost:4000/groups/addLocation`, locationToUpdate)
+        axios.post('http://localhost:4000/groups/updateVote', entryToUnvote)
             .then(res => {
                 console.log(res.data);
-            })
+            }
+            )
             .catch(function (error) { console.log(error); })
         
     }
@@ -93,33 +96,44 @@ function GroupVote(props) {
         let b = localStorage.getItem('myVotedLocations');
         const votedLocations = b ? JSON.parse(b) : [];
         if(localStorage.getItem('myVotedLocations')){
-            localStorage.setItem('myVotedLocations', JSON.stringify([...votedLocations, entry.location_id]));
+            localStorage.setItem('myVotedLocations', JSON.stringify([...votedLocations, entryToVote.location.location_id]));
             setVoted(true);
         }
+        setVoteCount(voteCount + 1);
+
+        axios.post('http://localhost:4000/groups/updateVote', entryToVote)
+            .then(res => {
+                console.log(res.data);
+            }
+            )
         
+    }
+
+    function clearMyVotedLocations(){
+        localStorage.setItem('myVotedLocations', JSON.stringify([]));
     }
 
 
     // voteCount neet to integrate with backend
-    const [voteCount, setVoteCount] = useState(props.vote);
-    const handleClick = () => {
-        console.log(props);
-        setVoted(!voted);
-        if (voted) {
-            setVoteCount(voteCount - 1);
-        } else {
-            setVoteCount(voteCount + 1);
-        }
-    };
+    
+
+    if(voted){
     return (
         <>
-        <button onClick={handleClick} className={voted ? 'bg-sharp-pink text-white voteBox' : 'bg-cream-yellow text-primary voteBox'}>
+        <button onClick={unvote} className={'bg-sharp-pink text-white voteBox'}>
             {voteCount}
         </button>
-        <button onClick={unvote}>unvote</button>
-        <button onClick={vote}>vote</button>
         </>
     );
+    } else {
+        return (
+            <>
+            <button onClick={vote} className={'bg-cream-yellow text-primary voteBox'}>
+                {voteCount}
+            </button>
+            </>
+        );
+    }
 }
 
 export default GroupVote;
