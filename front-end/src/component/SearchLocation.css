@@ -1,0 +1,33 @@
+.list{
+    color: rgb(16, 26, 23);
+}
+
+.hidden{
+    display: none;
+}
+
+.searchBar{
+    z-index: 10;
+    height: 80px;
+    overflow: display;
+}
+
+.listDropdown li{
+    color: rgb(35, 20, 13);
+    margin: 8px;
+}
+
+
+.listDropdown{
+    margin: 10px;
+    color: rgb(58, 26, 27);
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+    /* width: auto; */
+    height: fit-content;
+    max-height: 130px;
+    overflow: scroll;
+    border-radius: 10px;
+    border-width: 1.5px;
+    border-color: rgb(58, 26, 27);
+}
