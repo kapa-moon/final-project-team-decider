@@ -92,7 +92,7 @@ function Search() {
     {
         let search_keyword = input_ref.current.value;
         set_found(false);
-        for(let i = 0; i < nearbyPlaces.length && !found; ++i)
+        for(let i = 0; i < nearbyPlaces.length; ++i)
         {
           for(let j = 0; j < field_array.length; ++j)
           {
@@ -110,9 +110,8 @@ function Search() {
 
     useEffect(() =>
     {
-        console.log(search_res);
-        console.log('res change');
-    }, [search_res]);
+      console.log(search_res);
+    }, []);
 
   function get_card(card)
   {
