@@ -1,7 +1,6 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
-import { GeoapifyGeocoderAutocomplete, GeoapifyContext } from '@geoapify/react-geocoder-autocomplete'
-import '@geoapify/geocoder-autocomplete/styles/minimal.css'
+import './SearchLocation.css';
 
 function SearchLocation()
 {
@@ -35,6 +34,8 @@ function SearchLocation()
     }
 
     function handleTyped(e){
+      
+      document.querySelector('.listDropdown').style.display = "";
       var currentValue = e.target.value;
       var apiKey = 'f05457a48e8345d7b3084421d631d61d';
       var url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(currentValue)}&limit=5&apiKey=${apiKey}`;
@@ -68,26 +69,38 @@ function SearchLocation()
         </li>
     });
 
+    function handleClick(location){
+      var locationToSearch = new Object()
+      document.querySelector('.searchInput').value = location.properties.address_line1;
+      locationToSearch.lat = location.properties.lat;
+      locationToSearch.lng = location.properties.lon;
+      // store the entered location to local storage
+      localStorage.setItem("locationToSearch", JSON.stringify(locationToSearch));
+      document.querySelector('.listDropdown').style.display = 'none';
+    }
+
     return(
-      <div className='flex justify-center pt-5 pb-4'>
+      <div className='flex-row justify-center pt-5 pb-4'>
         <div className='flex justify-center items-center w-full h-12 bg-white rounded-xl ring-2 ring-primary'>
-          <input className='w-4/5 h-10 bg-white rounded-xl border-primary text-md focus:outline-none' 
+          <input className='w-4/5 h-10 bg-white rounded-xl border-primary text-md focus:outline-none searchInput' 
           type='search' 
           placeholder='Enter location to find places nearby...' 
           onChange={handleTyped}
+          onClickCapture={(e) => {e.target.value = "";}}
           onKeyDown={handleKeyPress}/>
-          <div className = 'dropdown'>
-            <ul>{dropdown.map(location => (
-              <li key={count++}>
-              <strong>{location.properties.address_line1}</strong> <small>{location.properties.address_line2}</small>
-            </li>
-              ))}</ul>
-          </div>
+          
           <div className='p-2'>
             <svg className='w-6 h-6 text-gray-500 text-primary' fill='none' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' viewBox='0 0 24 24' stroke='currentColor'>
               <path d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'></path>
             </svg>
           </div>
+        </div>
+        <div className = 'dropdown listDropdown'>
+            <ul>{dropdown.map(location => (
+              <li key={count++}>
+              <strong onClick={()=>handleClick(location)} className='list'>{location.properties.address_line1}</strong> <small>{location.properties.address_line2}</small>
+            </li>
+              ))}</ul>
         </div>
       </div>
     );
