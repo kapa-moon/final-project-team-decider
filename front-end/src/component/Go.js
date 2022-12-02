@@ -132,22 +132,22 @@ function Go({ SelctedLocation, SavedLocations }) {
         }
     }
 
-    const [myCurLocation, setMyCurLocation] = useState(() => {
-        localStorage.getItem('myCurLocation')
-    });
+    // const [myCurLocation, setMyCurLocation] = useState(() => {
+    //     localStorage.getItem('myCurLocation')
+    // });
 
-    useEffect(() => {
-        localStorage.setItem("myCurLocation", JSON.stringify(myCurLocation));
-    }, [myCurLocation]);
+    // useEffect(() => {
+    //     localStorage.setItem("myCurLocation", JSON.stringify(myCurLocation));
+    // }, [myCurLocation]);
 
 
-    function handleKeyPress(e) {
-        if (e.key === 'Enter') {
-            console.log(e.target.value);
-            setMyCurLocation(e.target.value);
-            e.target.value = "";
-        }
-    }
+    // function handleKeyPress(e) {
+    //     if (e.key === 'Enter') {
+    //         console.log(e.target.value);
+    //         setMyCurLocation(e.target.value);
+    //         e.target.value = "";
+    //     }
+    // }
 
     return (
         <>
