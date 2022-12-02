@@ -81,7 +81,7 @@ var countGroupCard = 0;
 
 
 const getGroupCard = savedLocations => savedLocations.map(item => (
-    <GroupCard name={item.name} type={item.type} distance={item.distance} category={item.category} housenumber={item.housenumber} street={item.street} vote={item.vote} key={countGroupCard++}></GroupCard>
+    <GroupCard location={item} name={item.name} type={item.type} distance={item.distance} category={item.category} housenumber={item.housenumber} street={item.street} vote={item.vote} key={countGroupCard++}></GroupCard>
 ));
 
 export default Group;

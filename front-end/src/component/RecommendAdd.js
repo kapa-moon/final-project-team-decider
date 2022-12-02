@@ -60,7 +60,7 @@ const RecommendAdd = (props) => {
         distance: props.location.distance,
         type: props.location.type,
         category: props.location.category,
-        vote: props.location.vote,
+        vote: props.location.vote + 1,
     }
 
     // use AddedByMe to set Add Button Color
@@ -96,15 +96,23 @@ const RecommendAdd = (props) => {
     const handleClickAdd = () => {
         console.log(entry);
         console.log("clicked");
+        // get the current value in local storage
         let a = localStorage.getItem('myLocations');
-        const locations = a ? JSON.parse(a) : '';
-        console.log(locations);
+        const locations = a ? JSON.parse(a) : [];
+        let b = localStorage.getItem('myVotedLocations');
+        const votedLocations = b ? JSON.parse(b) : [];
+        // console.log(locations);
         if (locations.includes(entry.location_id)) {
             console.log("already added");
         }else{
             locations.push(entry.location_id);
+            votedLocations.push(entry.location_id);
         }
         localStorage.setItem('myLocations', JSON.stringify(locations));
+        localStorage.setItem('myVotedLocations', JSON.stringify(votedLocations));
+
+        
+
         
         // add to group database
         console.log("groupLocationID: "+groupLocationsID);
@@ -139,14 +147,19 @@ const RecommendAdd = (props) => {
         // delete from local storage
         let a = localStorage.getItem('myLocations');
         const locations = a ? JSON.parse(a): '';
+        let b = localStorage.getItem('myVotedLocations');
+        const votedLocations = b ? JSON.parse(b) : [];
         console.log(locations);
+
         if (locations.includes(entry.location_id)) {
             localStorage.setItem('myLocations', JSON.stringify(locations.filter(item => item !== entry.location_id)));
             console.log("location deleted!");
+            localStorage.setItem('myVotedLocations', JSON.stringify(votedLocations.filter(item => item !== entry.location_id)));
 
         }else{
             console.log("location wasn't added!");
         }
+
         // localStorage.setItem('myLocations', JSON.stringify(locations));
 
         // delete from groups' database
@@ -169,6 +182,8 @@ const RecommendAdd = (props) => {
             location_id: props.location.location_id,
             user_id: user_id,
         }
+
+        // window.location.reload();
 
     };
 

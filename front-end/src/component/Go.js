@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import './Button.css';
 import Vote from './Vote.js';
-import GroupCard from './GroupCard';
+import GoCard from './GoCard';
 import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
 import Logo from './Logo';
@@ -12,9 +12,6 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 
 function Go({ SelctedLocation, SavedLocations }) {
-
-    const [user_id, setUser_id] = useState("");
-    const [cur_group_id, setGroup_id] = useState("");
 
     const [curGroupID, setCurGroupID] = useState(() => {
         const curGroupID = window.localStorage.getItem('myCurGroup');
@@ -41,12 +38,6 @@ function Go({ SelctedLocation, SavedLocations }) {
 
     function getMostVotedLocation() {
         setMostVotedLocation(groupLocations[0]);
-        // let curVote = groupLocations[0].vote;
-        // for (var i = 1; i < groupLocations.length; i++) {
-        //     if (groupLocations[i].vote > mostVotedLocation.vote) {
-        //         setMostVotedLocation(groupLocations[i]);
-        //     }
-        // }
         console.log(groupLocations[0]);
     }
     useEffect(() => {
@@ -109,7 +100,7 @@ function Go({ SelctedLocation, SavedLocations }) {
     const Result = () => {
         if (currentResult) {
             return (
-                <GroupCard vote={currentResult.vote} name={currentResult.name} type={currentResult.type} image={Placeholder} distance={currentResult.distance} category={currentResult.category}></GroupCard>
+                <GoCard location={currentResult} vote={currentResult.vote} name={currentResult.name} type={currentResult.type} image={Placeholder} distance={currentResult.distance} category={currentResult.category}></GoCard>
             );
         } else {
             return (
@@ -122,7 +113,7 @@ function Go({ SelctedLocation, SavedLocations }) {
     const MostVoted = () => {
         if (mostVotedLocation) {
             return (
-                <GroupCard vote={mostVotedLocation.vote} name={mostVotedLocation.name} type={mostVotedLocation.type} image={Placeholder} distance={mostVotedLocation.distance} category={mostVotedLocation.category}></GroupCard>
+                <GoCard location={mostVotedLocation} vote={mostVotedLocation.vote} name={mostVotedLocation.name} type={mostVotedLocation.type} image={Placeholder} distance={mostVotedLocation.distance} category={mostVotedLocation.category}></GoCard>
             );
         } else {
             return (
@@ -131,23 +122,6 @@ function Go({ SelctedLocation, SavedLocations }) {
             );
         }
     }
-
-    // const [myCurLocation, setMyCurLocation] = useState(() => {
-    //     localStorage.getItem('myCurLocation')
-    // });
-
-    // useEffect(() => {
-    //     localStorage.setItem("myCurLocation", JSON.stringify(myCurLocation));
-    // }, [myCurLocation]);
-
-
-    // function handleKeyPress(e) {
-    //     if (e.key === 'Enter') {
-    //         console.log(e.target.value);
-    //         setMyCurLocation(e.target.value);
-    //         e.target.value = "";
-    //     }
-    // }
 
     return (
         <>
@@ -166,7 +140,6 @@ function Go({ SelctedLocation, SavedLocations }) {
 
             </div>
             <Button str_array={['Group Information']} type={6}></Button>
-            {/* </div> */}
 
         </>
     );
