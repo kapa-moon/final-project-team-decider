@@ -113,9 +113,8 @@ function Search() {
 
     useEffect(() =>
     {
-        console.log(search_res);
-        console.log('res change');
-    }, [search_res]);
+      console.log(search_res);
+    }, []);
 
   function get_card(card)
   {
