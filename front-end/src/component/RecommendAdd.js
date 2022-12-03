@@ -31,6 +31,16 @@ const RecommendAdd = (props) => {
             )
             .catch(function (error) { console.log(error); })
     }
+
+    function addmap() {
+        var map1 = new Map();
+        map1.set(curGroupID, ['1', '2', '3']);
+        map1.set(curGroupID, map1.get(curGroupID).push(props.location_id));
+        console.log(map1);
+        console.log(map1.get(curGroupID));
+        localStorage.setItem('myLocations2', JSON.stringify(map1));
+      }
+
     useEffect(() => {
         getUserID();
     }, []);
@@ -60,7 +70,7 @@ const RecommendAdd = (props) => {
         distance: props.location.distance,
         type: props.location.type,
         category: props.location.category,
-        vote: props.location.vote,
+        vote: props.location.vote + 1,
     }
 
     // use AddedByMe to set Add Button Color
@@ -73,6 +83,9 @@ const RecommendAdd = (props) => {
             const locations = JSON.parse(a);
             if(locations.includes(props.location.location_id)){
                 setAddedByMe(true);
+                console.log(curGroupID);
+                console.log("idx")
+                console.log(props);
             }
         }
     }, []);
@@ -96,15 +109,20 @@ const RecommendAdd = (props) => {
     const handleClickAdd = () => {
         console.log(entry);
         console.log("clicked");
+        // get the current value in local storage
         let a = localStorage.getItem('myLocations');
-        const locations = a ? JSON.parse(a) : '';
-        console.log(locations);
+        const locations = a ? JSON.parse(a) : [];
+        let b = localStorage.getItem('myVotedLocations');
+        const votedLocations = b ? JSON.parse(b) : [];
         if (locations.includes(entry.location_id)) {
             console.log("already added");
         }else{
             locations.push(entry.location_id);
+            votedLocations.push(entry.location_id);
         }
         localStorage.setItem('myLocations', JSON.stringify(locations));
+        localStorage.setItem('myVotedLocations', JSON.stringify(votedLocations));
+
         
         // add to group database
         console.log("groupLocationID: "+groupLocationsID);
@@ -123,12 +141,8 @@ const RecommendAdd = (props) => {
         }else{
             alert("Already added by another group member!");
             console.log("already added by other group members");
+            setAddedByMe(true);
         }
-        var locationAndUser = {
-            location_id: props.location.location_id,
-            user_id: user_id,
-        }
-
     };
 
     const handleClickDel = () => {
@@ -139,14 +153,19 @@ const RecommendAdd = (props) => {
         // delete from local storage
         let a = localStorage.getItem('myLocations');
         const locations = a ? JSON.parse(a): '';
+        let b = localStorage.getItem('myVotedLocations');
+        const votedLocations = b ? JSON.parse(b) : [];
         console.log(locations);
+
         if (locations.includes(entry.location_id)) {
             localStorage.setItem('myLocations', JSON.stringify(locations.filter(item => item !== entry.location_id)));
             console.log("location deleted!");
+            localStorage.setItem('myVotedLocations', JSON.stringify(votedLocations.filter(item => item !== entry.location_id)));
 
         }else{
             console.log("location wasn't added!");
         }
+
         // localStorage.setItem('myLocations', JSON.stringify(locations));
 
         // delete from groups' database
@@ -169,6 +188,8 @@ const RecommendAdd = (props) => {
             location_id: props.location.location_id,
             user_id: user_id,
         }
+
+        // window.location.reload();
 
     };
 
@@ -198,6 +219,7 @@ const RecommendAdd = (props) => {
                 </button>
                 {/* <button onClick={deletion}>Clear
                 </button> */}
+                {/* <button onClick={addmap}>addmap</button> */}
             </>
             
         );
