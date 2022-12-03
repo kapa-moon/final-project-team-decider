@@ -59,15 +59,6 @@ function SearchLocation()
     }
 
     let count = 0;
-    const renderSuggestedLocations = () => 
-    dropdown.map((location) => {
-      const [lng, lat] = location.geometry.coordinates;
-      const address1 = location.properties.address1;
-      const address2 = location.properties.address2;
-        <li key={count++}>
-          <strong>{address1}</strong> <small>{address2}</small>
-        </li>
-    });
 
     function handleClick(location){
       var locationToSearch = new Object()

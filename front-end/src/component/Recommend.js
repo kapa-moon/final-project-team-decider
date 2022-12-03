@@ -4,7 +4,6 @@ import Placeholder from '../image/pic1.png';
 import Selector from './Selector';
 import Button from './Button';
 import Logo from "./Logo";
-import Search from "./Search";
 import SearchLocation from "./SearchLocation";
 
 var count = 0;
@@ -37,15 +36,34 @@ function splitElements (array){
 }
 
 function Recommend() {
+
+  const [coordinates, setCoordinates] = useState({'lng':-73.9969622, 'lat':40.7264075})
+  const [nearbyPlaces, setPlaces] = useState([]);
+  //{'lng':-73.9969622, 'lat':40.7264075}
+  useEffect(() => {
+    getCoordinateFromLS();
+  }, []);
+
+  useEffect(() => {
+    fetchPlaces(2);
+  }, [coordinates]);
+
+  async function getCoordinateFromLS(){
+    let curLocation = await window.localStorage.getItem('locationToSearch');
+    curLocation = (curLocation === undefined) ? {lng: -73.996925, lat: 40.729675}: JSON.parse(curLocation);
+    console.log('locationToSearch', curLocation);
+    setCoordinates(curLocation);
+  }
   
-  function fetchPlaces (pageNum) {
+  async function fetchPlaces (pageNum) {
     var places = [];
     const APIKey = '5b82ca360a754cec8eb085096ff20a32';
-    const latitude = -73.9969622;
-    const longitude = 40.7264075;
+    let longitude = coordinates['lng'];
+    let latitude = coordinates['lat'];
+    console.log('fetch places coordinates', coordinates);
     let radius = 4 * 1000;
     let totalPlaces = pageNum*10;
-    const url = 'https://api.geoapify.com/v2/places?categories='+categories.join(",")+'&filter=circle:' +latitude+ ','+longitude+','+radius+'&bias=proximity:-73.99120964730558,40.7362796&limit='+ totalPlaces +'&apiKey=' + APIKey;
+    const url = 'https://api.geoapify.com/v2/places?categories='+categories.join(",")+'&filter=circle:' +longitude+ ','+latitude+','+radius+'&bias=proximity:'+longitude+','+latitude+'&limit='+ totalPlaces +'&apiKey=' + APIKey;
 
     var requestOptions = {
         method: 'GET',
@@ -54,6 +72,7 @@ function Recommend() {
     fetch(url, requestOptions)
     .then(response => response.json())
     .then(result => { 
+        console.log('fetch places result', result.features);
         for (let geoPlace of result.features) {
           var place = {};
           var myLat = geoPlace.properties.lon;
@@ -67,7 +86,7 @@ function Recommend() {
           place['vote'] = 0;
           place['distance'] = Math.round(in_miles * 10) / 10;
           place['coordinate'] = coordinate;
-          place['placeName'] = geoPlace.properties.name;
+          place['placeName'] = geoPlace.properties.name == null ? geoPlace.properties.address_line1 : geoPlace.properties.name;
           place['type'] = processType(splitElements(geoPlace.properties.categories));
           place['category'] = processCategories(splitElements(geoPlace.properties.categories));
           places.push(place);
@@ -78,10 +97,6 @@ function Recommend() {
     });
   }
 
-  const [nearbyPlaces, setPlaces] = useState([]);
-    useEffect(() => {
-      fetchPlaces(2);
-    }, []);
   return (
     <>
     <Logo></Logo>
