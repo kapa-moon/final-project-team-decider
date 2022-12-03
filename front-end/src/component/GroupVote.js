@@ -45,16 +45,6 @@ function GroupVote(props) {
         }
     }, []);
 
-    useEffect(() => {
-        if(entryToUnvote.location.vote < 1){
-        
-        axios.post(`http://localhost:4000/groups/deleteLocation`, {group_idx: curGroupID, location: props.location})
-        .then(res => {
-            console.log(res.data);
-        })
-        .catch(function (error) { console.log(error); })}
-    }, [entryToUnvote.location.vote]);
-
     function unvote() {
         let b = localStorage.getItem('myVotedLocations');
         const votedLocations = b ? JSON.parse(b) : [];
