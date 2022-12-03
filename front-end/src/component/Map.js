@@ -5,6 +5,7 @@ import './Map.css';
 import './Canvas.css';
 import Selector from './Selector';
 import Button from './Button';
+import {useLocation} from 'react-router-dom';
 
 import "leaflet/dist/leaflet.css";
 import icon from "leaflet/dist/images/marker-icon.png";
@@ -15,8 +16,6 @@ iconUrl: icon,
 shadowUrl: iconShadow,
 });
 
-var latlng = L.latLng(48.1500327, 11.5753989);
-
 let text = `
     Location Name
     Location Address
@@ -25,8 +24,14 @@ let text = `
 
 
 
-function Map() {
-useEffect(() => {
+const Map = (props) => {
+
+    const {state} = useLocation();
+    
+    console.log(state);
+
+    useEffect(() => {
+    var latlng = L.latLng(state.coordinate.longitude, state.coordinate.latitude);
     var container = L.DomUtil.get("map");
     if (container != null) {
         container._leaflet_id = null;
@@ -45,7 +50,8 @@ useEffect(() => {
     L.Marker.prototype.options.icon = DefaultIcon;
     var marker = L.marker(latlng).addTo(map);
     marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-}, []);
+    }, [state]);
+
 return (<>
          <div className = 'd0'>
         <Selector></Selector>
