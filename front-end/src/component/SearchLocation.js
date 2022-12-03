@@ -68,6 +68,7 @@ function SearchLocation()
       // store the entered location to local storage
       localStorage.setItem("locationToSearch", JSON.stringify(locationToSearch));
       document.querySelector('.listDropdown').style.display = 'none';
+      window.location.reload();
     }
 
     return(

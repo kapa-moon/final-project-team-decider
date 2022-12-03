@@ -37,7 +37,7 @@ function splitElements (array){
 
 function Recommend() {
 
-  const [coordinates, setCoordinates] = useState({'lng':-73.9969622, 'lat':40.7264075})
+  const [coordinates, setCoordinates] = useState()
   const [nearbyPlaces, setPlaces] = useState([]);
   //{'lng':-73.9969622, 'lat':40.7264075}
   useEffect(() => {
