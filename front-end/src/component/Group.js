@@ -7,7 +7,7 @@ import Museum from '../image/museum.png';
 import Selector from './Selector';
 import Button from './Button';
 import axios from 'axios';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect} from 'react';
 import Logo from './Logo';
 import SearchBar from './SearchBar';
  
@@ -21,24 +21,10 @@ function Group() {
      console.log(curGroupID);
 
     const [groupLocations, setGroupLocations] = useState("");
-    // const [is_first, set_is_first] = useState(true);
 
     async function getGroupLocations() {
          await axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
              .then(res => {
-                // setGroupLocations(res.data[0].locations);
-                // if(is_first)
-                // {
-                //     window.localStorage.setItem('loc', [JSON.stringify(res.data[0].locations)]);
-                //     set_is_first(false);
-                // }
-
-                // setGroupLocations(window.localStorage.getItem('myLocations')[0]);
-
-                // console.log('res da loc', res.data[0].locations);
-
-                alert('data is', JSON.stringify(res.data[0].locations));
-        
                 setGroupLocations(res.data[0].locations);
              }
              )
