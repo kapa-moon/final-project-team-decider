@@ -44,7 +44,7 @@ After join a group from clicking ```enter``` with input group id, the group is a
 
 Then the user can view the newly added group in ```view``` page, other database query options can be performed in ```view``` page
 such as ```remove a group from group list```, ```remove all group from group list```, these queries are only performed
-in the ```my_groups``` array of the current user, not influencing the groups themselves. The user can also see the current username and current group in view page. More information about ```myLocations, myCurLocation``` can also be seen from opening developer tools in the broswer and then choose ```Applications -> location Storage -> http://localhost:3000```. 
+in the ```my_groups``` array of the current user, not influencing the groups themselves. The user can also see the current username and current group in view page. More information about ```myLocations, myCurLocation``` can also be seen from opening developer tools in the broswer and then choose ```Applications -> local Storage -> http://localhost:3000```. 
 
 To switch a group, copy a group number from ```group list``` in ```view (group information)``` page, then go back to ```http://localhost:3000``` and use the copied group number as input to the ```Enter Group ID``` in the text box and hit enter. You can see the changed group by checking the current group in ```view (group information)``` page.
 

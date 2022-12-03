@@ -7,10 +7,10 @@ import Museum from '../image/museum.png';
 import Selector from './Selector';
 import Button from './Button';
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Logo from './Logo';
 import SearchBar from './SearchBar';
-
+ 
 function Group() {
 
     const [curGroupID, setCurGroupID] = useState(() => {
@@ -21,11 +21,25 @@ function Group() {
      console.log(curGroupID);
 
     const [groupLocations, setGroupLocations] = useState("");
- 
-    function getGroupLocations() {
-         axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
+    // const [is_first, set_is_first] = useState(true);
+
+    async function getGroupLocations() {
+         await axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
              .then(res => {
-                 setGroupLocations(res.data[0].locations);
+                // setGroupLocations(res.data[0].locations);
+                // if(is_first)
+                // {
+                //     window.localStorage.setItem('loc', [JSON.stringify(res.data[0].locations)]);
+                //     set_is_first(false);
+                // }
+
+                // setGroupLocations(window.localStorage.getItem('myLocations')[0]);
+
+                // console.log('res da loc', res.data[0].locations);
+
+                alert('data is', JSON.stringify(res.data[0].locations));
+        
+                setGroupLocations(res.data[0].locations);
              }
              )
              .catch(function (error) { console.log(error); })
@@ -55,13 +69,15 @@ function Group() {
     }, []);
     
     useEffect(() => {
-        var group_id = cur_group_id;
-        if (group_id) {
-            axios.get(`http://localhost:4000/locations/group_id/${group_id}`)
-                .then(res => { setSelectedLocations(res.data); }
-                )
-        }
-    }, [cur_group_id]);
+        (async() => 
+        {
+            var group_id = cur_group_id;
+            if (group_id) {
+                axios.get(`http://localhost:4000/locations/group_id/${group_id}`)
+                    .then(res => { setSelectedLocations(res.data); });
+            }
+        })();
+    }, []);
 
     return (
         <>
@@ -77,8 +93,6 @@ function Group() {
 }
 
 var countGroupCard = 0;
-
-
 
 const getGroupCard = savedLocations => savedLocations.map(item => (
     <GroupCard location={item} name={item.name} type={item.type} distance={item.distance} category={item.category} housenumber={item.housenumber} street={item.street} vote={item.vote} key={countGroupCard++}></GroupCard>
