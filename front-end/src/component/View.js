@@ -171,6 +171,7 @@ function View() {
         return (
             <div className='home_body App flex-row view0'>
                 <div>{'User ' + cur_user_data.username}</div>
+                <div>{'Current group' + ' ' + JSON.parse(window.localStorage.getItem('myCurGroup'))}</div>
                 <br></br>
                 Group List
                 <div style={{ width: '250px', height: '200px', overflowX: 'scroll', overflowY: 'scroll' }} className="overflow-scroll h-9">
