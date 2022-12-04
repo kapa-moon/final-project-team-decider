@@ -96,18 +96,24 @@ function B9({ str }) {
 }
 
 function B10({ str }) {
-    let input = 'input0';
 
     function Input_function() {
         return (
-            <input id={input} className='b3' type='text' value={str.placeholder} style={{ marginLeft: '-2px', marginTop: '-2px' }}></input>
+            <input id='input0' className='b3' type='text' value={str.placeholder} style={{ marginLeft: '-2px', marginTop: '-2px' }} readOnly={true} ></input>
         );
+    }
+
+    function Memcpy() {
+        let copy = document.getElementById('input0');
+        copy.select();
+        //navigator.clipboard.writeText(copy.value);
+        alert('Link copied: ' + copy.value);
     }
 
     return (
         <div>
             <label className='b3 block mb-2' style={{ textAlign: str.text_align }}>{str.str}</label>
-            <button className='b7' onClick={() => Memcpy(input)}><Input_function></Input_function></button>
+            <label className='b7'><Input_function></Input_function></label>
         </div>
     );
 }
@@ -273,7 +279,6 @@ function B14({ str }) {
 
     async function Handle_click_B14()
     {
-        alert(`Group ${str.cur_id} created.`);
         fetch(`http://localhost:4000/groups/add`,
         {
             method: 'post',
@@ -307,6 +312,10 @@ function B14({ str }) {
         .then(res => res.json())
         .then(data => set_data(data));
         localStorage.setItem('myCurGroup', JSON.stringify(str.cur_id));
+        let copy = document.getElementById('input0');
+        copy.select();
+        navigator.clipboard.writeText(copy.value);
+        alert('Link copied and Group Created: ' + copy.value);
         navigate('/Recommend');
     }
 
