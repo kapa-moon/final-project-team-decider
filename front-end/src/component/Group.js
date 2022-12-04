@@ -25,6 +25,7 @@ function Group() {
     async function getGroupLocations() {
          await axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
              .then(res => {
+                    console.log(res.data[0].locations);
                 setGroupLocations(res.data[0].locations);
              }
              )

@@ -89,6 +89,9 @@ function Recommend() {
           place['placeName'] = geoPlace.properties.name == null ? geoPlace.properties.address_line1 : geoPlace.properties.name;
           place['type'] = processType(splitElements(geoPlace.properties.categories));
           place['category'] = processCategories(splitElements(geoPlace.properties.categories));
+          place['address'] = geoPlace.properties.address_line1;
+          place['address2'] = geoPlace.properties.address_line2;
+          place['neighbourhood'] = geoPlace.properties.neighbourhood;
           places.push(place);
         }
         setPlaces(places);
