@@ -41,7 +41,7 @@ describe('user test', function () {
                     .send({
                         user_id: user_id,
                         email: email,
-                        name: name,
+                        username: name,
                         hash: hash,
                         my_location: my_location,
                         my_groups: my_groups,
@@ -58,13 +58,13 @@ describe('user test', function () {
             })
         });
 
-        describe('get /user/vote', function () {
+        describe('post /user/vote', function () {
             let location_id = Math.random().toString().slice(2);
             let user_id = Math.random().toString().slice(2);
             it('should have 200 success status response, res.body should be a user string', function (done) {
                 chai.
                     request(app)
-                    .get('/user/vote')
+                    .post('/user/vote')
                     .send({
                         user_id: user_id,
                         location_id: location_id,
@@ -73,19 +73,19 @@ describe('user test', function () {
                         if (e)
                             throw e;
                         expect(res).to.have.status(200);
-                        expect(res.body).to.be.an('array');
+                        expect(res.body).to.be.an('string');
                         done();
                     });
             })
         });
 
-        describe('get /user/unvote', function () {
+        describe('post /user/unvote', function () {
             let location_id = Math.random().toString().slice(2);
             let user_id = Math.random().toString().slice(2);
             it('should have 200 success status response, res.body should be a user string', function (done) {
                 chai.
                     request(app)
-                    .get('/user/unvote')
+                    .post('/user/unvote')
                     .send({
                         user_id: user_id,
                         location_id: location_id,
@@ -94,7 +94,7 @@ describe('user test', function () {
                         if (e)
                             throw e;
                         expect(res).to.have.status(200);
-                        expect(res.body).to.be.an('array');
+                        expect(res.body).to.be.an('string');
                         done();
                     });
             })
