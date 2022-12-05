@@ -60,7 +60,7 @@ Can also ```remove a group from database``` here, these queries are performed to
 * This web app is in mobile-first design. It's preferable to be tested in mobile sizes.
 * If the "Recommend Page" doesn't show, try ```inspect``` and enter ```localStorage.setItem('myCurLocation','196')``` in the console, then 
 * There may be some time delay when rendering ```view``` (group information) page for logged in users.
-* If ```nodemon``` command cannot be found, use ```npm install -g nodemon``` to install ```nodemon```.
+* ```nodemon``` is already included in ```back-end/package-lock.json```. However, if after ```npm install```, ```nodemon``` command still cannot be found, use ```npm install -g nodemon``` to install ```nodemon```.
 
 ## Members
 
