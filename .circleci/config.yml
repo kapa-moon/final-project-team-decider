@@ -36,7 +36,6 @@ jobs:
           ls # for debugging: show sub-directories in here
           npm install
       - run: |
-          cd ..
           cd front-end
           npm install # install all dependencies listed in package.json
           npm run build # have react build the stand-alone front-end code
