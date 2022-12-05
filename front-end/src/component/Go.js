@@ -37,7 +37,18 @@ function Go({ SelctedLocation, SavedLocations }) {
 
     function getMostVotedLocation() {
         setMostVotedLocation(groupLocations[0]);
-        // console.log(JSON.parse(groupLocations[0]));
+        for (let i = 1; i < groupLocations.length; i++) {
+            var place = (groupLocations[i]);
+            if(place && mostVotedLocation){
+                console.log('place',place['vote']);
+                if (place['vote'] > mostVotedLocation['vote']) {
+                    setMostVotedLocation(groupLocations[i]);
+                }
+            }else{
+                console.log('no place')
+            }
+            
+        }
     }
     useEffect(() => {
         getMostVotedLocation();

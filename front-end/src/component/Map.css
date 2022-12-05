@@ -1,4 +1,4 @@
-textarea.textarea0
+.textarea0
 {
     width: 345px;
     height: 200px;
@@ -9,6 +9,5 @@ textarea.textarea0
     color:#fff;
     outline:#000;
     font-family: Courier;
-    font-size: 20px;
     white-space: pre-wrap;
 }

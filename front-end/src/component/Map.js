@@ -5,6 +5,8 @@ import './Map.css';
 import './Canvas.css';
 import Selector from './Selector';
 import Button from './Button';
+import {useLocation} from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
 
 import "leaflet/dist/leaflet.css";
 import icon from "leaflet/dist/images/marker-icon.png";
@@ -15,18 +17,28 @@ iconUrl: icon,
 shadowUrl: iconShadow,
 });
 
-var latlng = L.latLng(48.1500327, 11.5753989);
+const Map = () => {
 
-let text = `
-    Location Name
-    Location Address
-    Location Type
-    Location Description`;
+    const {state} = useLocation();
 
+    //const [text, setText] = React.useState('Loading...');
 
-
-function Map() {
-useEffect(() => {
+    useEffect(() => {
+        console.log('state', state);
+    let placeName = ('placeName' in state) ? state.placeName : state.name;
+        const locdes = ReactDOM.createRoot(
+            document.getElementById('locdes')
+          );
+          const element = (
+          <>
+          <h1>{placeName}</h1>
+          <p>{state.address2}</p>
+          <p>{state.neighbourhood}</p>
+          </>);
+          locdes.render(element);
+    let longitude = ('coordinate' in state) ? state.coordinate.longitude : state.longitude;
+    let latitude = ('coordinate' in state) ? state.coordinate.latitude : state.latitude;
+    var latlng = L.latLng(longitude, latitude);
     var container = L.DomUtil.get("map");
     if (container != null) {
         container._leaflet_id = null;
@@ -44,13 +56,14 @@ useEffect(() => {
     }).addTo(map);
     L.Marker.prototype.options.icon = DefaultIcon;
     var marker = L.marker(latlng).addTo(map);
-    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-}, []);
+    marker.bindPopup(`<b>${placeName}</b><br>Is this where you want to go?`).openPopup();
+    }, [state]);
+//<textarea className = 'textarea0'>{text}</textarea>
 return (<>
          <div className = 'd0'>
         <Selector></Selector>
         <div id = 'map' style = {{width: '345px', height: '345px'}}></div>
-        <textarea className = 'textarea0'>{text}</textarea>
+        <div className='textarea0' id = 'locdes'></div>
         <Button str_array = {['Group Information']} type = {6}></Button>
         </div>
         </>);
