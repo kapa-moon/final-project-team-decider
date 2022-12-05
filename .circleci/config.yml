@@ -31,10 +31,6 @@ jobs:
       - checkout
       - run: echo "this is the build react.js job"
       - run: |
-          cd back-end
-          npm install
-          npm start
-      - run: |
           cd ..
           cd front-end
           npm install # install all dependencies listed in package.json
