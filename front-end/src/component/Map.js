@@ -45,12 +45,12 @@ const Map = () => {
     }
     var map = L.map("map").setView(latlng, 13);
     const isRetina = L.Browser.retina;
-    const baseUrl = "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=f05457a48e8345d7b3084421d631d61d";
-    const retinaUrl = "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey=f05457a48e8345d7b3084421d631d61d";
+    const baseUrl = `${process.env.REACT_APP_MAP_URL}/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=${process.env.REACT_APP_MAP_KEY}`;
+    const retinaUrl = `${process.env.REACT_APP_MAP_URL}/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey=${process.env.REACT_APP_MAP_KEY}`;
     L.tileLayer(isRetina ? retinaUrl : baseUrl,
     {
         attribution:
-        'Powered by <a href="https://www.geoapify.com/" target="_blank">Geoapify</a> | © OpenStreetMap <a href="https://www.openstreetmap.org/copyright" target="_blank">contributors</a>',
+        `Powered by <a href="${REACT_APP_GEOAPIFY_W3_URL}" target="_blank">Geoapify</a> | © OpenStreetMap <a href="${process.env.REACT_APP_OPEN_STREET_URL}/copyright" target="_blank">contributors</a>`,
         maxZoom: 20,
         id: 'osm-bright',
     }).addTo(map);
