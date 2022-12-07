@@ -50,7 +50,7 @@ const Map = () => {
     L.tileLayer(isRetina ? retinaUrl : baseUrl,
     {
         attribution:
-        `Powered by <a href="${REACT_APP_GEOAPIFY_W3_URL}" target="_blank">Geoapify</a> | © OpenStreetMap <a href="${process.env.REACT_APP_OPEN_STREET_URL}/copyright" target="_blank">contributors</a>`,
+        `Powered by <a href="${process.env.REACT_APP_GEOAPIFY_W3_URL}" target="_blank">Geoapify</a> | © OpenStreetMap <a href="${process.env.REACT_APP_OPEN_STREET_URL}/copyright" target="_blank">contributors</a>`,
         maxZoom: 20,
         id: 'osm-bright',
     }).addTo(map);
