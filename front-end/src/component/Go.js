@@ -22,7 +22,7 @@ function Go({ SelctedLocation, SavedLocations }) {
     const [mostVotedLocation, setMostVotedLocation] = useState("");
 
     function getGroupLocations() {
-        axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/groups/idx/${curGroupID}`)
             .then(res => {
                 setGroupLocations(res.data[0].locations);
             }
@@ -66,7 +66,7 @@ function Go({ SelctedLocation, SavedLocations }) {
             group_idx: curGroupID,
             location: chosenLocation
         }
-        axios.post(`http://localhost:4000/groups/setSelectedLocation`, locationSelected)
+        axios.post(`${process.env.REACT_APP_BACK_END_URL}/groups/setSelectedLocation`, locationSelected)
                 .then(res => {
                     console.log(res.data);
                 })
@@ -79,7 +79,7 @@ function Go({ SelctedLocation, SavedLocations }) {
     const [currentResult, setCurrentResult] = useState({});
 
     async function getCurrentResult() {
-        axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/groups/idx/${curGroupID}`)
             .then(res => {
                 setCurrentResult(res.data[0].selectedLocation);
             }

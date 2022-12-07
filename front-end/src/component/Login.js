@@ -20,7 +20,7 @@ function Login()
 
     function click_login()
     {
-        fetch(`http://localhost:4000/login`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/login`,
         {
             method: 'post',
             headers:
@@ -45,7 +45,8 @@ function Login()
                 navigate('/');
             }
             return res.blob();
-        });
+        })
+        .catch(function (error){ console.log(error); });
     }
 
     return(

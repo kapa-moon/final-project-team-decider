@@ -13,7 +13,7 @@ function Signup()
 
     function click_signup()
     {
-        fetch(`http://localhost:4000/user/add`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/user/add`,
         {
             method: 'post',
             headers:
@@ -39,7 +39,8 @@ function Signup()
                 navigate('/');
             }
             return res.blob();
-        });
+        })
+        .catch(function (error){ console.log(error); });
     }
 
     return(

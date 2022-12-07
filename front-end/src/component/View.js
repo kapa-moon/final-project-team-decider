@@ -28,7 +28,7 @@ function View() {
     let [cur_user_data, set_cur_user_data] = useState("");
     useEffect(() =>
     {
-        fetch(`http://localhost:4000/login/cur_user`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/login/cur_user`,
         {
             method: 'post',
             headers:
@@ -42,11 +42,12 @@ function View() {
             })
         })
         .then(res => res.json())
-        .then(data => set_cur_user_data(data));
+        .then(data => set_cur_user_data(data))
+        .catch(function (error){ console.log(error); });
     }, []);
 
     function getUserID() {
-        axios.get(`http://localhost:4000/user/`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/user/`)
             .then(res => {
                 setUser_id(res.data[2].user_id);
                 setGroup_id(res.data[2].current_group);
@@ -64,7 +65,7 @@ function View() {
 
     function handle_click() {
         alert(`Group ${input_ref.current.value} removed.`);
-        fetch(`http://localhost:4000/user/removegroup`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/user/removegroup`,
         {
             method: 'delete',
             headers:
@@ -78,15 +79,17 @@ function View() {
                 group_idx: input_ref.current.value
             })
         })
-        .then(res => res.json());
+        .then(res => res.json())
+        .catch(function (error){ console.log(error); });
         window.location.reload(false);
     }
 
     let [data, set_group_data] = useState({});
     useEffect(() => {
-        fetch('http://localhost:4000/groups')
+        fetch('${process.env.REACT_APP_BACK_END_URL}/groups')
             .then(res => res.json())
-            .then(data => set_group_data(data));
+            .then(data => set_group_data(data))
+            .catch(function (error){ console.log(error); });
     }, []);
 
     async function swtichGroup({ user_id, str }) {
@@ -94,7 +97,7 @@ function View() {
         var group_idx = {
             current_group: str
         }
-        axios.post(`http://localhost:4000/user/switchgroup/${user_id}`, group_idx)
+        axios.post(`${process.env.REACT_APP_BACK_END_URL}/user/switchgroup/${user_id}`, group_idx)
             .then(res => {
                 console.log(res.data);
             })
@@ -124,9 +127,10 @@ function View() {
     {
         for(let i = 0; i < cur_user_data.my_groups; ++i)
         {
-            fetch(`http://localhost:4000/groups/idx/${cur_user_data.my_groups[i]}`)
+            fetch(`${process.env.REACT_APP_BACK_END_URL}/groups/idx/${cur_user_data.my_groups[i]}`)
             .then(res => res.json())
-            .then(data => set_group_i(data));
+            .then(data => set_group_i(data))
+            .catch(function (error){ console.log(error); });
             my_groups_array.push(group_i);
         }
     }, []);
@@ -149,7 +153,7 @@ function View() {
     function handle_remove_all()
     {
         alert(`All groups removed.`);
-        fetch(`http://localhost:4000/user/remove_all_group`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/user/remove_all_group`,
         {
             method: 'delete',
             headers:
@@ -162,7 +166,8 @@ function View() {
                 user_id: cur_user_data.user_id,
             })
         })
-        .then(res => res.json());
+        .then(res => res.json())
+        .catch(function (error){ console.log(error); });
         window.location.reload(false);
     }
 

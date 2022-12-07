@@ -12,7 +12,7 @@ const RecommendVote = (props) => {
     const [cur_group_id, setGroup_id] = useState("");
 
     function getUserID() {
-        axios.get(`http://localhost:4000/user/`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/user/`)
             .then(res => {
 
                 setUser_id(res.data[2].user_id);
@@ -32,7 +32,7 @@ const RecommendVote = (props) => {
             location_id: cur_group_id,
             user_id: user_id,
         }
-        axios.post(`http://localhost:4000/vote/`, vote)
+        axios.post(`${process.env.REACT_APP_BACK_END_URL}/vote/`, vote)
             .then(res => {
                 console.log(res.data);
             })
@@ -63,7 +63,7 @@ const RecommendVote = (props) => {
     }, []);
 
     function fetchLocationFromDB(location_id) {
-        axios.get(`http://localhost:4000/locations/location_id/${location_id}`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/locations/location_id/${location_id}`)
             .then(res => {
                 if (res.data.length == 0) {
                     setVoteCount(0);
@@ -89,14 +89,14 @@ const RecommendVote = (props) => {
             entry.vote = voteCount - 1;
             entry._id = object_id;
             if (voteCount-1 == 0) {
-                axios.delete(`http://localhost:4000/locations/location_id/${entry.location_id}`, entry)
+                axios.delete(`${process.env.REACT_APP_BACK_END_URL}/locations/location_id/${entry.location_id}`, entry)
                 .then(res => console.log(res.data));
             } else {
-                axios.post(`http://localhost:4000/locations/update/${object_id}`, entry)
+                axios.post(`${process.env.REACT_APP_BACK_END_URL}/locations/update/${object_id}`, entry)
                 .then(res => console.log(res.data))
                 .catch(err => console.log(err));
 
-            axios.post(`http://localhost:4000/user/unvote`, locationAndUser)
+            axios.post(`${process.env.REACT_APP_BACK_END_URL}/user/unvote`, locationAndUser)
                 .then(res => console.log(res.data))
                 .catch(err => console.log(err));
             }
@@ -106,20 +106,20 @@ const RecommendVote = (props) => {
             entry._id = object_id;
             console.log(entry);
             if (voteCount == 0) {
-                axios.post('http://localhost:4000/locations/add', entry)
+                axios.post('${process.env.REACT_APP_BACK_END_URL}/locations/add', entry)
                     .then(res => console.log(res.data))
                     .catch(err => console.log(err));
                 //window.location = '/group';
-                axios.post('http://localhost:4000/user/vote', locationAndUser)
+                axios.post('${process.env.REACT_APP_BACK_END_URL}/user/vote', locationAndUser)
                     .then(res => console.log(res.data))
                     .catch(err => console.log(err));
 
             } else {
-                axios.post(`http://localhost:4000/locations/update/${entry._id}`, entry)
+                axios.post(`${process.env.REACT_APP_BACK_END_URL}/locations/update/${entry._id}`, entry)
                     .then(res => console.log(res.data))
                     .catch(err => console.log(err));
 
-                axios.post('http://localhost:4000/user/vote', locationAndUser)
+                axios.post('${process.env.REACT_APP_BACK_END_URL}/user/vote', locationAndUser)
                     .then(res => console.log(res.data))
                     .catch(err => console.log(err));
             }

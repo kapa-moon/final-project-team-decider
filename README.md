@@ -40,7 +40,7 @@ Run ```npm start```<br>
 4. Unit tests: ```cd back-end```<br>
 ```npm test```<br>
 
-Use ```http://localhost:4000/groups``` to see available groups, then join a trial group to have a multi-user experience.
+Use ```process.env.REACT_APP_BACK_END_URL/groups``` to see available groups, then join a trial group to have a multi-user experience.
 After sign up an account, use the account to log in to use more features in ```view``` page, or you can use an existing testing account with username ```abc``` and password ```123```.
 After join a group from clicking ```enter``` with input group id, the group is added to the current user's group list if the group is not already in the user's group list, and the user is switched to the group.
 

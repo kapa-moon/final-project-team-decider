@@ -22,7 +22,7 @@ const RecommendAdd = (props) => {
     localStorage.setItem('myLocations', JSON.stringify(locations));
 
     function getUserID() {
-        axios.get(`http://localhost:4000/user/`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/user/`)
             .then(res => {
 
                 setUser_id(res.data[2].user_id);
@@ -52,7 +52,7 @@ const RecommendAdd = (props) => {
             location_id: cur_group_id,
             user_id: user_id,
         }
-        axios.post(`http://localhost:4000/vote/`, vote)
+        axios.post(`${process.env.REACT_APP_BACK_END_URL}/vote/`, vote)
             .then(res => {
                 console.log(res.data);
             })
@@ -94,7 +94,7 @@ const RecommendAdd = (props) => {
     const [groupLocationsID, setGroupLocationsID] = useState([]);
 
     function getGroupLocations() {
-        axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/groups/idx/${curGroupID}`)
             .then(res => {
                 setGroupLocations(res.data[0].locations);
                 setGroupLocationsID(res.data[0].locations.map((location) => location.location_id));
@@ -132,7 +132,7 @@ const RecommendAdd = (props) => {
             location: entry,
         }
 
-        axios.post(`http://localhost:4000/groups/addLocation`, locationToAdd)
+        axios.post(`${process.env.REACT_APP_BACK_END_URL}/groups/addLocation`, locationToAdd)
             .then(res => {
                 console.log(res.data);
             })
@@ -175,7 +175,7 @@ const RecommendAdd = (props) => {
             location: entry,
         }
 
-        axios.post(`http://localhost:4000/groups/deleteLocation`, locationToDel)
+        axios.post(`${process.env.REACT_APP_BACK_END_URL}/groups/deleteLocation`, locationToDel)
             .then(res => {
                 console.log(res.data);
             })

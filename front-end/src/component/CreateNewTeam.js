@@ -31,7 +31,7 @@ function CreateNewTeam() {
   let [cur_user_data, set_cur_user_data] = useState({});
   useEffect(() =>
   {
-      fetch(`http://localhost:4000/login/cur_user`,
+      fetch(`${process.env.REACT_APP_BACK_END_URL}/login/cur_user`,
       {
           method: 'post',
           headers:
@@ -45,7 +45,8 @@ function CreateNewTeam() {
           })
       })
       .then(res => res.json())
-      .then(data => set_cur_user_data(data));
+      .then(data => set_cur_user_data(data))
+      .catch(function (error){ console.log(error); });
   });
 
   let [data, set_data] = useState({});
@@ -53,7 +54,7 @@ function CreateNewTeam() {
   function add_group(group_idx)
   {
       navigate('/Home');
-      fetch(`http://localhost:4000/user/addgroup`,
+      fetch(`${process.env.REACT_APP_BACK_END_URL}/user/addgroup`,
       {
           method: 'post',
           headers:
@@ -68,7 +69,8 @@ function CreateNewTeam() {
           })
       })
       .then(res => res.json())
-      .then(data => set_data(data));
+      .then(data => set_data(data))
+      .catch(function (error){ console.log(error); });
   }
 
     // set the user's current group to the group code just created
@@ -84,7 +86,7 @@ function CreateNewTeam() {
   async function getGroup()
   {
   const groupID = document.getElementById('joinGroup').value;
-  axios.get(`http://localhost:4000/groups/idx/${groupID}`).then(res => {
+  axios.get(`${process.env.REACT_APP_BACK_END_URL}/groups/idx/${groupID}`).then(res => {
     console.log(res.data);
     if(res.data.length === 0)
     {
