@@ -41,20 +41,6 @@ router.route('/add').post((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').get((req, res) =>
-{
-    Location.findById(req.params.id)
-        .then(location => res.json(location))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-router.route('/:id').delete((req, res) =>
-{
-    Location.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Location deleted.'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
 router.route('/location_id/:location_id').delete((req, res) =>
 {
     Location.deleteMany({location_id: req.params.location_id})
@@ -62,28 +48,6 @@ router.route('/location_id/:location_id').delete((req, res) =>
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) =>
-{
-    Location.findById(req.params.id)
-        .then(location => {
-            location.group_id = req.body.group_id;
-            location.location_id = req.body.location_id;
-            location.name = req.body.name;
-            location.location_address = req.body.location_address;
-            location.longitude = Number(req.body.longitude);
-            location.latitude = Number(req.body.latitude);
-            location.type = req.body.type;
-            location.category = req.body.category;
-            location.distance = Number(req.body.distance);
-            location.image = req.body.image;
-            location.vote = Number(req.body.vote);
-
-            location.save()
-                .then(() => res.json('Location updated!'))
-                .catch(err => res.status(400).json('Error: ' + err));
-        })
-        .catch(err => res.status(400).json('Error: ' + err));
-});
 
 router.route('/group_id/:group_id').get((req, res) =>
 {
