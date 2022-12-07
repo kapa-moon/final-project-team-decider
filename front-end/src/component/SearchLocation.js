@@ -37,8 +37,8 @@ function SearchLocation()
       
       document.querySelector('.listDropdown').style.display = "";
       var currentValue = e.target.value;
-      var apiKey = 'f05457a48e8345d7b3084421d631d61d';
-      var url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(currentValue)}&limit=5&apiKey=${apiKey}`;
+      var apiKey = process.env.REACT_APP_GEOAPIFY_MAP_KEY;
+      var url = `${process.env.REACT_APP_GEOAPIFY_URL}/v1/geocode/autocomplete?text=${encodeURIComponent(currentValue)}&limit=5&apiKey=${apiKey}`;
       if (currentValue.length > 3) {
       fetch(url)
         .then(response => {

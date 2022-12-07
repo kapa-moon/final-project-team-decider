@@ -44,7 +44,7 @@ function Search() {
     const longitude = 40.7264075;
     let radius = 4 * 1000;
     let totalPlaces = pageNum*10;
-    const url = `${process.env.REACT_APP_GEOAPIFY_URL}?categories=`+categories.join(",")+'&filter=circle:' +latitude+ ','+longitude+','+radius+'&bias=proximity:-73.99120964730558,40.7362796&limit='+ totalPlaces +'&apiKey=' + APIKey;
+    const url = `${process.env.REACT_APP_GEOAPIFY_URL}/v2/places?categories=`+categories.join(",")+'&filter=circle:' +latitude+ ','+longitude+','+radius+'&bias=proximity:-73.99120964730558,40.7362796&limit='+ totalPlaces +'&apiKey=' + APIKey;
 
     var requestOptions = {
         method: 'GET',
