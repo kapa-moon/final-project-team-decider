@@ -140,7 +140,7 @@ function B11({ str }) {
     let [cur_user_data, set_cur_user_data] = useState({});
     useEffect(() =>
     {
-        fetch(`http://localhost:4000/login/cur_user`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/login/cur_user`,
         {
             method: 'post',
             headers:
@@ -154,14 +154,15 @@ function B11({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_cur_user_data(data));
+        .then(data => set_cur_user_data(data))
+        .catch(function (error){ console.log(error); });
     });
 
     function Handle_click_B11()
     {
         navigate('/Home');
         alert(`Group ${str.cur_id} created.`);
-        fetch(`http://localhost:4000/groups/add`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/groups/add`,
         {
             method: 'post',
             headers:
@@ -175,9 +176,10 @@ function B11({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_data(data));
+        .then(data => set_data(data))
+        .catch(function (error){ console.log(error); });
 
-        fetch(`http://localhost:4000/user/addgroup`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/user/addgroup`,
         {
             method: 'post',
             headers:
@@ -192,7 +194,8 @@ function B11({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_data(data));
+        .then(data => set_data(data))
+        .catch(function (error){ console.log(error); });
     }
 
     return (
@@ -207,7 +210,7 @@ function B12({ str }) {
     const [cur_group_id, setGroup_id] = useState("");
 
     function getUserID() {
-        axios.get(`http://localhost:4000/user/`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/user/`)
             .then(res => {
                 setUser_id(res.data[2].user_id);
                 setGroup_id(res.data[2].current_group);
@@ -251,7 +254,7 @@ function B14({ str }) {
     let [cur_user_data, set_cur_user_data] = useState({});
     useEffect(() =>
     {
-        fetch(`http://localhost:4000/login/cur_user`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/login/cur_user`,
         {
             method: 'post',
             headers:
@@ -265,7 +268,8 @@ function B14({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_cur_user_data(data));
+        .then(data => set_cur_user_data(data))
+        .catch(function (error){ console.log(error); });
     });
 
     const [myCurGroup, setMyCurGroup] = useState(() => {
@@ -279,7 +283,7 @@ function B14({ str }) {
 
     async function Handle_click_B14()
     {
-        fetch(`http://localhost:4000/groups/add`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/groups/add`,
         {
             method: 'post',
             headers:
@@ -293,9 +297,10 @@ function B14({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_data(data));
+        .then(data => set_data(data))
+        .catch(function (error){ console.log(error); });
 
-        fetch(`http://localhost:4000/user/addgroup`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/user/addgroup`,
         {
             method: 'post',
             headers:
@@ -310,7 +315,8 @@ function B14({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_data(data));
+        .then(data => set_data(data))
+        .catch(function (error){ console.log(error); });
         localStorage.setItem('myCurGroup', JSON.stringify(str.cur_id));
         let copy = document.getElementById('input0');
         copy.select();

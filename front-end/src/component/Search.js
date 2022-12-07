@@ -39,12 +39,12 @@ function Search() {
   let places = [];
   function fetchPlaces (pageNum) {
     places = [];
-    const APIKey = '5b82ca360a754cec8eb085096ff20a32';
+    const APIKey = process.env.REACT_APP_GEOAPIFY_KEY;
     const latitude = -73.9969622;
     const longitude = 40.7264075;
     let radius = 4 * 1000;
     let totalPlaces = pageNum*10;
-    const url = 'https://api.geoapify.com/v2/places?categories='+categories.join(",")+'&filter=circle:' +latitude+ ','+longitude+','+radius+'&bias=proximity:-73.99120964730558,40.7362796&limit='+ totalPlaces +'&apiKey=' + APIKey;
+    const url = `${process.env.REACT_APP_GEOAPIFY_URL}?categories=`+categories.join(",")+'&filter=circle:' +latitude+ ','+longitude+','+radius+'&bias=proximity:-73.99120964730558,40.7362796&limit='+ totalPlaces +'&apiKey=' + APIKey;
 
     var requestOptions = {
         method: 'GET',

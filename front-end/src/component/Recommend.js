@@ -57,13 +57,13 @@ function Recommend() {
   
   async function fetchPlaces (pageNum) {
     var places = [];
-    const APIKey = '5b82ca360a754cec8eb085096ff20a32';
+    const APIKey = process.env.REACT_APP_GEOAPIFY_KEY;
     let longitude = coordinates['lng'];
     let latitude = coordinates['lat'];
     console.log('fetch places coordinates', coordinates);
     let radius = 4 * 1000;
     let totalPlaces = pageNum*10;
-    const url = 'https://api.geoapify.com/v2/places?categories='+categories.join(",")+'&filter=circle:' +longitude+ ','+latitude+','+radius+'&bias=proximity:'+longitude+','+latitude+'&limit='+ totalPlaces +'&apiKey=' + APIKey;
+    const url = `${process.env.REACT_APP_GEOAPIFY_URL}?categories=`+categories.join(",")+'&filter=circle:' +longitude+ ','+latitude+','+radius+'&bias=proximity:'+longitude+','+latitude+'&limit='+ totalPlaces +'&apiKey=' + APIKey;
 
     var requestOptions = {
         method: 'GET',

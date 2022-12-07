@@ -58,7 +58,7 @@ function GroupVote(props) {
         if(entryToUnvote.location.vote < 1){
             console.log("vote cannot be less than 0");
             
-            axios.post(`http://localhost:4000/groups/deleteLocation`, {group_idx: curGroupID, location: props.location})
+            axios.post(`${process.env.REACT_APP_BACK_END_URL}/groups/deleteLocation`, {group_idx: curGroupID, location: props.location})
             .then(res => {
                 console.log(res.data);
             })
@@ -73,7 +73,7 @@ function GroupVote(props) {
             window.location.reload();
         }
 
-        axios.post('http://localhost:4000/groups/updateVote', entryToUnvote)
+        axios.post('${process.env.REACT_APP_BACK_END_URL}/groups/updateVote', entryToUnvote)
             .then(res => {
                 console.log(res.data);
             }
@@ -91,7 +91,7 @@ function GroupVote(props) {
         }
         setVoteCount(voteCount + 1);
 
-        axios.post('http://localhost:4000/groups/updateVote', entryToVote)
+        axios.post('${process.env.REACT_APP_BACK_END_URL}/groups/updateVote', entryToVote)
             .then(res => {
                 console.log(res.data);
             }

@@ -7,7 +7,7 @@ function Search_bar()
 
     function handle_click()
     {/* console.log(JSON.stringify(input_ref.current.value)); */
-        fetch('http://localhost:4000/search/search',
+        fetch('${process.env.REACT_APP_BACK_END_URL}/search/search',
         {
             method: 'post',
             headers: 

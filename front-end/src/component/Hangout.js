@@ -23,7 +23,7 @@ function Hangout() {
 
     function handle_click() {
         alert(`Group ${input_ref.current.value} removed.`);
-        fetch(`http://localhost:4000/groups/idx/${input_ref.current.value}`,
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/groups/idx/${input_ref.current.value}`,
         {
             method: 'delete',
             headers:
@@ -31,7 +31,8 @@ function Hangout() {
                 'Content-Type': 'application/json',
             },
         })
-        .then(res => res.json());
+        .then(res => res.json())
+        .catch(function (error){ console.log(error); });
         window.location.reload(true);
     }
 

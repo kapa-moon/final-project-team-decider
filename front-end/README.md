@@ -12,7 +12,7 @@ Go to the front-end folder by ```cd front-end```.
 
 Run ```npm start```.
 
-Use ```http://localhost:4000/groups``` to see available groups, then join a trial group to have a multi-user experience.
+Use ```process.env.REACT_APP_BACK_END_URL/groups``` to see available groups, then join a trial group to have a multi-user experience.
 After sign up an account, use the account to log in to use more features in ```view``` page.
 After join a group, the group is added to the current user's group list if the group is not already in the user's group list,
 then the user can view the newly added group in ```view``` page, other database query options can be performed in ```view``` page

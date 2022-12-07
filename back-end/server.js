@@ -1,5 +1,5 @@
 let server = require('./app'),
-port = process.env.PORT || '4000';
+port = process.env.PORT;
 
 listen = server.listen(port, () =>
 {

@@ -23,7 +23,7 @@ function Group() {
     const [groupLocations, setGroupLocations] = useState("");
 
     async function getGroupLocations() {
-         await axios.get(`http://localhost:4000/groups/idx/${curGroupID}`)
+         await axios.get(`${process.env.REACT_APP_BACK_END_URL}/groups/idx/${curGroupID}`)
              .then(res => {
                     console.log(res.data[0].locations);
                 setGroupLocations(res.data[0].locations);
@@ -42,7 +42,7 @@ function Group() {
     const [votedLocations, setVotedLocations] = useState([]);
 
     function getUserID() {
-        axios.get(`http://localhost:4000/user/`)
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/user/`)
             .then(res => {
                 setUser_id(res.data[2].user_id);
                 setGroup_id(res.data[2].current_group);
@@ -60,7 +60,7 @@ function Group() {
         {
             var group_id = cur_group_id;
             if (group_id) {
-                axios.get(`http://localhost:4000/locations/group_id/${group_id}`)
+                axios.get(`${process.env.REACT_APP_BACK_END_URL}/locations/group_id/${group_id}`)
                     .then(res => { setSelectedLocations(res.data); });
             }
         })();
