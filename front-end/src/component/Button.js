@@ -330,9 +330,9 @@ function B14({ str }) {
         localStorage.setItem('myCurGroup', JSON.stringify(str.cur_id));
         let copy = document.getElementById('input0');
         copy.select();
-        navigator.clipboard.writeText(copy.value)
-        .then(() => { alert("Link copied"); })
-        .catch(() => {});
+        /* navigator.clipboard.writeText(copy.value)
+        .then(() => { alert('Link copied'); })
+        .catch(() => {}); */
         alert('Group Created: ' + copy.value);
         navigate('/Recommend');
     }
