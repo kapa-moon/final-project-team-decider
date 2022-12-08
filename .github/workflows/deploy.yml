@@ -16,6 +16,5 @@ jobs:
             cd final-project-team-decider
             git pull
             git fetch
-            docker compose up
             echo 'Success'
       
