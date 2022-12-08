@@ -3,7 +3,7 @@ version: "3.8"
 services:
   frontend:
     build: ./front-end # build the Docker image from the Dockerfile in the front-end directory
-    env_file: .env
+    env_file: ./front-end/.env
     environment:
       - REACT_APP_BACK_END_URL=$REACT_APP_BACK_END_URL
       - REACT_APP_GEOAPIFY_KEY=$REACT_APP_GEOAPIFY_KEY
@@ -22,7 +22,7 @@ services:
 
   backend:
     build: ./back-end # build the Docker image from the Dockerfile in the back-end directory
-    env_file: .env
+    env_file: ./back-end/.env
     environment:
       - PORT=$PORT
       - ATLAS_URI=$ATLAS_URI
