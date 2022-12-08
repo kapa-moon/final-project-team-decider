@@ -58,8 +58,8 @@ function Recommend() {
   async function fetchPlaces (pageNum) {
     var places = [];
     const APIKey = process.env.REACT_APP_GEOAPIFY_KEY;
-    let longitude = coordinates['lng']? coordinates['lng'] : -73.996925;
-    let latitude = coordinates['lat']? coordinates['lat'] : 40.729675;
+    let longitude = (coordinates!=undefined)? coordinates['lng'] : -73.996925;
+    let latitude = (coordinates!=undefined)? coordinates['lat'] : 40.729675;
     console.log('fetch places coordinates', coordinates);
     let radius = 4 * 1000;
     let totalPlaces = pageNum*10;
