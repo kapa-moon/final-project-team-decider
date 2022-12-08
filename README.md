@@ -34,11 +34,11 @@ Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-pro
 1. Make sure you have Node installed.<br>
 Both the back-end and front-end should be running.<br>
 <br>
-2. Go to the back-end folder by ```cd back-end```<br>
+2. Open a shell. Go to the back-end folder by ```cd back-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```nodemon server```<br>
 <br>
-3. Go to the front-end folder by ```cd front-end```<br>
+3. Open another shell. Go to the front-end folder by ```cd front-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```npm start```<br>
 <br>
@@ -47,17 +47,22 @@ Run ```npm start```<br>
 <br>
 5. Docker container<br>
 Make sure you have Docker installed.<br>
+launch docker daemon, you can do this through running the Docker Desktop application<br>
 Run the following commands<br>
 ```docker pull yvonne511/final-project-decider-back-end```<br>
 ```docker pull yvonne511/final-project-decider-front-end```<br>
+open a shell and run<br>
 ```docker run -ti --rm yvonne511/final-project-decider-back-end```<br>
+open another shell and run<br>
 ```docker run -ti --rm yvonne511/final-project-decider-front-end```<br>
+The above two commands may take some time.<br>
+You can open ```http://localhost:3000``` to see front end and open ```http://localhost:4000``` to see back end.<br>
 <br>
 6. Continuous deployment<br>
 Github Build & Deploy action automate deploy process.<br>
 Any change to master brance will trigger deploy.yml action.<br>
 It removes the previous build deployed with docker compose, and rebuild another one.<br>
-The second bagde demonstrate continuous deployment is working.<br>
+The second badge at the top of this file demonstrate continuous deployment is working.<br>
 <br>
 
 Use ```process.env.REACT_APP_BACK_END_URL/groups``` or ```http://localhost:4000/groups``` to see available groups, then join a trial group to have a multi-user experience.
