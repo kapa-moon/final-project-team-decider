@@ -33,16 +33,34 @@ Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-pro
 <br>
 1. Make sure you have Node installed.<br>
 Both the back-end and front-end should be running.<br>
+<br>
 2. Go to the back-end folder by ```cd back-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```nodemon server```<br>
+<br>
 3. Go to the front-end folder by ```cd front-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```npm start```<br>
+<br>
 4. Unit tests: ```cd back-end```<br>
 ```npm test```<br>
+<br>
+5. Docker container<br>
+Make sure you have Docker installed.<br>
+Run the following commands<br>
+```docker pull yvonne511/final-project-decider-back-end```<br>
+```docker pull yvonne511/final-project-decider-front-end```<br>
+```docker run -ti --rm yvonne511/final-project-decider-back-end```<br>
+```docker run -ti --rm yvonne511/final-project-decider-front-end```<br>
+<br>
+6. Continuous deployment<br>
+Github Build & Deploy action automate deploy process.<br>
+Any change to master brance will trigger deploy.yml action.<br>
+It removes the previous build deployed with docker compose, and rebuild another one.<br>
+The second bagde demonstrate continuous deployment is working.<br>
+<br>
 
-Use ```process.env.REACT_APP_BACK_END_URL/groups``` to see available groups, then join a trial group to have a multi-user experience.
+Use ```process.env.REACT_APP_BACK_END_URL/groups``` or ```http://localhost:4000/groups``` to see available groups, then join a trial group to have a multi-user experience.
 After sign up an account, use the account to log in to use more features in ```view``` page, or you can use an existing testing account with username ```abc``` and password ```123```.
 After join a group from clicking ```enter``` with input group id, the group is added to the current user's group list if the group is not already in the user's group list, and the user is switched to the group.
 
