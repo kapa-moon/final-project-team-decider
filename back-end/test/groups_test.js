@@ -89,7 +89,7 @@ describe('groups test', function()
         });
     });   
 
-    describe('delete /groups/remove', function()
+    /* describe('delete /groups/remove', function()
     {
         it('should have 200 success status response, res.body should be a string', function(done)
         {
@@ -105,5 +105,5 @@ describe('groups test', function()
                 done();
             });
         })
-    });
+    }); */
 });
