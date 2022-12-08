@@ -68,12 +68,23 @@ Open another shell and run<br>
 The above two ```docker run``` commands may take some time.<br>
 You can open ```http://localhost:3000``` to see front end and open ```http://localhost:4000``` to see back end.<br>
 
-## Continuous Integration and Deployment
+# Continuous Integration and Deployment
 
 ## Continuous Integration
 
 GitHub Publish Docker Image Action automates deplot process. <br>
-With `buildcontainer.yml`, any change made to the master branch will trigger GitHub action and rebuild new front-end and back-end images. Then they will be pushed to docker hub by GitHub Action too.
+With `buildcontainer.yml`, any change made to the master branch will trigger GitHub action and rebuild new front-end and back-end images. Then they will be pushed to docker hub by GitHub Action too. <br>
+User can use run command to access and use them:
+
+For front-end:
+
+    docker pull yvonne511/final-project-decider-back-end
+    docker pull yvonne511/final-project-decider-front-end
+    docker run -ti --rm yvonne511/final-project-decider-back-end
+
+For back-end, open another shell and run:
+
+    docker run -ti --rm yvonne511/final-project-decider-front-end
 
 ## Continuous Deployment
 
