@@ -13,8 +13,9 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            mkdir test
-            cd test
-            git clone https://github.com/agiledev-students-fall2022/final-project-team-decider
+            cd final-project-team-decider
+            git pull
+            git fetch
+            docker compose up
             echo 'Success'
       
