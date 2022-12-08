@@ -73,7 +73,7 @@ function GroupVote(props) {
             window.location.reload();
         }
 
-        axios.post('${process.env.REACT_APP_BACK_END_URL}/groups/updateVote', entryToUnvote)
+        axios.post(`${process.env.REACT_APP_BACK_END_URL}/groups/updateVote`, entryToUnvote)
             .then(res => {
                 console.log(res.data);
             }
@@ -91,7 +91,7 @@ function GroupVote(props) {
         }
         setVoteCount(voteCount + 1);
 
-        axios.post('${process.env.REACT_APP_BACK_END_URL}/groups/updateVote', entryToVote)
+        axios.post(`${process.env.REACT_APP_BACK_END_URL}/groups/updateVote`, entryToVote)
             .then(res => {
                 console.log(res.data);
             }
