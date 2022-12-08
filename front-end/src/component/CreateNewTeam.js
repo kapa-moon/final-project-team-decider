@@ -81,6 +81,7 @@ function CreateNewTeam() {
   
     useEffect(() => {
           window.localStorage.setItem('myCurGroup', JSON.stringify(myCurGroup));
+          window.localStorage.setItem('locationToSearch', JSON.stringify({lng: -73.996925, lat: 40.729675}))
   }, [myCurGroup]);
   
   async function getGroup()
@@ -93,11 +94,12 @@ function CreateNewTeam() {
       alert("Group does not exist.");
     } else {
       localStorage.setItem('myCurGroup', JSON.stringify(groupID));
+      localStorage.setItem('locationToSearch', JSON.stringify({lng: -73.996925, lat: 40.729675}))
       alert("Group joined.");
       if (cur_user_data != undefined){
         add_group(groupID);
       }
-      navigate('/Recommend');
+      navigate('/recommend');
     }
   }).catch(err => {
     console.log(err);
