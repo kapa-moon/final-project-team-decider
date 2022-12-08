@@ -37,17 +37,19 @@ Both the back-end and front-end should be running.<br>
 2. Open a shell. Go to the back-end folder by ```cd back-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```nodemon server```<br>
+You can open ```http://localhost:4000``` to see back end.<br>
 
 3. Open another shell. Go to the front-end folder by ```cd front-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```npm start```<br>
+You can open ```http://localhost:3000``` to see front end.
 
 4. Unit tests: ```cd back-end```<br>
 ```npm test```<br>
 
 5. Docker container<br>
 Make sure you have Docker installed.<br>
-launch docker daemon, you can do this through running the Docker Desktop application<br>
+Launch docker daemon, you can do this through running the Docker Desktop application<br>
 Run the following commands<br>
 ```docker pull yvonne511/final-project-decider-back-end```<br>
 ```docker pull yvonne511/final-project-decider-front-end```<br>
