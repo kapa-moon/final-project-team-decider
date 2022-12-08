@@ -84,7 +84,7 @@ Can also ```remove a group from database``` here, these queries are performed to
 * The ```Recommend``` page may take 1-2 sec to show up when you first go into it.
 * Log-in/Sign-up pages are for future usage and development.
 * This web app is in mobile-first design. It's preferable to be tested in mobile sizes.
-* If the ```Recommend``` age doesn't show, try ```inspect``` and enter ```localStorage.setItem('myCurLocation','196')``` in the console, then 
+* If the ```Recommend``` page doesn't show, try ```inspect``` and enter ```localStorage.setItem('myCurLocation','196')``` in the console, then 
 * There may be some time delay when rendering ```view``` (group information) page for logged in users.
 * ```nodemon``` is alreadyp included in ```back-end/package-lock.json```. However, if after ```npm install```, ```nodemon``` command still cannot be found, use ```npm install -g nodemon``` to install ```nodemon```.
 
