@@ -19,12 +19,13 @@ jobs:
           docker login -u $username -p $password
       - name: Build and push Docker image for Front-end
         run: |
-          working-directory: front-end
+          cd front-end
           docker build -t env.username/final-project-decider-front-end .
           docker run -ti --rm env.username/final-project-decider-front-end
       - name: Build and push Docker image for Back-end
         run: |
-          working-directory: back-end
+          cd ..
+          cd back-end
           docker build -t {$username}/final-project-decider-back-end .
           docker run -ti --rm $username/final-project-decider-back-end
         
