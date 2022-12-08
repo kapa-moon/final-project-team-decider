@@ -15,20 +15,6 @@ services:
     build: ./back-end # build the Docker image from the Dockerfile in the back-end directory
     ports:
       - 4000:4000 # map port 5000 of host machine to port 5000 of container
-    environment:
-      DB_HOST: mongodb://db/foobar # set the DB_HOST environment variable to refer to a 'foobar' db in the 'db' service defined later in this docker-compose file
-    depends_on:
-      - db
     volumes:
       - ./uploads:/uploads # a directory on the host machine where we can store any files uploaded to the back-end container
     command: npm start # command to start the back-end once the container is up and running
-  # ... continued on next slide...
-
-  # ... continued from previous slide
-
-  db:
-    image: mongo:latest # use a recent version of the official MongoDB image on Docker Hub
-    ports:
-      - 27017:27017 # map port 27017 of host machine to port 27017 of container
-    volumes:
-      - ./db:/data/db # a directory on the host machine where the data in the container's database will be stored
