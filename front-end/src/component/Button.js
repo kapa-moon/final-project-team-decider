@@ -297,7 +297,11 @@ function B14({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_data(data))
+        .then(data => 
+            {   
+                set_data(data)
+            }
+        )
         .catch(function (error){ console.log(error); });
 
         fetch(`${process.env.REACT_APP_BACK_END_URL}/user/addgroup`,
@@ -315,8 +319,12 @@ function B14({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_data(data))
+        .then(data => {
+            set_data(data)
+            }
+        )
         .catch(function (error){ console.log(error); });
+
         localStorage.setItem('myCurGroup', JSON.stringify(str.cur_id));
         let copy = document.getElementById('input0');
         copy.select();
