@@ -4,14 +4,6 @@ services:
   frontend:
     build: ./front-end # build the Docker image from the Dockerfile in the front-end directory
     env_file: ./front-end/.env
-    environment:
-      - REACT_APP_BACK_END_URL=$REACT_APP_BACK_END_URL
-      - REACT_APP_GEOAPIFY_KEY=$REACT_APP_GEOAPIFY_KEY
-      - REACT_APP_GEOAPIFY_MAP_KEY=$REACT_APP_GEOAPIFY_MAP_KEY
-      - REACT_APP_MAP_URL=$REACT_APP_MAP_URL
-      - REACT_APP_GEOAPIFY_URL=$REACT_APP_GEOAPIFY_URL 
-      - REACT_APP_GEOAPIFY_W3_URL=$REACT_APP_GEOAPIFY_W3_URL 
-      - REACT_APP_OPEN_STREET_URL=$REACT_APP_OPEN_STREET_URL 
     ports:
       - 3000:3000 # map port 3000 of host machine to port 3000 of container
     depends_on:
@@ -23,11 +15,6 @@ services:
   backend:
     build: ./back-end # build the Docker image from the Dockerfile in the back-end directory
     env_file: ./back-end/.env
-    environment:
-      - PORT=$PORT
-      - ATLAS_URI=$ATLAS_URI
-      - ACCESS_TOKEN=$ACCESS_TOKEN
-      - REFRESH_TOKEN=$REFRESH_TOKEN
     ports:
       - 4000:4000 # map port 5000 of host machine to port 5000 of container
     volumes:
