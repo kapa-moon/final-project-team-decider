@@ -31,6 +31,7 @@ There are different common scenarios of hanging out with friends. It can be a pl
 
 Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-project-team-decider.git) by ```git clone https://github.com/agiledev-students-fall2022/final-project-team-decider.git```
 <br>
+
 1. Make sure you have Node installed.<br>
 Both the back-end and front-end should be running.<br>
 <br>
