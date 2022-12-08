@@ -14,7 +14,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           script: |
             cd final-project-team-decider
+            docker compose down
             git pull
             git fetch
+            docker compose up
             echo 'Success'
       
