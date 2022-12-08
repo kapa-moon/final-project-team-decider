@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./front-end # build the Docker image from the Dockerfile in the front-end directory
+    env_file: ./front-end/.env
+    ports:
+      - 3000:3000 # map port 3000 of host machine to port 3000 of container
+    depends_on:
+      - backend
+    command: npm start # command to start up the front-end once the container is up and running
+  # ... continued on next slide...
+  # ... continued from previous slide
+
+  backend:
+    build: ./back-end # build the Docker image from the Dockerfile in the back-end directory
+    env_file: ./back-end/.env
+    ports:
+      - 4000:4000 # map port 5000 of host machine to port 5000 of container
+    volumes:
+      - ./uploads:/uploads # a directory on the host machine where we can store any files uploaded to the back-end container
+    command: npm start # command to start the back-end once the container is up and running
