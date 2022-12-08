@@ -1,5 +1,7 @@
 [![agiledev-students-fall2022](https://circleci.com/gh/agiledev-students-fall2022/final-project-team-decider.svg?style=svg)](https://app.circleci.com/pipelines/github/agiledev-students-fall2022/final-project-team-decider?branch=master)
 
+![Build & Deployment](https://github.com/agiledev-students-fall2022/final-project-team-decider/actions/workflows/deploy.yml/badge.svg)
+
 # Decider
 
 ### 🥘 Find the perfect place for friends hangouts. <mark>Right Now!</mark>
