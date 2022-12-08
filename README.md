@@ -29,7 +29,7 @@ There are different common scenarios of hanging out with friends. It can be a pl
 <li><strong>The web app is conveniently connected to Map applications (Google Maps, etc).</strong></li>
 </ol>
 
-### Build Instructions
+## Build Instructions
 
 * Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-project-team-decider.git) by ```git clone https://github.com/agiledev-students-fall2022/final-project-team-decider.git```
 
