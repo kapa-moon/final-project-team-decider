@@ -331,7 +331,7 @@ function B14({ str }) {
         let copy = document.getElementById('input0');
         copy.select();
         navigator.clipboard.writeText(copy.value)
-        .then(() => { alert("Link copied and "); })
+        .then(() => { alert("Link copied"); })
         .catch(() => {});
         alert('Group Created: ' + copy.value);
         navigate('/Recommend');
