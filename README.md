@@ -68,8 +68,16 @@ Open another shell and run<br>
 The above two ```docker run``` commands may take some time.<br>
 You can open ```http://localhost:3000``` to see front end and open ```http://localhost:4000``` to see back end.<br>
 
-8. Continuous deployment<br>
-Github Build & Deploy action automate deploy process.<br>
+## Continuous Integration and Deployment
+
+## Continuous Integration
+
+GitHub Publish Docker Image Action automates deplot process. <br>
+With `buildcontainer.yml`, any change made to the master branch will trigger GitHub action and rebuild new front-end and back-end images. Then they will be pushed to docker hub by GitHub Action too.
+
+## Continuous Deployment
+
+GitHub Build & Deploy Action automates deploy process.<br>
 Any change to master branch will trigger ```deploy.yml``` action.<br>
 It removes the previous build deployed with ```docker compose```, and rebuild another one.<br>
 The second badge at the top of this file demonstrate continuous deployment is working.<br>
@@ -98,16 +106,16 @@ Can also ```remove a group from database``` here, these queries are performed to
 * There may be some time delay when rendering ```view``` (group information) page for logged in users.
 * ```nodemon``` is alreadyp included in ```back-end/package-lock.json```. However, if after ```npm install```, ```nodemon``` command still cannot be found, use ```npm install -g nodemon``` to install ```nodemon```.
 
-## Members
+# Members
 
 [Xi Liu](https://github.com/xi-liu-cs)</br>
 [Yiyi (Yvonne) Wu](https://github.com/Yvonne511)</br>
 [Yuewen Yang](https://github.com/kapa-moon)</br>
 
-## History
+# Design
 
 Sprint 0: [Wireframes & Prototype](https://github.com/agiledev-students-fall2022/final-project-team-decider/tree/master/ux-design)</br>
 
-## Contribute
+# Contribute
 
 See the [contribution guide](CONTRIBUTING.md) for more information.
