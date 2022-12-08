@@ -304,6 +304,7 @@ function B14({ str }) {
         )
         .catch(function (error){ console.log(error); });
 
+        if (cur_user_data){
         fetch(`${process.env.REACT_APP_BACK_END_URL}/user/addgroup`,
         {
             method: 'post',
@@ -324,6 +325,7 @@ function B14({ str }) {
             }
         )
         .catch(function (error){ console.log(error); });
+        }
 
         localStorage.setItem('myCurGroup', JSON.stringify(str.cur_id));
         let copy = document.getElementById('input0');
