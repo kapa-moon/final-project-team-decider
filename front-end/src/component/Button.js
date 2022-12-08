@@ -297,28 +297,36 @@ function B14({ str }) {
             })
         })
         .then(res => res.json())
-        .then(data => set_data(data))
+        .then(data => 
+            {   
+                set_data(data)
+            }
+        )
         .catch(function (error){ console.log(error); });
 
-        if(cur_user_data)
-            fetch(`${process.env.REACT_APP_BACK_END_URL}/user/addgroup`,
+        if (cur_user_data){
+        fetch(`${process.env.REACT_APP_BACK_END_URL}/user/addgroup`,
+        {
+            method: 'post',
+            headers:
             {
-                method: 'post',
-                headers:
-                {
-                    'Content-Type': 'application/json',
-                },
-                body:
-                JSON.stringify
-                ({
-                    user_id: cur_user_data.user_id,
-                    group_idx: str.cur_id
-                })
+                'Content-Type': 'application/json',
+            },
+            body:
+            JSON.stringify
+            ({
+                user_id: cur_user_data.user_id,
+                group_idx: str.cur_id
             })
-            .then(res => res.json())
-            .then(data => set_data(data))
-            .catch(function (error){ console.log(error); });
-        
+        })
+        .then(res => res.json())
+        .then(data => {
+            set_data(data)
+            }
+        )
+        .catch(function (error){ console.log(error); });
+        }
+
         localStorage.setItem('myCurGroup', JSON.stringify(str.cur_id));
         let copy = document.getElementById('input0');
         copy.select();
