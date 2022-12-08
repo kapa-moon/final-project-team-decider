@@ -45,8 +45,8 @@ const Map = () => {
     }
     var map = L.map("map").setView(latlng, 13);
     const isRetina = L.Browser.retina;
-    const baseUrl = `${process.env.REACT_APP_MAP_URL}/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=${process.env.REACT_APP_MAP_KEY}`;
-    const retinaUrl = `${process.env.REACT_APP_MAP_URL}/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey=${process.env.REACT_APP_MAP_KEY}`;
+    const baseUrl = `${process.env.REACT_APP_MAP_URL}/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=${process.env.REACT_APP_GEOAPIFY_MAP_KEY}`;
+    const retinaUrl = `${process.env.REACT_APP_MAP_URL}/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey=${process.env.REACT_APP_GEOAPIFY_MAP_KEY}`;
     L.tileLayer(isRetina ? retinaUrl : baseUrl,
     {
         attribution:
