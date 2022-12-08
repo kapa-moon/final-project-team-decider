@@ -20,14 +20,14 @@ jobs:
       - name: Build and push Docker image for Front-end
         run: |
           cd front-end
-          docker build -t yvonne511/final-project-decider-front-end .
-          docker run -ti --rm env.username/final-project-decider-front-end
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/final-project-decider-front-end .
+          docker run -ti --rm ${{ secrets.DOCKER_USERNAME }}/final-project-decider-front-end
       - name: Build and push Docker image for Back-end
         run: |
           cd ..
           cd back-end
-          docker build -t yvonne511/final-project-decider-back-end .
-          docker run -ti --rm $username/final-project-decider-back-end
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/final-project-decider-back-end .
+          docker run -ti --rm ${{ secrets.DOCKER_USERNAME }}/final-project-decider-back-end
         
           
 
