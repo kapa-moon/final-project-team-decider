@@ -94,8 +94,10 @@ function CreateNewTeam() {
     } else {
       localStorage.setItem('myCurGroup', JSON.stringify(groupID));
       alert("Group joined.");
-      add_group(groupID);
-      navigate('Recommend');
+      if (cur_user_data != undefined){
+        add_group(groupID);
+      }
+      navigate('/Recommend');
     }
   }).catch(err => {
     console.log(err);
