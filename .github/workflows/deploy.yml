@@ -12,7 +12,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{ secrets.SSH_USERNAME }}
-          script: ｜
+          script: |
             mkdir test
             cd test
             git clone git@https://github.com/agiledev-students-fall2022/final-project-team-decider
