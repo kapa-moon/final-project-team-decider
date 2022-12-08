@@ -62,8 +62,8 @@ You can open ```http://localhost:3000``` to see front end and open ```http://loc
 
 6. Continuous deployment<br>
 Github Build & Deploy action automate deploy process.<br>
-Any change to master brance will trigger deploy.yml action.<br>
-It removes the previous build deployed with docker compose, and rebuild another one.<br>
+Any change to master branch will trigger ```deploy.yml``` action.<br>
+It removes the previous build deployed with ```docker compose```, and rebuild another one.<br>
 The second badge at the top of this file demonstrate continuous deployment is working.<br>
 
 Use ```process.env.REACT_APP_BACK_END_URL/groups``` or ```http://localhost:4000/groups``` to see available groups, then join a trial group to have a multi-user experience.
