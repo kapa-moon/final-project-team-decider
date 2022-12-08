@@ -44,17 +44,18 @@ It removes the previous build deployed with ```docker compose```, and rebuild an
 The second badge at the top of this file demonstrate continuous deployment is working.<br>
 
 ## Use
-Use ```process.env.REACT_APP_BACK_END_URL/groups``` or ```http://localhost:4000/groups``` to see available groups, then join a trial group to have a multi-user experience.
+
+* Use ```process.env.REACT_APP_BACK_END_URL/groups``` or ```http://localhost:4000/groups``` to see available groups, then join a trial group to have a multi-user experience.
 After sign up an account, use the account to log in to use more features in ```view``` page, or you can use an existing testing account with username ```abc``` and password ```123```.
 After join a group from clicking ```enter``` with input group id, the group is added to the current user's group list if the group is not already in the user's group list, and the user is switched to the group.
 
-Then the user can view the newly added group in ```view``` page, other database query options can be performed in ```view``` page
+* Then the user can view the newly added group in ```view``` page, other database query options can be performed in ```view``` page
 such as ```remove a group from group list```, ```remove all group from group list```, these queries are only performed
-in the ```my_groups``` array of the current user, not influencing the groups themselves. The user can also see the current username and current group in view page. More information about ```myLocations, myCurLocation``` can also be seen from opening developer tools in the broswer and then choose ```Applications -> local Storage -> http://localhost:3000```. 
+in the ```my_groups``` array of the current user, not influencing the groups themselves. The user can also see the current username and current group in ```view``` page. More information about ```myLocations, myCurLocation``` can also be seen from opening developer tools in the browser and then choose ```Applications -> local Storage -> http://localhost:3000```. 
 
-To switch a group, copy a group number from ```group list``` in ```view (group information)``` page, then go back to ```http://localhost:3000``` and use the copied group number as input to the ```Enter Group ID``` in the text box and hit enter. You can see the changed group by checking the current group in ```view (group information)``` page.
+* To switch a group, copy a group number from ```group list``` in ```view (group information)``` page, then go back to ```http://localhost:3000``` and use the copied group number as input to the ```Enter Group ID``` in the text box and hit enter. You can see the changed group by checking the current group in ```view (group information)``` page.
 
-After create a group in ```Home``` page, automatically redirect to  ```Recommend``` page and join that group.
+* After create a group in ```Home``` page, automatically redirect to  ```Recommend``` page and join that group.
 Can also ```remove a group from database``` here, these queries are performed to create or remove the groups themselves.
 
 ### Note
