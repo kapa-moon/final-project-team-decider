@@ -48,7 +48,11 @@ This shell used for front end should be a different shell from the shell used fo
 4. Unit tests: ```cd back-end```<br>
 ```npm test```<br>
 
-5. Docker container<br>
+5. Deployment to Digital Ocean Droplet<br>
+Our front end address is ```http://164.90.254.52:3000/```<br>
+Back end address is ```http://164.90.254.52:4000/```
+
+6. Docker container<br>
 Make sure you have Docker installed.<br>
 Launch docker daemon, you can do this through running the Docker Desktop application.<br>
 Open a shell and run<br>
@@ -60,7 +64,7 @@ Open another shell and run<br>
 The above two ```docker run``` commands may take some time.<br>
 You can open ```http://localhost:3000``` to see front end and open ```http://localhost:4000``` to see back end.<br>
 
-6. Continuous deployment<br>
+7. Continuous deployment<br>
 Github Build & Deploy action automate deploy process.<br>
 Any change to master branch will trigger ```deploy.yml``` action.<br>
 It removes the previous build deployed with ```docker compose```, and rebuild another one.<br>
