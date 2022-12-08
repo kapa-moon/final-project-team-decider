@@ -99,5 +99,24 @@ describe('user test', function () {
                     });
             })
         });
+
+        describe('post /user/add', function () {
+            it('should have 200 success status response, res.body should be a string', function (done) {
+                chai.
+                request(app)
+                .delete('/user/')
+                .send
+                ({
+                    user_id: user_id
+                })
+                .end(function(e, res)
+                {
+                    if(e)
+                        throw e;
+                    expect(res.body).to.be.an('string');
+                    done();
+                });
+            });
+        });
     });
 });
