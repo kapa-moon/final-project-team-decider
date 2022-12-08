@@ -333,7 +333,7 @@ function B14({ str }) {
         /* navigator.clipboard.writeText(copy.value)
         .then(() => { alert('Link copied'); })
         .catch(() => {}); */
-        alert('Group Created: ' + copy.value);
+        alert('Group created, you can copy here: ' + copy.value);
         navigate('/Recommend');
     }
 
