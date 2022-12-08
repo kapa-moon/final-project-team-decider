@@ -50,13 +50,12 @@ This shell used for front end should be a different shell from the shell used fo
 
 5. Docker container<br>
 Make sure you have Docker installed.<br>
-Launch docker daemon, you can do this through running the Docker Desktop application<br>
-Run the following commands<br>
-open a shell and run<br>
+Launch docker daemon, you can do this through running the Docker Desktop application.<br>
+Open a shell and run<br>
 ```docker pull yvonne511/final-project-decider-back-end```<br>
 ```docker pull yvonne511/final-project-decider-front-end```<br>
 ```docker run -ti --rm yvonne511/final-project-decider-back-end```<br>
-open another shell and run<br>
+Open another shell and run<br>
 ```docker run -ti --rm yvonne511/final-project-decider-front-end```<br>
 The above two ```docker run``` commands may take some time.<br>
 You can open ```http://localhost:3000``` to see front end and open ```http://localhost:4000``` to see back end.<br>
@@ -82,12 +81,12 @@ Can also ```remove a group from database``` here, these queries are performed to
 
 ### Note
 
-* The [Recommend] page may take 1-2 sec to show up when you first go into it.
+* The ```Recommend``` page may take 1-2 sec to show up when you first go into it.
 * Log-in/Sign-up pages are for future usage and development.
 * This web app is in mobile-first design. It's preferable to be tested in mobile sizes.
-* If the "Recommend Page" doesn't show, try ```inspect``` and enter ```localStorage.setItem('myCurLocation','196')``` in the console, then 
+* If the ```Recommend``` age doesn't show, try ```inspect``` and enter ```localStorage.setItem('myCurLocation','196')``` in the console, then 
 * There may be some time delay when rendering ```view``` (group information) page for logged in users.
-* ```nodemon``` is already included in ```back-end/package-lock.json```. However, if after ```npm install```, ```nodemon``` command still cannot be found, use ```npm install -g nodemon``` to install ```nodemon```.
+* ```nodemon``` is alreadyp included in ```back-end/package-lock.json```. However, if after ```npm install```, ```nodemon``` command still cannot be found, use ```npm install -g nodemon``` to install ```nodemon```.
 
 ## Members
 
