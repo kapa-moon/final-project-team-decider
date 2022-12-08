@@ -49,7 +49,7 @@ This shell used for front end should be a different shell from the shell used fo
 ```npm test```<br>
 
 5. Deployment to Digital Ocean Droplet<br>
-Our front end address is ```http://164.90.254.52:3000/```<br>
+Front end address is ```http://164.90.254.52:3000/```<br>
 Back end address is ```http://164.90.254.52:4000/```
 
 6. Docker container<br>
