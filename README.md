@@ -34,7 +34,7 @@ Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-pro
 
 1. Make sure you have Node installed.<br>
 Both the back-end and front-end should be running.<br>
-<br>
+
 2. Open a shell. Go to the back-end folder by ```cd back-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```nodemon server```<br>
