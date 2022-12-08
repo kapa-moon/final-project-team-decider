@@ -19,12 +19,12 @@ jobs:
           docker login -u $username -p $password
       - name: Build and push Docker image for Front-end
         run: |
-          docker build -t $username/final-project-decider-front-end
+          docker build -t $username/final-project-decider-front-end .
           docker run -ti --rm $username/final-project-decider-front-end
           working-directory: front-end
       - name: Build and push Docker image for Back-end
         run: |
-          docker build -t $username/final-project-decider-back-end
+          docker build -t $username/final-project-decider-back-end .
           docker run -ti --rm $username/final-project-decider-back-end
           working-directory: back-end
         
