@@ -34,15 +34,16 @@ Clone the [Decider Repo](https://github.com/agiledev-students-fall2022/final-pro
 1. Make sure you have Node installed.<br>
 Both the back-end and front-end should be running.<br>
 
-2. Open a shell. Go to the back-end folder by ```cd back-end```<br>
+2. Go to the back-end folder by ```cd back-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```nodemon server```<br>
 You can open ```http://localhost:4000``` to see back end.<br>
 
-3. Open another shell. Go to the front-end folder by ```cd front-end```<br>
+3. Go to the front-end folder by ```cd front-end```<br>
 Install necessary packages by ```npm install```<br>
 Run ```npm start```<br>
-You can open ```http://localhost:3000``` to see front end.
+You can open ```http://localhost:3000``` to see front end.<br>
+This shell used for front end should be a different shell from the shell used for back end.<br>
 
 4. Unit tests: ```cd back-end```<br>
 ```npm test```<br>
@@ -51,13 +52,13 @@ You can open ```http://localhost:3000``` to see front end.
 Make sure you have Docker installed.<br>
 Launch docker daemon, you can do this through running the Docker Desktop application<br>
 Run the following commands<br>
+open a shell and run<br>
 ```docker pull yvonne511/final-project-decider-back-end```<br>
 ```docker pull yvonne511/final-project-decider-front-end```<br>
-open a shell and run<br>
 ```docker run -ti --rm yvonne511/final-project-decider-back-end```<br>
 open another shell and run<br>
 ```docker run -ti --rm yvonne511/final-project-decider-front-end```<br>
-The above two commands may take some time.<br>
+The above two ```docker run``` commands may take some time.<br>
 You can open ```http://localhost:3000``` to see front end and open ```http://localhost:4000``` to see back end.<br>
 
 6. Continuous deployment<br>
