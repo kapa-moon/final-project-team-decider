@@ -2,6 +2,8 @@
 
 ![Build & Deployment](https://github.com/agiledev-students-fall2022/final-project-team-decider/actions/workflows/deploy.yml/badge.svg)
 
+[![Publish Docker image](https://github.com/agiledev-students-fall2022/final-project-team-decider/actions/workflows/buildcontainer.yml/badge.svg)](https://github.com/agiledev-students-fall2022/final-project-team-decider/actions/workflows/buildcontainer.yml)
+
 # Decider
 
 ### 🥘 Find the perfect place for friends hangouts. <mark>Right Now!</mark>
