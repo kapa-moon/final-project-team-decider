@@ -17,6 +17,6 @@ jobs:
             docker compose down
             git pull
             git fetch
-            docker compose up -d
+            docker compose up --build -d
             echo 'Success'
       

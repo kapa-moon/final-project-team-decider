@@ -68,7 +68,7 @@ Open another shell and run<br>
 The above two ```docker run``` commands may take some time.<br>
 You can open ```http://localhost:3000``` to see front end and open ```http://localhost:4000``` to see back end.<br>
 
-## Use
+## Usage
 
 * Use ```process.env.REACT_APP_BACK_END_URL/groups``` or ```http://localhost:4000/groups``` to see available groups, then join a trial group to have a multi-user experience.
 After sign up an account, use the account to log in to use more features in ```view``` page, or you can use an existing testing account with username ```abc``` and password ```123```.
@@ -79,9 +79,35 @@ such as ```remove a group from group list```, ```remove all group from group lis
 in the ```my_groups``` array of the current user, not influencing the groups themselves. The user can also see the current username and current group in ```view``` page. More information about ```myLocations, myCurLocation``` can also be seen from opening developer tools in the browser and then choose ```Applications -> local Storage -> http://localhost:3000```. 
 
 * To switch a group, copy a group number from ```group list``` in ```view (group information)``` page, then go back to ```http://localhost:3000``` and use the copied group number as input to the ```Enter Group ID``` in the text box and hit enter. You can see the changed group by checking the current group in ```view (group information)``` page.
+### For End Users:
+
 
 * After create a group in ```Home``` page, automatically redirect to  ```Recommend``` page and join that group.
 Can also ```remove a group from database``` here, these queries are performed to create or remove the groups themselves.
+
+* STEP 1  Landing Page:
+    
+    * ```Create a Group``` on the landing page. Copy the group code and share with friends.
+
+    * Enter a group code that your friend share with you on the landing page. Click ```Enter```
+
+* STEP 2 Main Page
+
+    * User can switch between four subpages: ```Search```, ```Recommend```, ```Group List```, and ```Go!```.
+
+    * ```Search```: In the search bar, enter the category / location name you want to search for. Ex. ```Rookie USA```, ```park```
+
+    * ```Recommend```: (In the search bar, enter your current location to get recommend results based on adjacency.) Click on ```Add``` on location card to add the location to your group list. You cancel/delete the location by click on the same box. Click on the picture on each location's card to see a map preview. 
+
+    * ```Group List```: View all locations added by group members. Vote on the locations you like as well. You can cancel your vote by click on the same box. When a location's vote is deducted to 0, this location will be kicked out from the group. Click on the picture on each location's card to see a map preview. 
+
+    * ```Go!```: Click on ```Select!``` and Decider will select a location from ```Group List``` as the result shared across all group members. On the second card, Decider shows the location with most votes from ```Group List```. 
+
+    * Usually, ```Go!``` is the last step for a group to decide their choice.
+    
+
+* ```Sign up``` and ```Log in``` are optional. Note that users who do not log in will not be able to see their history groups and remove groups.
+* All information on ```Group List`` and ```Go!``` is shared acroos the group.
 
 ## Note
 
