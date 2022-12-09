@@ -83,21 +83,21 @@ in the ```my_groups``` array of the current user, not influencing the groups the
 
 
 * After create a group in ```Home``` page, automatically redirect to  ```Recommend``` page and join that group.
-Can also ```remove a group from database``` here, these queries are performed to create or remove the groups themselves.
+Can also ```remove a group from database``` here, these queries are performed to create or remove the groups themselves, not influencing the ```my_groups``` array of the current user.
 
-* STEP 1  Landing Page:
+* STEP 1 Landing Page:
     
     * ```Create a Group``` on the landing page. Copy the group code and share with friends.
 
     * Enter a group code that your friend share with you on the landing page. Click ```Enter```
 
-* STEP 2 Main Page
+* STEP 2 Main Page:
 
     * User can switch between four subpages: ```Search```, ```Recommend```, ```Group List```, and ```Go!```.
 
     * ```Search```: In the search bar, enter the category / location name you want to search for. Ex. ```Rookie USA```, ```park```
 
-    * ```Recommend```: (In the search bar, enter your current location to get recommend results based on adjacency.) Click on ```Add``` on location card to add the location to your group list. You cancel/delete the location by click on the same box. Click on the picture on each location's card to see a map preview. 
+    * ```Recommend```: (In the search bar, enter your current location to get recommend results based on adjacency.) Click on ```Add``` on location card to add the location to your group list. You can cancel/delete the location by click on the same box. Click on the picture on each location's card to see a map preview. 
 
     * ```Group List```: View all locations added by group members. Vote on the locations you like as well. You can cancel your vote by click on the same box. When a location's vote is deducted to 0, this location will be kicked out from the group. Click on the picture on each location's card to see a map preview. 
 
@@ -107,7 +107,7 @@ Can also ```remove a group from database``` here, these queries are performed to
     
 
 * ```Sign up``` and ```Log in``` are optional. Note that users who do not log in will not be able to see their history groups and remove groups.
-* All information on ```Group List`` and ```Go!``` is shared acroos the group.
+* All information on ```Group List``` and ```Go!``` is shared across the group.
 
 ## Note
 
