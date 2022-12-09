@@ -15,6 +15,7 @@ jobs:
           script: |
             cd final-project-team-decider
             docker compose down
+            docker image prume
             git pull
             git fetch
             docker compose up -d
