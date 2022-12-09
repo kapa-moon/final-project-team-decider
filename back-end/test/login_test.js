@@ -99,6 +99,7 @@ describe('login test', function()
                 done();
             });
         });
+
     });
 
     describe('post /login/token', function()
@@ -118,6 +119,67 @@ describe('login test', function()
                 if(e)
                     throw e;
                 expect(res.body).to.be.an('object');
+                done();
+            });
+        })
+    });
+
+    describe('post /login/cur_user', function()
+    {
+        let token = Math.random().toString().slice(2);
+        it('should have 200 success status response, res.body should be an object', function(done)
+        {
+            chai.
+            request(app)
+            .post('/login/cur_user')
+            .send
+            ({
+                token: token
+            })
+            .end(function(e, res)
+            {
+                if(e)
+                    throw e;
+                expect(res).to.have.status(200);
+                done();
+            });
+        })
+    });
+
+    describe('post /login/', function()
+    {
+        let username = Math.random().toString().slice(2);
+        let hash = Math.random().toString().slice(2);
+        it('should have 404/401 failure status response, the username or password are wrong', function(done)
+        {
+            chai.
+            request(app)
+            .post('/login/')
+            .send
+            ({
+                username: username,
+                hash: hash,
+            })
+            .end(function(e, res)
+            {
+                if(e)
+                    throw e;
+                expect(res).to.have.status(404 || 401);
+                done();
+            });
+        })
+
+        it('should have 401 success status response, the username or password are not found', function(done)
+        {
+            chai.
+            request(app)
+            .post('/login/')
+            .send()
+            .end(function(e, res)
+            {
+                if(e)
+                    throw e;
+                expect(res).to.have.status(401);
                 done();
             });
         })
