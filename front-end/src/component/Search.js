@@ -35,7 +35,6 @@ function splitElements (array){
 }
 
 function Search() {
-  
   let places = [];
   function fetchPlaces (pageNum) {
     places = [];
