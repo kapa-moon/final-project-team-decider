@@ -89,13 +89,13 @@ Can also ```remove a group from database``` here, these queries are performed to
     
     * ```Create a Group``` on the landing page. Copy the group code and share with friends.
 
-    * Enter a group code that your friend share with you on the landing page. Click ```Enter```
+    * Enter a group code that your friend share with you on the landing page. Click ```Enter```.
 
 * STEP 2 Main Page:
 
     * User can switch between four subpages: ```Search```, ```Recommend```, ```Group List```, and ```Go!```.
 
-    * ```Search```: In the search bar, enter the category / location name you want to search for. Ex. ```Rookie USA```, ```park```
+    * ```Search```: In the search bar, enter the category / location name you want to search for. Ex. ```Rookie USA```, ```park```.
 
     * ```Recommend```: (In the search bar, enter your current location to get recommend results based on adjacency.) Click on ```Add``` on location card to add the location to your group list. You can cancel/delete the location by click on the same box. Click on the picture on each location's card to see a map preview. 
 
