@@ -6,7 +6,7 @@
 
 # Decider
 
-### 🥘 Find the perfect place for friends hangouts. <mark>Right Now!</mark>
+### 🥘 Find the perfect place for friends hangouts. [<mark>Right Now!</mark>](http://164.90.254.52:3000/)
 
 ## Introduction
 
