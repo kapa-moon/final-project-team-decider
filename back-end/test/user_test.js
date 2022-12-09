@@ -24,6 +24,20 @@ describe('user test', function () {
         })
     });
 
+    describe('get /user', function () {
+        it('should have 404 failure status response', function (done) {
+            chai.
+                request(app)
+                .get('/users')
+                .end(function (e, res) {
+                    if (e)
+                        throw e;
+                    expect(res).to.have.status(404);
+                    done();
+                });
+        })
+    });
+
     describe('', function () {
         let user_id = Math.random().toString().slice(2);
         let email = `${Math.random().toString().slice(2)}@gmail.com`;
@@ -52,6 +66,22 @@ describe('user test', function () {
                         if (e)
                             throw e;
                         expect(res).to.have.status(200);
+                        expect(res.body).to.be.an('string');
+                        done();
+                    });
+            })
+        });
+
+        describe('post /user/add', function () {
+            it('should have 400 failure status response', function (done) {
+                chai.
+                    request(app)
+                    .post('/user/add')
+                    .send()
+                    .end(function (e, res) {
+                        if (e)
+                            throw e;
+                        expect(res).to.have.status(400);
                         expect(res.body).to.be.an('string');
                         done();
                     });
@@ -104,7 +134,7 @@ describe('user test', function () {
             it('should have 200 success status response, res.body should be a string', function (done) {
                 chai.
                 request(app)
-                .delete('/user/')
+                .post('/user/add')
                 .send
                 ({
                     user_id: user_id
@@ -118,5 +148,133 @@ describe('user test', function () {
                 });
             });
         });
+
+        describe('delete /user/remove', function () {
+            it('should have 200 success status response, res.body should be a string', function (done) {
+                chai.
+                request(app)
+                .delete('/user/remove')
+                .send()
+                .end(function(e, res)
+                {
+                    if(e)
+                        throw e;
+                    expect(res.body).to.be.an('string');
+                    done();
+                });
+            });
+        });
+
+        describe('get /user/print/:user_id', function () {
+            it('should have 200 success status response, res.body should be a string', function (done) {
+                chai.
+                request(app)
+                .get('/user/print/:user_id')
+                .send({user_id:user_id})
+                .end(function(e, res)
+                {
+                    if(e)
+                        throw e;
+                    expect(res.body).to.be.an('array');
+                    done();
+                });
+            });
+        });
+        
+        describe('post user/addgroup', function () {
+            let group_idx = Math.random().toString().slice(2);
+            it('should have 200 success status response, res.body should be a user string', function (done) {
+                chai.
+                    request(app)
+                    .post('/user/addgroup')
+                    .send({
+                        user_id: user_id,
+                        group_idx: group_idx,
+                    })
+                    .end(function (e, res) {
+                        if (e)
+                            throw e;
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.an('string');
+                        done();
+                    });
+            })
+        });
+
+        describe('delete /removegroup', function () {
+            let group_idx = Math.random().toString().slice(2);
+            it('should have 200 success status response, res.body should be a user string', function (done) {
+                chai.
+                    request(app)
+                    .delete('/user/removegroup')
+                    .send({
+                        user_id: user_id,
+                        group_idx: group_idx,
+                    })
+                    .end(function (e, res) {
+                        if (e)
+                            throw e;
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.an('string');
+                        done();
+                    });
+            })
+        });
+
+        describe('delete /remove_a_group_from_all_user', function () {
+            let group_idx = Math.random().toString().slice(2);
+            it('should have 200 success status response, res.body should be a user string', function (done) {
+                chai.
+                    request(app)
+                    .delete('/user/remove_a_group_from_all_user')
+                    .send({
+                        user_id: user_id,
+                        group_idx: group_idx,
+                    })
+                    .end(function (e, res) {
+                        if (e)
+                            throw e;
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.an('string');
+                        done();
+                    });
+            })
+        });
+
+        describe('delete /remove_all_group', function () {
+            it('should have 200 success status response, res.body should be a user string', function (done) {
+                chai.
+                    request(app)
+                    .delete('/user/remove_all_group')
+                    .send()
+                    .end(function (e, res) {
+                        if (e)
+                            throw e;
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.an('string');
+                        done();
+                    });
+            })
+        });
+
+        describe('post /switchgroup/:user_id', function () {
+            it('should have 200 success status response, res.body should be a user string', function (done) {
+                chai.
+                    request(app)
+                    .post('/user/switchgroup/:user_id')
+                    .send({
+                        user_id: user_id,
+                        current_group: current_group,
+                    })
+                    .end(function (e, res) {
+                        if (e)
+                            throw e;
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.an('string');
+                        done();
+                    });
+            })
+        });
+
     });
 });
