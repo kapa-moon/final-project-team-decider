@@ -145,9 +145,10 @@ The second badge at the top of this file demonstrate continuous deployment is wo
 
 # Members
 
-[Xi Liu](https://github.com/xi-liu-cs)</br>
+
 [Yiyi (Yvonne) Wu](https://github.com/Yvonne511)</br>
 [Yuewen Yang](https://github.com/kapa-moon)</br>
+[Xi Liu](https://github.com/xi-liu-cs)</br>
 
 # Design
 
